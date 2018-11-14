@@ -1,0 +1,2 @@
+class ProjectFollow < ApplicationRecord
+end
