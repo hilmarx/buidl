@@ -6,4 +6,14 @@ class User < ApplicationRecord
 
   has_many :followeds, class_name: "UserFollow", foreign_key: "followed_id"
   has_many :followers, class_name: "UserFollow", foreign_key: "follower_id"
+
+  has_many :user_technologies
+  has_many :technologies, through: :user_technologies
+
+  has_many :project_follows
+  has_many :projects, through: :project_follows
+
+  has_many :contributions
+  has_many :projects, through: :contributions
+  has_many :technologies, through: :contributions
 end
