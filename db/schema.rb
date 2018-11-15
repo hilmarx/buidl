@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_15_062603) do
+ActiveRecord::Schema.define(version: 2018_11_15_105746) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,7 +53,7 @@ ActiveRecord::Schema.define(version: 2018_11_15_062603) do
     t.string "url"
     t.string "photo"
     t.integer "owner_id"
-    t.boolean "public"
+    t.boolean "private"
     t.string "primary_language"
     t.integer "size_bytes"
     t.datetime "created_at", null: false
@@ -63,6 +63,7 @@ ActiveRecord::Schema.define(version: 2018_11_15_062603) do
     t.integer "lines_deleted"
     t.integer "commits"
     t.boolean "archived"
+    t.string "full_name"
   end
 
   create_table "technologies", force: :cascade do |t|

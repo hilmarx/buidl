@@ -1,16 +1,14 @@
+require 'json'
+require 'open-uri'
 
 class ProjectsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:show]
 
   def show
-    #--------- Octokit Test area -----------
-    @client = Octokit::Client.new
+    url = "https://api.github.com/repos/hilmarx/offthewagon"
+    project_details_serialized = open(url).read
+    @project_details = JSON.parse(project_details_serialized)
 
-
-
-
-
-    #---------- Test Area end -------------
   end
 
   def destroy
