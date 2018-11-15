@@ -10,18 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_14_152704) do
+ActiveRecord::Schema.define(version: 2018_11_15_054200) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "contributions", force: :cascade do |t|
-    t.integer "size_bytes"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id"
     t.bigint "project_id"
     t.bigint "technology_id"
+    t.integer "lines_added"
+    t.integer "lines_deleted"
+    t.integer "commits"
     t.index ["project_id"], name: "index_contributions_on_project_id"
     t.index ["technology_id"], name: "index_contributions_on_technology_id"
     t.index ["user_id"], name: "index_contributions_on_user_id"
@@ -58,6 +60,11 @@ ActiveRecord::Schema.define(version: 2018_11_14_152704) do
     t.integer "size_bytes"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "github_description"
+    t.integer "lines_added"
+    t.integer "lines_deleted"
+    t.integer "commits"
+    t.boolean "archived"
   end
 
   create_table "technologies", force: :cascade do |t|
