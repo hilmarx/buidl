@@ -4,7 +4,4 @@ class Technology < ApplicationRecord
 
   has_many :project_technologies
   has_many :projects, through: :project_technologies
-
-  has_many :contributions
-  has_many :users, through: :contributions
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_15_054200) do
+ActiveRecord::Schema.define(version: 2018_11_15_055928) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,12 +20,10 @@ ActiveRecord::Schema.define(version: 2018_11_15_054200) do
     t.datetime "updated_at", null: false
     t.bigint "user_id"
     t.bigint "project_id"
-    t.bigint "technology_id"
     t.integer "lines_added"
     t.integer "lines_deleted"
     t.integer "commits"
     t.index ["project_id"], name: "index_contributions_on_project_id"
-    t.index ["technology_id"], name: "index_contributions_on_technology_id"
     t.index ["user_id"], name: "index_contributions_on_user_id"
   end
 
@@ -115,7 +113,6 @@ ActiveRecord::Schema.define(version: 2018_11_15_054200) do
   end
 
   add_foreign_key "contributions", "projects"
-  add_foreign_key "contributions", "technologies"
   add_foreign_key "contributions", "users"
   add_foreign_key "project_follows", "projects"
   add_foreign_key "project_follows", "users"
