@@ -4,8 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :followeds, class_name: "UserFollow", foreign_key: "followed_id"
-  has_many :followers, class_name: "UserFollow", foreign_key: "follower_id"
+  has_many :leaders, class_name: "UserFollow", foreign_key: "follower_id"
+  has_many :followers, class_name: "UserFollow", foreign_key: "leader_id"
 
   has_many :user_technologies
   has_many :technologies, through: :user_technologies
