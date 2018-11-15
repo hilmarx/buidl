@@ -15,5 +15,4 @@ class User < ApplicationRecord
 
   has_many :contributions
   has_many :projects, through: :contributions
-  has_many :technologies, through: :contributions
 end
