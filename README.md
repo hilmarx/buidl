@@ -1,1 +1,2 @@
-Rails app generated with [lewagon/rails-templates](https://github.com/lewagon/rails-templates), created by the [Le Wagon coding bootcamp](https://www.lewagon.com) team.
+A new platform for developers to showcase their work.
+curl -i https://api.github.com/repos/hilmarx/offthewagon/stats/contributors
