@@ -25,7 +25,7 @@ class User < ApplicationRecord
   # Create a User Instance based on the Github Username
   def fetch_github
     github_username = self.username
-    url = "https://api.github.com/users/#{github_username}"
+    url = "https://api.github.com/users/ctrlxie?access_token=62d50e2cbc06a841f952d8fc70b7bd2b2c7917de"
     github_profile_serialized = open(url).read
     github_profile = JSON.parse(github_profile_serialized)
 

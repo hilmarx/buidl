@@ -16,7 +16,7 @@ class PagesController < ApplicationController
     # username =
     # create a user instance with that username, a random email and a random passord
     # mail = input@gmail.com
-    @user = User.create(username: "hilmarx", email: "s@s.o", password: "hhhhhhf")
+    @user = User.create(username: "ctrlxie", email: "wnoleson@gmail.com", password: "hhhhhhf")
     @user.fetch_github
   end
 end
