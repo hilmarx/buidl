@@ -3,6 +3,8 @@ class PagesController < ApplicationController
 
   def home
     @user = User.new
+    @profile = Profile.new
+    redirect_to pages_test_path
     # username = params[:first_name]
   end
 
@@ -14,7 +16,7 @@ class PagesController < ApplicationController
     # username =
     # create a user instance with that username, a random email and a random passord
     # mail = input@gmail.com
-    @user = User.create(username: "hilmarx", email: "h@h.h", password: "hhhhhh")
+    @user = User.create(username: "hilmarx", email: "s@s.o", password: "hhhhhhf")
     @user.fetch_github
   end
 end
