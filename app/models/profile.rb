@@ -16,14 +16,14 @@ class Profile < ApplicationRecord
   has_many :contributions, dependent: :destroy
   has_many :projects, through: :contributions
 
-  before_save :fetch_github
+  after_save :fetch_github
 
   private
-  
+
   def fetch_github
-  
-    github_username = self.username
-    url = "https://api.github.com/users/#{github_username}"
+
+    github_username = self.github_username
+    url = "https://api.github.com/users/#{github_username}?access_token=fdde57cbcdbcc6f8414dc20305c858f1f418b91f"
     github_profile_serialized = open(url).read
     github_profile = JSON.parse(github_profile_serialized)
 
@@ -32,7 +32,7 @@ class Profile < ApplicationRecord
     self.description = github_profile['bio']
     self.full_name = github_profile['name']
 
-    github_repos_serialized = open("https://api.github.com/users/#{github_username}/repos").read
+    github_repos_serialized = open("https://api.github.com/users/#{github_username}/repos?access_token=fdde57cbcdbcc6f8414dc20305c858f1f418b91f").read
     github_repos = JSON.parse(github_repos_serialized)
 
     github_repos.each do |repo|
@@ -48,13 +48,13 @@ class Profile < ApplicationRecord
         url: repo['homepage'],
         owner_id: repo['owner']['id'],
         github_id: repo['id'],
-        address: repo['location']
         )
       project.save!
+
       self.projects << project
 
       # Find all technologies of a project
-      techs_serialized = open("https://api.github.com/repos/#{github_username}/#{project.name}/languages").read
+      techs_serialized = open("https://api.github.com/repos/#{github_username}/#{project.name}/languages?access_token=fdde57cbcdbcc6f8414dc20305c858f1f418b91f").read
       techs = JSON.parse(techs_serialized)
       techs.each do |tech|
         lang = tech.first.downcase
@@ -83,5 +83,5 @@ class Profile < ApplicationRecord
     end
     hash
   end
-  
+
 end

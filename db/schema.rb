@@ -10,8 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_16_083036) do
-
+ActiveRecord::Schema.define(version: 2018_11_16_102024) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,11 +18,11 @@ ActiveRecord::Schema.define(version: 2018_11_16_083036) do
   create_table "contributions", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "profile_id"
     t.bigint "project_id"
     t.integer "lines_added"
     t.integer "lines_deleted"
     t.integer "commits"
+    t.bigint "profile_id"
     t.index ["profile_id"], name: "index_contributions_on_profile_id"
     t.index ["project_id"], name: "index_contributions_on_project_id"
   end
@@ -41,10 +40,10 @@ ActiveRecord::Schema.define(version: 2018_11_16_083036) do
   create_table "project_follows", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "profile_id"
+    t.bigint "user_id"
     t.bigint "project_id"
-    t.index ["profile_id"], name: "index_project_follows_on_profile_id"
     t.index ["project_id"], name: "index_project_follows_on_project_id"
+    t.index ["user_id"], name: "index_project_follows_on_user_id"
   end
 
   create_table "project_technologies", force: :cascade do |t|
@@ -95,9 +94,9 @@ ActiveRecord::Schema.define(version: 2018_11_16_083036) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "technology_id"
-    t.bigint "profile_id"
-    t.index ["profile_id"], name: "index_user_technologies_on_profile_id"
+    t.bigint "user_id"
     t.index ["technology_id"], name: "index_user_technologies_on_technology_id"
+    t.index ["user_id"], name: "index_user_technologies_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -127,10 +126,10 @@ ActiveRecord::Schema.define(version: 2018_11_16_083036) do
 
   add_foreign_key "contributions", "profiles"
   add_foreign_key "contributions", "projects"
-  add_foreign_key "project_follows", "profiles"
   add_foreign_key "project_follows", "projects"
+  add_foreign_key "project_follows", "users"
   add_foreign_key "project_technologies", "projects"
   add_foreign_key "project_technologies", "technologies"
-  add_foreign_key "user_technologies", "profiles"
   add_foreign_key "user_technologies", "technologies"
+  add_foreign_key "user_technologies", "users"
 end
