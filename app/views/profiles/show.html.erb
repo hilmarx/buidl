@@ -1,10 +1,6 @@
-<h1>Profiles#show</h1>
-<p>Find me in app/views/profiles/show.html.erb</p>
-
-
 <div class="wrapper">
   <div class="container">
-    <h1>Test page</h1>
+    <h1>Profile page</h1>
     <div class="row">
       <div class="col-xs-6 col-offset-3">
 
@@ -30,8 +26,15 @@
           <p>Description: <%= project.description %> </p>
           <p>Primary Language: <%= project.primary_language %> </p>
           <p>Size in Bytes: <%= project.size_bytes %>  </p>
-          <br>
+          <p>Project Technologies</p>
+          <ul>
+          <% project.project_technologies.each do |pro_tech| %>
+          <li>Name: <%= Technology.find(pro_tech.technology_id).name %> - Bytesize: <%= pro_tech.size_bytes %> bytes
+          </li>
+          <% end %>
+          </ul>
 
+          <br>
         <% end %>
 
       </div>
