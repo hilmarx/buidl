@@ -3,14 +3,14 @@
   <p id="homepage_aphorism">Let's get away from them Linkedin dicks</p>
 
    <div id="homepage_search_form_wrapper">
+    <%= simple_form_for @profile, wrapper: :inline_form, defaults: { label: false }, :html=> { id: 'homepage_search_form' } do |f| %>
 
-  <!-- Replace this with a working search bar -->
-  <% unless current_user %>
-  <%= simple_form_for @profile do |f| %>
-    <%= f.input :github_username, placeholder: "What's your Github username?", :html=> { id: "homepage_search_bar" }  %>
-    <%= f.submit %>
-      <% end %>
-  <% end %>
+    <%= f.input_field :github_username, placeholder: "What's your Github username?", :html=> { id: "homepage_search_bar" } %>
 
+    <%= button_tag type: 'submit', id: "homepage_search_button" do %>
+    <i class="fab fa-github" aria-hidden="true"></i>
+    <% end %>
+
+    <% end %>
     </div>
 </div>
