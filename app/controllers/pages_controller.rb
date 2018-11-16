@@ -2,6 +2,8 @@ class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:home, :search, :test]
 
   def home
+    @user = User.new
+    # username = params[:first_name]
   end
 
   def search
@@ -14,5 +16,6 @@ class PagesController < ApplicationController
     else
       @user = User.find_by(username: "hilmarx")
     end
+
   end
 end

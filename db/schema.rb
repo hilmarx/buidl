@@ -10,7 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_16_040641) do
+
+ActiveRecord::Schema.define(version: 2018_11_16_041235) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,6 +26,12 @@ ActiveRecord::Schema.define(version: 2018_11_16_040641) do
     t.integer "commits"
     t.index ["project_id"], name: "index_contributions_on_project_id"
     t.index ["user_id"], name: "index_contributions_on_user_id"
+  end
+
+  create_table "profiles", force: :cascade do |t|
+    t.string "github_username"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "project_follows", force: :cascade do |t|

@@ -5,7 +5,14 @@
   <div id="homepage_search_components">
 
   <!-- Replace this with a working search bar -->
-  <input type="search" id="homepage_search_bar" placeholder="What's your Github username?">
+  <%= simple_form_for @user do |f| %>
+    <%= f.input :username  %>
+    <%= f.submit %>
+  <% end %>
+<!--   <form action="">
+    <input type="search" name="first_name" id="homepage_search_bar" placeholder="What's your Github username?" action="redirect_to user_path(@user)">
+  </form> -->
+
 
   <!-- Replace this with a working search button -->
   <span id="homepage_search_button">

@@ -14,3 +14,18 @@ languages.each do |lang|
 end
 
 puts "done habib"
+
+4 times do
+  project = Project.new(
+        name: repo['name'],
+        private: repo['private'],
+        description: repo['description'],
+        primary_language: repo['language'],
+        size_bytes: repo['size'],
+        github_url: repo['html_url'],
+        url: repo['homepage'],
+        owner_id: repo['owner']['id'],
+        github_id: repo['id'],
+        url: repo['html_url']
+        )
+      project.save!
