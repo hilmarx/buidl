@@ -20,6 +20,6 @@ Rails.application.routes.draw do
     resources :project_follows, only: [:new, :create, :destroy]
   end
 
-  resources :profiles, only: [:show]
+  resources :profiles, only: [:show, :create]
 
 end

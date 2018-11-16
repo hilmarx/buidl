@@ -4,7 +4,6 @@ class PagesController < ApplicationController
   def home
     @user = User.new
     @profile = Profile.new
-    redirect_to pages_test_path
     # username = params[:first_name]
   end
 
@@ -12,12 +11,7 @@ class PagesController < ApplicationController
   end
 
   def test
-    if User.find_by(username: "hilmarx").nil?
-      @user = User.create(username: "hilmarx", email: "h@h.h", password: "hhhhhh")
+      @user = User.create(username: "ctrlxie")
       @user.fetch_github
-    else
-      @user = User.find_by(username: "hilmarx")
-    end
-
   end
 end

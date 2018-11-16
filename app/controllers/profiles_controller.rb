@@ -1,15 +1,21 @@
 class ProfilesController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:create, :show]
 
-  def new
-    @profile = Profile.new
-  end
 
   def create
+
+    @profile = Profile.new(profile_params)
+
+    @profile.save!
+
+
+    redirect_to profile_path(@profile)
 
   end
 
   def show
-    @profile = Profile.create(:github_username)
+    @project = Project.new
+  @profile = Profile.find(params[:id])
     @profile.fetch_github
   end
 

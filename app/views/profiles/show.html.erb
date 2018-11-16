@@ -8,24 +8,24 @@
     <div class="row">
       <div class="col-xs-6 col-offset-3">
 
-        <h3><%= @user.full_name %></h3>
+        <h3><%= @profile.full_name %></h3>
         <ul class="list-group">
           <li class="list-item">
-            <img src="<%= @user.profile_photo %>" alt="">
+            <img src="<%= @profile.profile_photo %>" alt="">
           </li>
           <li>
-            <p>Description: <%= @user.description %></p>
+            <p>Description: <%= @profile.description %></p>
 
           </li>
           <li>
-            <p>Github URL: <%=  @user.github_url %></p>
+            <p>Github URL: <%=  @profile.github_url %></p>
           </li>
         </ul>
 
       </div>
       <div class="col-xs-6 col-offset-3">
         <h3>Github Projects</h3>
-        <% @user.projects.each do |project| %>
+        <% @profile.projects.each do |project| %>
           <h5><strong> Name: <%= project.name %></strong></h5>
           <p>Description: <%= project.description %> </p>
           <p>Primary Language: <%= project.primary_language %> </p>

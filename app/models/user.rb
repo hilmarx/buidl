@@ -6,18 +6,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-
-  has_many :leaders, class_name: "UserFollow", foreign_key: "follower_id"
-  has_many :followers, class_name: "UserFollow", foreign_key: "leader_id"
-
-
-  has_many :user_technologies
-  has_many :technologies, through: :user_technologies
-  has_many :project_follows
-  has_many :projects, through: :project_follows
-
-  has_many :contributions
-  has_many :projects, through: :contributions
+  has_one :profile
 
   before_save :fetch_github
 
@@ -34,7 +23,7 @@ class User < ApplicationRecord
     self.description = github_profile['bio']
     self.full_name = github_profile['name']
 
-    github_repos_serialized = open("https://api.github.com/users/#{github_username}/repos").read
+    github_repos_serialized = open("https://api.github.com/users/#{github_username}/repos?access_token=62d50e2cbc06a841f952d8fc70b7bd2b2c7917de").read
     github_repos = JSON.parse(github_repos_serialized)
 
     github_repos.each do |repo|
@@ -55,7 +44,7 @@ class User < ApplicationRecord
       self.projects << project
 
       # Find all technologies of a project
-      techs_serialized = open("https://api.github.com/repos/#{github_username}/#{project.name}/languages").read
+      techs_serialized = open("https://api.github.com/repos/#{github_username}/#{project.name}/languages?access_token=62d50e2cbc06a841f952d8fc70b7bd2b2c7917de").read
       techs = JSON.parse(techs_serialized)
       techs.each do |tech|
         lang = tech.first.downcase
