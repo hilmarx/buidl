@@ -3,13 +3,14 @@ class ProfilesController < ApplicationController
 
 
   def create
-
-    @profile = Profile.new(profile_params)
-
-    @profile.save!
-
-
-    redirect_to profile_path(@profile)
+    if Profile.find_by(github_username: profile_params[:github_username]).present?
+      @profile = Profile.find_by(github_username: profile_params[:github_username])
+      redirect_to profile_path(@profile)
+    else
+      @profile = Profile.new(profile_params)
+      @profile.save!
+      redirect_to profile_path(@profile)
+    end
 
   end
 

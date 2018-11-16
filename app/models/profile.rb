@@ -16,7 +16,7 @@ class Profile < ApplicationRecord
   has_many :contributions, dependent: :destroy
   has_many :projects, through: :contributions
 
-  after_save :fetch_github
+  before_save :fetch_github
 
   private
 
