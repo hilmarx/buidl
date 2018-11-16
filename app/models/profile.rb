@@ -40,9 +40,9 @@ class Profile < ApplicationRecord
   private
 
   def fetch_github
-
+    key = ENV['GITHUB_TOKEN']
     github_username = self.github_username
-    url = "https://api.github.com/users/#{github_username}?access_token=fdde57cbcdbcc6f8414dc20305c858f1f418b91f"
+    url = "https://api.github.com/users/#{github_username}?access_token=#{key}"
     github_profile_serialized = open(url).read
     github_profile = JSON.parse(github_profile_serialized)
 
@@ -51,7 +51,7 @@ class Profile < ApplicationRecord
     self.description = github_profile['bio']
     self.full_name = github_profile['name']
 
-    github_repos_serialized = open("https://api.github.com/users/#{github_username}/repos?access_token=fdde57cbcdbcc6f8414dc20305c858f1f418b91f").read
+    github_repos_serialized = open("https://api.github.com/users/#{github_username}/repos?access_token=#{key}").read
     github_repos = JSON.parse(github_repos_serialized)
 
     github_repos.each do |repo|
@@ -73,7 +73,7 @@ class Profile < ApplicationRecord
       self.projects << project
 
       # Find all technologies of a project
-      techs_serialized = open("https://api.github.com/repos/#{github_username}/#{project.name}/languages?access_token=fdde57cbcdbcc6f8414dc20305c858f1f418b91f").read
+      techs_serialized = open("https://api.github.com/repos/#{github_username}/#{project.name}/languages?access_token=#{key}").read
       techs = JSON.parse(techs_serialized)
       techs.each do |tech|
         lang = tech.first.downcase
