@@ -6,5 +6,5 @@ class Project < ApplicationRecord
   has_many :technologies, through: :project_technologies
 
   has_many :contributions
-  has_many :users, through: :contributions
+  has_many :profiles, through: :contributions
 end
