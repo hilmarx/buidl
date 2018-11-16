@@ -1,0 +1,35 @@
+<div class="wrapper">
+  <div class="container">
+
+    <div class="card-outer">
+      <div class="row">
+        <div class="col-xs-12 col-sm-6 col-md-4">
+          <div class="card-section card-section-1">
+            <div class="card-image" style=" background: url('<%= image_path "image-desk.jpg" %>'); background-size: cover; background-position: center; ">
+            </div>
+            </div>
+        </div>
+        <div class="col-xs-12  col-sm-6 col-md-4">
+          <div class="card-section card-section-2" >
+            <div class="project-description">
+              <p>This is a paragraph of text that will be the descfription of the project that this card is for.Hoefull that is obvious by looking at this. This is a paragraph of text that will be the descfription of the project that this card is for.Hoefull that is obvious by looking at this.This is a paragraph of text that will be the descfription of the project that this card is for.Hoefull that is obvious by looking at this. This is a paragraph of text that will be the descfription of the project that this card is for.Hoefull that is obvious by looking at this</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-12  col-sm-12 col-md-4">
+          <div class="card-section card-section-3 ">
+            <div class="stats-box">
+             <p>This is a paragraph of text that will be the descfription of the project that this card is for.Hoefull that is obvious by looking at this. This is a paragraph of text that will be the descfription of the project that this card is for.Hoefull that is obvious by looking at this.</p>
+           </div>
+         </div>
+       </div>
+     </div>
+   </div>
+
+
+<h1>#<%= User.find(1).email %></h1>
+  <p> <%=link_to "Back Home", root_path %></p>
+  <p> <%= link_to "Go to a user show page", user_path(1) %></p>
+  <p> <%=link_to "Go to a project page", project_path(1) %></p>
+</div>
+</div>
