@@ -26,6 +26,13 @@
           <p>Description: <%= project.description %> </p>
           <p>Primary Language: <%= project.primary_language %> </p>
           <p>Size in Bytes: <%= project.size_bytes %>  </p>
+          <p>Project Technologies</p>
+          <ul>
+          <% project.project_technologies.each do |pro_tech| %>
+          <li><%= Technology.find(pro_tech).name %></li>
+          <li><%= pro_tech.size_bytes %></li>
+          <% end %>
+          </ul>
           <br>
 
         <% end %>

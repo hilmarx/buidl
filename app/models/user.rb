@@ -10,9 +10,9 @@ class User < ApplicationRecord
   has_many :leaders, class_name: "UserFollow", foreign_key: "follower_id"
   has_many :followers, class_name: "UserFollow", foreign_key: "leader_id"
 
+
   has_many :user_technologies
   has_many :technologies, through: :user_technologies
-
   has_many :project_follows
   has_many :projects, through: :project_follows
 
@@ -38,6 +38,8 @@ class User < ApplicationRecord
     github_repos = JSON.parse(github_repos_serialized)
 
     github_repos.each do |repo|
+
+      # Create Project Instance
       project = Project.new(
         name: repo['name'],
         private: repo['private'],
@@ -48,11 +50,21 @@ class User < ApplicationRecord
         url: repo['homepage'],
         owner_id: repo['owner']['id'],
         github_id: repo['id'],
-        url: repo['html_url']
         )
       project.save!
-
       self.projects << project
+
+      # Find all technologies of a project
+      techs_serialized = open("https://api.github.com/repos/#{github_username}/#{project.name}/languages").read
+      techs = JSON.parse(techs_serialized)
+      techs.each do |tech|
+        lang = tech.first
+        size_bytes = tech.last
+        ProjectTechnology.new(project_id: project.id, technology_id: Technology.find_by(name: lang).id, size_bytes: size_bytes)
+      end
+
+
+
 
     # t.string "url"
     # t.string "photo"
