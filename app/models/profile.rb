@@ -18,6 +18,25 @@ class Profile < ApplicationRecord
 
   before_save :fetch_github
 
+
+  def top_languages
+    # Calculations for finding the most used programming langugages in all repos owned by a profile
+    hash = {}
+    self.projects.each do |project|
+      project.project_technologies.each do |project_tech|
+        size = project_tech.size_bytes
+        name = Technology.find(project_tech.technology_id).name
+        if hash.has_key?(name)
+          hash[name] += size
+        else
+          hash[name] = size
+        end
+      end
+    end
+    hash
+  end
+
+
   private
 
   def fetch_github
@@ -65,23 +84,6 @@ class Profile < ApplicationRecord
       end
 
     end
-  end
-
-  def top_languages
-    # Calculations for finding the most used programming langugages in all repos owned by a profile
-    hash = {}
-    self.projects.each do |project|
-      project.project_technologies.each do |project_tech|
-        size = project_tech.size_bytes
-        name = Technology.find(project_tech.technology_id).name
-        if hash.has_key?(name)
-          hash[name] += size
-        else
-          hash[name] = size
-        end
-      end
-    end
-    hash
   end
 
 end

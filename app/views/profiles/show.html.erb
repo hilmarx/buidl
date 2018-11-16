@@ -17,9 +17,18 @@
             <p>Github URL: <%=  @profile.github_url %></p>
           </li>
           <li>
-            <%# @profile.top_languages.each do |lang| %>
+            Top Languages
+            <ul>
+              <br>
 
-            <%# end %>
+            <% @profile.top_languages.sort_by {|_key, value| value}.reverse.each do |lang| %>
+            <li>
+              <strong> <%= lang.first %>:</strong> Byte Size: <%=  lang.last%>
+            </li>
+
+            <br>
+            <% end %>
+            </ul>
           </li>
         </ul>
 
