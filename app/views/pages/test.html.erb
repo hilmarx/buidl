@@ -29,12 +29,13 @@
           <p>Project Technologies</p>
           <ul>
           <% project.project_technologies.each do |pro_tech| %>
-          <li><%= Technology.find(pro_tech).name %></li>
+          <li>Test</li>
+          <li><%= Technology.find(pro_tech.technology_id).name %></li>
           <li><%= pro_tech.size_bytes %></li>
           <% end %>
           </ul>
-          <br>
 
+          <br>
         <% end %>
 
       </div>

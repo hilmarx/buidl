@@ -8,7 +8,11 @@ class PagesController < ApplicationController
   end
 
   def test
-    @user = User.create(username: "hilmarx", email: "h@h.h", password: "hhhhhh")
-    @user.fetch_github
+    #if User.find_by(username: "hilmarx").nil?
+      @user = User.create(username: "hilmarx", email: "h@h.h", password: "hhhhhh")
+      @user.fetch_github
+    #else
+      #@user = User.find_by(username: "hilmarx")
+    #end
   end
 end

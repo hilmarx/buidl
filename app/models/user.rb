@@ -58,9 +58,11 @@ class User < ApplicationRecord
       techs_serialized = open("https://api.github.com/repos/#{github_username}/#{project.name}/languages").read
       techs = JSON.parse(techs_serialized)
       techs.each do |tech|
-        lang = tech.first
+        lang = tech.first.downcase
         size_bytes = tech.last
-        ProjectTechnology.new(project_id: project.id, technology_id: Technology.find_by(name: lang).id, size_bytes: size_bytes)
+        unless Technology.find_by(name: lang).nil?
+          ProjectTechnology.new(project_id: project.id, technology_id: Technology.find_by(name: lang).id, size_bytes: size_bytes).save!
+        end
       end
 
 
