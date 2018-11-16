@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   devise_for :users
 
   get 'pages' => 'pages#search'
@@ -16,5 +17,7 @@ Rails.application.routes.draw do
     resources :project_technologies, only: [:new, :create, :destroy]
     resources :project_follows, only: [:new, :create, :destroy]
   end
+
+  resources :profiles, only: [:show, :create]
 
 end

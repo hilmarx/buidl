@@ -5,7 +5,18 @@
    <div id="homepage_search_form_wrapper">
     <%= simple_form_for @github_username, wrapper: :inline_form, defaults: { label: false }, :html=> { id: 'homepage_search_form' } do |f| %>
 
-    <%= f.input_field :github_username, placeholder: "What's your Github username?", :html=> { id: "homepage_search_bar" } %>
+  <!-- Replace this with a working search bar -->
+  <% unless current_user %>
+  <%= simple_form_for @profile do |f| %>
+    <%= f.input :github_username, placeholder: "What's your Github username?", :html=> { id: "homepage_search_bar" }  %>
+    <%= f.submit %>
+      <% end %>
+  <% end %>
+
+<!--   <form action="">
+    <input type="search" name="first_name" id="homepage_search_bar" placeholder="What's your Github username?" action="redirect_to user_path(@user)">
+  </form> -->
+
 
     <%= button_tag type: 'submit', id: "homepage_search_button" do %>
     <i class="fab fa-github" aria-hidden="true"></i>
