@@ -26,12 +26,14 @@
   width: 300px;
   height: 40px;
   padding: 0 4px;
-  vertical-align: middle;
+  vertical-align: text-bottom;
 }
 
 #homepage_search_button {
   font-size: 38px;
-  vertical-align: middle;
+  vertical-align: baseline;
+  background: none;
+  border: none;
 }
 
 #homepage_search_button a {
