@@ -15,8 +15,8 @@ class ProfilesController < ApplicationController
 
   def show
     @project = Project.new
-  @profile = Profile.find(params[:id])
-    @profile.fetch_github
+    @profile = Profile.find(params[:id])
+    # @profile.fetch_github
   end
 
   def profile_params
