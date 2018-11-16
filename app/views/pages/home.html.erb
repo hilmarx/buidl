@@ -2,22 +2,15 @@
   <h1 class="logo_font" id="homepage_logo">Buidl</h1>
   <p id="homepage_aphorism">Let's get away from them Linkedin dicks</p>
 
-  <div id="homepage_search_components">
+    <div id="homepage_search_form_wrapper">
+    <%= simple_form_for @github_username, wrapper: :inline_form, defaults: { label: false }, :html=> { id: 'homepage_search_form' } do |f| %>
 
-    <!-- Replace this with a working search bar -->
-    <!-- <input type="search" id="homepage_search_bar" placeholder="What's your Github username?"> -->
-
-    <!-- Replace this with a working search button -->
-  <!-- <span id="homepage_search_button">
-    <a href="#"><i class="fab fa-github"></i></a>
-  </span> -->
-
-  <%= form_with url: user_path(1), local: true do |form| %>
-    <%= form.text_field :title, id: "homepage_search_bar" %>
+    <%= f.input_field :github_username, placeholder: "What's your Github username?", :html=> { id: "homepage_search_bar" } %>
 
     <%= button_tag type: 'submit', id: "homepage_search_button" do %>
-        <i class="fab fa-github" aria-hidden="true"></i>
+    <i class="fab fa-github" aria-hidden="true"></i>
     <% end %>
-<% end %>
-</div>
+
+    <% end %>
+    </div>
 </div>

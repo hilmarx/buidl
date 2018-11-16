@@ -17,13 +17,15 @@
   margin: 2vh 0 6vh 0;
 }
 
-#homepage_search_components {
-  margin: 6vh 0 0 0;
+#homepage_search_form_wrapper {
+   width: 500px;
+   margin: 0 auto;
 }
 
-#homepage_search_bar {
-  border: 1px solid #B8B8B8;
+#user_github_username {
   width: 300px;
+  border: 1px solid #B8B8B8;
+  margin: 0 auto;
   height: 40px;
   padding: 0 4px;
   vertical-align: text-bottom;
@@ -32,7 +34,7 @@
 #homepage_search_button {
   font-size: 38px;
   vertical-align: baseline;
-  background: none;
+  background-color: transparent;
   border: none;
 }
 
