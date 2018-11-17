@@ -1,0 +1,55 @@
+
+<div class="card-outer">
+  <div class="row">
+
+    <div class="col-xs-12 col-md-4">
+      <div class="card-1">
+        <div class="box-1">
+          <div class="card-image" style=" background: url('<%= image_path "image-desk.jpg" %>'); background-size: cover; background-position: center; ">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-xs-6 col-md-4">
+      <div class="card-2" >
+        <div class="box-2">
+          <div class="title-box">
+            <div class="h3">
+              <%= project.name %>
+            </div>
+            <div class="text-field">
+              <%= project.description %>
+            </div>
+          </div>
+          <div class="p-lang">
+            <div class="h5">Primary language</div>
+            <div class="primary-language">
+              <%= project.primary_language %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-xs-6 col-md-4">
+      <div class="card-3 ">
+        <div class="box-3">
+
+          <div class="lang-data">
+            <div class="tech-container">
+              <div class="h5">Project Technologies</div>
+              <ul>
+                <% project.project_technologies.each do |pro_tech| %>
+                <li><%= Technology.find(pro_tech.technology_id).name %> : <%= pro_tech.size_bytes %> bytes
+                </li>
+                <% end %>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
