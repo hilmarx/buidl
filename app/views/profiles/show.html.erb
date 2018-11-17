@@ -23,47 +23,16 @@
 
     <!-- INSERT BIO CARDS HERE -->
 
-      <div class="">
+      <!-- <div class=""> -->
         <h3>Github Projects</h3>
         <% @profile.projects.each do |project| %>
         <%= render 'shared/project_card', project: project %>
         <br>
         <% end %>
-      </div>
+      <!-- </div> -->
 
   <div class="bottom_links">
-    <p> <%= link_to "Back Home", root_path %></p>
+    <p> <%= link_to "Home", root_path %></p>
     </div>
   </div>
-</div>
-
-<div class="">
-
-  <h3><%= @profile.full_name %></h3>
-  <ul class="list-group">
-    <li class="list-item">
-      <img src="<%= @profile.profile_photo %>" alt="">
-    </li>
-    <li>
-      <p>Description: <%= @profile.description %></p>
-
-    </li>
-    <li>
-      <p>Github URL: <%=  @profile.github_url %></p>
-    </li>
-    <li>
-      Top Languages
-      <ul>
-        <br>
-
-      <% @profile.top_languages.sort_by {|_key, value| value}.reverse.each do |lang| %>
-      <li>
-        <strong> <%= lang.first %>:</strong> Byte Size: <%=  lang.last%>
-      </li>
-
-      <br>
-      <% end %>
-      </ul>
-    </li>
-  </ul>
 </div>
