@@ -1,7 +1,27 @@
 <div class="wrapper">
-  <div class="container">
-    <h1>Profile page</h1>
+  <div class="profile_header">
+    <!-- ADD USER COVER PHOTO HERE -->
+    <%= image_tag 'stock_cover_photo.jpg', class: "cover_photo" %>
 
+    <div class="container">
+        <div class="row">
+          <div class="col-xs-12 col-sm-3">
+            <%= image_tag @profile.profile_photo, class: "profile_photo" %>
+          </div>
+
+          <div class="col-xs-12 col-sm-6">
+            <div class="information">
+            <h1 class="name"><%= @profile.full_name %></h1>
+
+            <p class="bio"><%= @profile.description %></p>
+          </div>
+          </div>
+          <div class="col-offset-xs-0 col-offset-sm-3"></div>
+        </div>
+    </div>
+
+
+    <!-- INSERT BIO CARDS HERE -->
 
       <div class="">
         <h3>Github Projects</h3>
@@ -11,22 +31,9 @@
         <% end %>
       </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-    </div>
+  <div class="bottom_links">
     <p> <%= link_to "Back Home", root_path %></p>
-    <p> <%= link_to "Go to a user show page", user_path(1) %></p>
-    <p> <%= link_to "Go to a project page", project_path(1) %></p>
+    </div>
   </div>
 </div>
 
