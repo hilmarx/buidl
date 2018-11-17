@@ -1,21 +1,31 @@
 <div class="wrapper">
-    <div class="profile_header">
-      <!-- ADD USER COVER PHOTO HERE -->
-      <%= image_tag 'stock_cover_photo.jpg', class: "cover_photo" %>
-  <div class="container">
+  <div class="profile_header">
+    <!-- ADD USER COVER PHOTO HERE -->
+    <%= image_tag 'stock_cover_photo.jpg', class: "cover_photo" %>
 
-      <%= image_tag @profile.profile_photo, class: "profile_photo" %>
+    <div class="container">
+        <div class="row">
+          <div class="col-xs-12 col-sm-3">
+            <%= image_tag @profile.profile_photo, class: "profile_photo" %>
+          </div>
 
-      <h1 class="name"><%= @profile.full_name %></h1>
+          <div class="col-xs-12 col-sm-6">
+            <div class="information">
+            <h1 class="name"><%= @profile.full_name %></h1>
 
-      <p class="bio"><%= @profile.description %></p>
-
+            <p class="bio"><%= @profile.description %></p>
+          </div>
+          </div>
+          <div class="col-offset-xs-0 col-offset-sm-3"></div>
+        </div>
     </div>
 
     <!-- INSERT BIO CARDS HERE -->
 
     <!-- INSERT PROJECT CARDS HERE -->
 
+  <div class="bottom_links">
     <p> <%= link_to "Back Home", root_path %></p>
+    </div>
   </div>
 </div>
