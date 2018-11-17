@@ -44,6 +44,10 @@
   text-transform: uppercase;
 }
 .card-description {
+  display:flex;
+  height: 150px;
+  flex-wrap: wrap;
+  justify-content: space-around;
   position: absolute;
   bottom: 10px;
   left: 10px;
