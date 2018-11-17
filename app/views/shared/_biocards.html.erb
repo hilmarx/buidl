@@ -1,0 +1,49 @@
+_biocards.html.erb
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-4">
+      <div class="card">
+          <div class="card-category">Stats</div>
+            <div class="card-description">
+             <h2>Le Wagon Shanghai</h2>
+             <p>Very cool city, the best</p>
+            </div>
+          <i class="fab fa-github fa-2x"><%= @profile.github_url %></i>
+        <a class="card-link" href="#" ></a>
+      </div>
+    </div>
+
+
+
+      <div class="col-xs-12 col-sm-4">
+        <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://kitt.lewagon.com/placeholder/cities/shanghai');">
+            <div class="card-category">Waiting for data</div>
+              <div class="card-description">
+               <h2>Le Wagon Shanghai</h2>
+               <p>Very cool city, the best</p>
+              </div>
+        </div>
+      </div>
+
+
+        <div class="col-xs-12 col-sm-4">
+          <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://kitt.lewagon.com/placeholder/cities/shanghai');">
+              <div class="card-category">Top Language</div>
+                <div class="card-description">
+
+            <% @profile.top_languages.sort_by {|_key, value| value}.reverse.each do |lang| %>
+
+              <strong> <%= lang.first %></strong>
+
+
+
+            <% end %>
+
+
+              </div>
+            <a class="card-link" href="#" ></a>
+          </div>
+        </div>
+      </div>
+    </div>
