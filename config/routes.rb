@@ -1,11 +1,11 @@
 Rails.application.routes.draw do
+
   devise_for :users
 
   get 'pages' => 'pages#search'
+  get 'pages/test' => 'pages#test'
 
   root to: 'pages#home'
-
-
 
   resources :users, only: [:show, :index] do
     resources :user_technologies, only: [:new, :create, :destroy]
@@ -17,5 +17,7 @@ Rails.application.routes.draw do
     resources :project_technologies, only: [:new, :create, :destroy]
     resources :project_follows, only: [:new, :create, :destroy]
   end
+
+  resources :profiles, only: [:show, :create]
 
 end

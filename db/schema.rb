@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_15_062603) do
+ActiveRecord::Schema.define(version: 2018_11_16_102024) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -18,13 +18,23 @@ ActiveRecord::Schema.define(version: 2018_11_15_062603) do
   create_table "contributions", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "user_id"
     t.bigint "project_id"
     t.integer "lines_added"
     t.integer "lines_deleted"
     t.integer "commits"
+    t.bigint "profile_id"
+    t.index ["profile_id"], name: "index_contributions_on_profile_id"
     t.index ["project_id"], name: "index_contributions_on_project_id"
-    t.index ["user_id"], name: "index_contributions_on_user_id"
+  end
+
+  create_table "profiles", force: :cascade do |t|
+    t.string "github_username"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "profile_photo"
+    t.string "github_url"
+    t.string "description"
+    t.string "full_name"
   end
 
   create_table "project_follows", force: :cascade do |t|
@@ -53,7 +63,7 @@ ActiveRecord::Schema.define(version: 2018_11_15_062603) do
     t.string "url"
     t.string "photo"
     t.integer "owner_id"
-    t.boolean "public"
+    t.boolean "private"
     t.string "primary_language"
     t.integer "size_bytes"
     t.datetime "created_at", null: false
@@ -63,11 +73,12 @@ ActiveRecord::Schema.define(version: 2018_11_15_062603) do
     t.integer "lines_deleted"
     t.integer "commits"
     t.boolean "archived"
+    t.integer "github_id"
   end
 
   create_table "technologies", force: :cascade do |t|
     t.string "name"
-    t.string "type"
+    t.string "category"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -108,12 +119,13 @@ ActiveRecord::Schema.define(version: 2018_11_15_062603) do
     t.integer "github_id"
     t.string "github_url"
     t.string "description"
+    t.string "full_name"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "contributions", "profiles"
   add_foreign_key "contributions", "projects"
-  add_foreign_key "contributions", "users"
   add_foreign_key "project_follows", "projects"
   add_foreign_key "project_follows", "users"
   add_foreign_key "project_technologies", "projects"

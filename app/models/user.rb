@@ -1,18 +1,28 @@
+require 'json'
+require 'open-uri'
+
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+  has_one :profile
 
-  has_many :leaders, class_name: "UserFollow", foreign_key: "follower_id"
-  has_many :followers, class_name: "UserFollow", foreign_key: "leader_id"
+  after_create :link_github
+  
+  private
 
-  has_many :user_technologies
-  has_many :technologies, through: :user_technologies
+  def link_github
+    profile = Profile.find_by(github_username: self.github_username)
+    if profile
+      profile.user = self
+    else
+      profile = Profile.new(github_username: self.github_username)
+      profile.user = self
+    end
+    profile.save
+  end
 
-  has_many :project_follows
-  has_many :projects, through: :project_follows
 
-  has_many :contributions
-  has_many :projects, through: :contributions
+
 end

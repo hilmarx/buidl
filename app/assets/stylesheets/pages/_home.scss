@@ -1,1 +1,43 @@
-// Specific CSS for your home-page
+.banner {
+  // background-image: image-url(".png");  <-- Put background image here
+  background-image: linear-gradient(to bottom right, white, #A0A0A0);
+  height: calc(100vh - 60px);
+  padding: 15vh 0 0 0;
+  margin: 0;
+  text-align: center;
+}
+
+#homepage_logo {
+  font-size: 120px;
+  margin: 0 0 3vh 0;
+}
+
+#homepage_aphorism {
+  font-size: 25px;
+  margin: 2vh 0 6vh 0;
+}
+
+#homepage_search_form_wrapper {
+   width: 500px;
+   margin: 0 auto;
+}
+
+#profile_github_username {
+  width: 300px;
+  border: 1px solid #B8B8B8;
+  margin: 0 auto;
+  height: 40px;
+  padding: 0 4px;
+  vertical-align: text-bottom;
+}
+
+#homepage_search_button {
+  font-size: 38px;
+  vertical-align: baseline;
+  background-color: transparent;
+  border: none;
+}
+
+#homepage_search_button a {
+  color: #000000;
+}

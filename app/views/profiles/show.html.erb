@@ -1,0 +1,73 @@
+<div class="wrapper">
+  <div class="container">
+    <h1>Profile page</h1>
+    <div class="row">
+      <div class="col-xs-6 col-offset-3">
+
+        <h3><%= @profile.full_name %></h3>
+        <ul class="list-group">
+          <li class="list-item">
+            <img src="<%= @profile.profile_photo %>" alt="">
+          </li>
+          <li>
+            <p>Description: <%= @profile.description %></p>
+
+          </li>
+          <li>
+            <p>Github URL: <%=  @profile.github_url %></p>
+          </li>
+          <li>
+            Top Languages
+            <ul>
+              <br>
+
+            <% @profile.top_languages.sort_by {|_key, value| value}.reverse.each do |lang| %>
+            <li>
+              <strong> <%= lang.first %>:</strong> Byte Size: <%=  lang.last%>
+            </li>
+
+            <br>
+            <% end %>
+            </ul>
+          </li>
+        </ul>
+
+      </div>
+      <div class="col-xs-6 col-offset-3">
+        <h3>Github Projects</h3>
+        <% @profile.projects.each do |project| %>
+          <h5><strong> Name: <%= project.name %></strong></h5>
+          <p>Description: <%= project.description %> </p>
+          <p>Primary Language: <%= project.primary_language %> </p>
+          <p>Size in Bytes: <%= project.size_bytes %>  </p>
+          <p>Project Technologies</p>
+          <ul>
+          <% project.project_technologies.each do |pro_tech| %>
+          <li>Name: <%= Technology.find(pro_tech.technology_id).name %> - Bytesize: <%= pro_tech.size_bytes %> bytes
+          </li>
+          <% end %>
+          </ul>
+
+          <br>
+        <% end %>
+
+      </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+    <p> <%= link_to "Back Home", root_path %></p>
+    <p> <%= link_to "Go to a user show page", user_path(1) %></p>
+    <p> <%= link_to "Go to a project page", project_path(1) %></p>
+  </div>
+</div>
