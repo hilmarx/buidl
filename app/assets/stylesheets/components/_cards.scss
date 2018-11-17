@@ -1,0 +1,99 @@
+.card-outer {
+  background-color: #398DA7;
+  box-shadow: 4px 4px 5px rgba(50,50,50,0.25);
+  margin: 20px auto;
+  font-size: 14px;
+  color: white;
+  max-width: 992px;
+}
+
+.box-1 .card-image{
+  height:400px;
+}
+
+.box-2  {
+  padding: 15px;
+
+}
+
+.box-3 {
+  height:300px;
+}
+
+.h3 {
+  margin: 0px;
+}
+
+.text-field {
+  margin-top: 10px;
+  height:210px;
+  overflow: scroll;
+  text-overflow: ellipsis;
+  text-align: justify;
+}
+
+
+/* Extra Small Devices, Phones */
+@media (min-width : 480px) {
+  .box-1 .card-image{
+    height:400px;
+  }
+
+  .box-2 {
+    height:300px;
+    .p {
+
+    }
+  }
+
+  .box-3 {
+    height:300px;
+  }
+}
+
+/* Small Devices, Tablets */
+@media (min-width : 768px) {
+  .box-1 .card-image{
+    height:300px;
+  }
+
+  .box-2 {
+    height:300px;
+    .p {
+
+    }
+  }
+
+  .box-3 {
+    height:300px;
+  }
+}
+
+
+
+/* Medium Devices, Desktops */
+@media (min-width : 992px) {
+  .box-1 .card-image {
+    height:300px;
+  }
+
+  .box-2 {
+    height:300px;
+    .p {
+    }
+  }
+
+  .box-3 {
+    height:300px;
+  }
+}
+
+
+
+
+
+
+
+
+
+

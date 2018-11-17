@@ -1,14 +1,37 @@
 
 <div class="wrapper">
-  <div class="container">
-    <h1><%= User.find(1).email %></h1>
+  <div class="card-outer">
     <div class="row">
-      <div class="col-xs-6 col-offset-3">
 
-      </div>
-    </div>
-    <p> <%= link_to "Back Home", root_path %></p>
-    <p> <%= link_to "Go to a user show page", user_path(1) %></p>
-    <p> <%= link_to "Go to a project page", project_path(1) %></p>
-  </div>
+        <div class="col-xs-12 col-sm-6 col-md-4">
+          <div class="card-1">
+            <div class="box-1">
+              <div class="card-image" style=" background: url('<%= image_path "image-desk.jpg" %>'); background-size: cover; background-position: center; ">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-xs-12  col-sm-6 col-md-4">
+          <div class="card-2" >
+            <div class="box-2">
+              <div class="h3">Project title!</div>
+              <div class="text-field">
+
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur consequatur optio, illum sed! Libero totam aliquam, eum, excepturi esse reiciendis magnam nemo! Nesciunt saepe veritatis quae, ea doloremque explicabo architecto. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur consequatur optio, illum sed! Libero totam aliquam, eum, excepturi esse reiciendis magnam nemo! Nesciunt saepe veritatis quae, ea doloremque explicabo architecto.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-xs-12  col-sm-12 col-md-4">
+          <div class="card-3 ">
+            <div class="box-3">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae laborum enim obcaecati at quibusdam, voluptate quasi voluptas eos ad quas cupiditate, magnam! Ipsam totam quam, accusantium officia, obcaecati quidem sint.
+            </div>
+         </div>
+       </div>
+
+     </div>
+   </div>
 </div>
