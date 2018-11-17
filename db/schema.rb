@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_17_033833) do
+ActiveRecord::Schema.define(version: 2018_11_17_050249) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,6 +25,15 @@ ActiveRecord::Schema.define(version: 2018_11_17_033833) do
     t.bigint "profile_id"
     t.index ["profile_id"], name: "index_contributions_on_profile_id"
     t.index ["project_id"], name: "index_contributions_on_project_id"
+  end
+
+  create_table "profile_technologies", force: :cascade do |t|
+    t.bigint "technology_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "profile_id"
+    t.index ["profile_id"], name: "index_profile_technologies_on_profile_id"
+    t.index ["technology_id"], name: "index_profile_technologies_on_technology_id"
   end
 
   create_table "profiles", force: :cascade do |t|
@@ -90,15 +99,6 @@ ActiveRecord::Schema.define(version: 2018_11_17_033833) do
     t.integer "follower_id"
   end
 
-  create_table "user_technologies", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.bigint "technology_id"
-    t.bigint "user_id"
-    t.index ["technology_id"], name: "index_user_technologies_on_technology_id"
-    t.index ["user_id"], name: "index_user_technologies_on_user_id"
-  end
-
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -126,10 +126,10 @@ ActiveRecord::Schema.define(version: 2018_11_17_033833) do
 
   add_foreign_key "contributions", "profiles"
   add_foreign_key "contributions", "projects"
+  add_foreign_key "profile_technologies", "profiles"
+  add_foreign_key "profile_technologies", "technologies"
   add_foreign_key "project_follows", "projects"
   add_foreign_key "project_follows", "users"
   add_foreign_key "project_technologies", "projects"
   add_foreign_key "project_technologies", "technologies"
-  add_foreign_key "user_technologies", "technologies"
-  add_foreign_key "user_technologies", "users"
 end

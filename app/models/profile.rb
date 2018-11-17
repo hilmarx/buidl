@@ -8,8 +8,8 @@ class Profile < ApplicationRecord
   has_many :followers, class_name: "UserFollow", foreign_key: "leader_id", dependent: :destroy
 
 
-  has_many :user_technologies, dependent: :destroy
-  has_many :technologies, through: :user_technologies
+  has_many :profile_technologies, dependent: :destroy
+  has_many :technologies, through: :profile_technologies
   has_many :project_follows, dependent: :destroy
   has_many :projects, through: :project_follows
 
@@ -17,6 +17,7 @@ class Profile < ApplicationRecord
   has_many :projects, through: :contributions
 
   before_save :fetch_github
+  after_save :contribution_stats
 
 
   def top_languages
@@ -36,6 +37,35 @@ class Profile < ApplicationRecord
     hash
   end
 
+
+  def repo_number
+    self.projects.length
+  end
+
+
+
+  # Create contribution for user passing in the project name
+
+  def contribution_stats
+    repos = self.projects
+    repos.each do |repo|
+      key = ENV['GITHUB_TOKEN']
+      repo_contributions_serialized = open("https://api.github.com/repos/#{github_username}/#{repo.name}/stats/contributors?access_token=#{key}").read
+      repo_contributions = JSON.parse(repo_contributions_serialized)
+      repo_contributions.each do |contributions|
+        if contributions['author']['login'] == self.github_username
+          contributions['weeks'].each do |contribution|
+            lines_added = contribution['a']
+            lines_deleted = contribution['d']
+            commits = contribution['c']
+            contribution = Contribution.new(lines_added: lines_added, lines_deleted: lines_deleted, commits: commits, profile_id: self.id, project_id: Project.find_by(name: repo.name).id)
+            contribution.save!
+            self.contributions << contribution
+          end
+        end
+      end
+    end
+  end
 
   private
 
@@ -62,7 +92,7 @@ class Profile < ApplicationRecord
         private: repo['private'],
         description: repo['description'],
         primary_language: repo['language'],
-        size_bytes: repo['size'],
+        size_kilobytes: repo['size'],
         github_url: repo['html_url'],
         url: repo['homepage'],
         owner_id: repo['owner']['id'],
@@ -82,7 +112,6 @@ class Profile < ApplicationRecord
           proj_tech = ProjectTechnology.new(project_id: project.id, technology_id: Technology.find_by(name: lang).id, size_bytes: size_bytes).save!
         end
       end
-
     end
   end
 

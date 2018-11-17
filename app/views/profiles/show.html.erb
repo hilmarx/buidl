@@ -30,7 +30,10 @@
             <% end %>
             </ul>
           </li>
+
+          <li>Contribution stats</li>
         </ul>
+
 
       </div>
       <div class="col-xs-6 col-offset-3">
@@ -39,7 +42,7 @@
           <h5><strong> Name: <%= project.name %></strong></h5>
           <p>Description: <%= project.description %> </p>
           <p>Primary Language: <%= project.primary_language %> </p>
-          <p>Size in Bytes: <%= project.size_bytes %>  </p>
+          <p>Size in Bytes: <%= project.size_kilobytes %>  </p>
           <p>Project Technologies</p>
           <ul>
           <% project.project_technologies.each do |pro_tech| %>
