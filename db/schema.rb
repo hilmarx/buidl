@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_16_102024) do
+ActiveRecord::Schema.define(version: 2018_11_17_033833) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -65,7 +65,7 @@ ActiveRecord::Schema.define(version: 2018_11_16_102024) do
     t.integer "owner_id"
     t.boolean "private"
     t.string "primary_language"
-    t.integer "size_bytes"
+    t.integer "size_kilobytes"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "github_description"
