@@ -3,7 +3,7 @@
   <p id="homepage_aphorism">Let's get away from them Linkedin dicks</p>
 
    <div id="homepage_search_form_wrapper">
-    <%= simple_form_for @profile, wrapper: :inline_form, defaults: { label: false }, :html=> { id: 'homepage_search_form' } do |f| %>
+    <%= simple_form_for @profile, wrapper: :inline_form, defaults: { label: false } do |f| %>
 
     <%= f.input_field :github_username, placeholder: "What's your Github username?", autofocus: true, :html=> { id: "homepage_search_bar" } %>
 
