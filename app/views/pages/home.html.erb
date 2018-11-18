@@ -5,7 +5,7 @@
    <div id="homepage_search_form_wrapper">
     <%= simple_form_for @profile, wrapper: :inline_form, defaults: { label: false }, :html=> { id: 'homepage_search_form' } do |f| %>
 
-    <%= f.input_field :github_username, placeholder: "What's your Github username?", :html=> { id: "homepage_search_bar" } %>
+    <%= f.input_field :github_username, placeholder: "What's your Github username?", autofocus: true, :html=> { id: "homepage_search_bar" } %>
 
     <%= button_tag type: 'submit', id: "homepage_search_button" do %>
     <i class="fab fa-github" aria-hidden="true"></i>
