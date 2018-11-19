@@ -21,7 +21,8 @@
               <% if @profile.user_id != nil %>
                 <% if @profile.user_id != current_user.id %>
                   <!-- AND IF USER DOESN'T CURRENTLY FOLLOW THIS PROFILE -->
-                  <%= link_to 'Follow this user', new_user_user_follow_path %>
+
+                  <%= link_to 'Follow this user', profile_user_follows_path(@profile), method: :post %>
                 <% else %>
                   <!-- USER CANNOT FOLLOW THEIR OWN PROFILE -->
                 <% end %>

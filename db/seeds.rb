@@ -17,11 +17,17 @@ puts "Creating profiles..."
 p1 = Profile.new(github_username: 'jro31')
 p1.save!
 
+puts "jro31 saved"
+
 p2 = Profile.new(github_username: 'god')
 p2.save!
 
+puts "god saved"
+
 p3 = Profile.new(github_username: 'dog')
 p3.save!
+
+puts "dog saved"
 
 puts "Profiles created"
 
@@ -30,11 +36,17 @@ puts "Creating users..."
 j = User.new(email: 'j@j.j', password: 'jjjjjj', first_name: 'Jethro', last_name: 'Williams', github_username: 'jro31')
 j.save!
 
+puts "j@j.j saved"
+
 g = User.new(email: 'god@god.god', password: 'godgod', first_name: 'God', last_name: 'Clouds', github_username: 'god')
 g.save!
 
+puts "god@god.god saved"
+
 d = User.new(email: 'dog@dog.dog', password: 'dogdog', first_name: 'Dog', last_name: 'Woof', github_username: 'dog')
 d.save!
+
+puts "dog@dog.dog saved"
 
 puts "Users created"
 

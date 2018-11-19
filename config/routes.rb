@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   root to: 'pages#home'
 
-  resources :users, only: [:show, :index] do
+  resources :profiles, only: [:show, :index] do
     resources :profile_technologies, only: [:new, :create, :destroy]
     resources :user_follows, only: [:new, :create, :destroy]
   end
@@ -21,3 +21,7 @@ Rails.application.routes.draw do
   resources :profiles, only: [:show, :create]
 
 end
+
+# ANYWHERE IT SAYS USER_SOMETHING SHOULD NOW SAY PROFILE_SOMETHING
+
+# ADD VALIDATIONS SO THAT LEADER ID/FOLLOWER ID COMBO IS UNIQUE
