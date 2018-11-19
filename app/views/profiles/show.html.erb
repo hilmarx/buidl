@@ -3,9 +3,6 @@
     <!-- ADD USER COVER PHOTO HERE -->
     <%= image_tag 'stock_cover_photo.jpg', class: "cover_photo" %>
 
-<<<<<<< HEAD
-
-=======
     <div class="container">
       <div class="row">
         <div class="col-xs-12 col-sm-3">
@@ -19,53 +16,23 @@
             <p class="bio"><%= @profile.description %></p>
 
             <br>
-
-            </ul>
-          </li>
-
-          <li>Contribution stats</li>
-          <li><%  @profile.create_contributions  %></li>
-        </ul>
-
-
-      </div>
-      <div class="col-xs-6 col-offset-3">
-        <h3>Github Projects</h3>
-        <% @profile.projects.each do |project| %>
-          <h5><strong> Name: <%= project.name %></strong></h5>
-          <p>Description: <%= project.description %> </p>
-          <p>Primary Language: <%= project.primary_language %> </p>
-          <p>Size in Bytes: <%= project.size_kilobytes %>  </p>
-          <p>Project Technologies</p>
-          <ul>
-          <% project.project_technologies.each do |pro_tech| %>
-          <li>Name: <%= Technology.find(pro_tech.technology_id).name %> - Bytesize: <%= pro_tech.size_bytes %> bytes
-          </li>
-          <% end %>
-          </ul>
-<% end %>
           </div>
         </div>
-        <div class="col-offset-xs-0 col-offset-sm-3"></div>
       </div>
-    </div>
-    
->>>>>>> ff72902a26366c3f7123ec3f2bec57b67461fca1
-    <%= render 'shared/biocards' %>
 
+        <%= render 'shared/top_languages' %>
 
+        <div class="">
+          <h3 class="text-center" >Github Projects</h3>
 
-      <div class="">
-        <h3 class="text-center" >Github Projects</h3>
-
-        <% @profile.projects.each do |project| %>
+          <% @profile.projects.each do |project| %>
           <%= render 'shared/project_card', project: project %>
 
-        <br>
-        <% end %>
+          <br>
+          <% end %>
 
-      <div class="bottom_links">
-        <p> <%= link_to "Home", root_path %></p>
+          <div class="bottom_links">
+            <p> <%= link_to "Home", root_path %></p>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>

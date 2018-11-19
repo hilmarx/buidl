@@ -1,0 +1,13 @@
+<div class="card">
+  <div class="card-title">Top Language</div>
+  <div class="card-data">
+
+    <% @profile.top_languages.sort_by {|_key, value| value}.reverse.each do |lang| %>
+
+    <div class ="lang-display"> <%= lang.first %>
+      <br>
+      byte size: <%= lang[1] %></strong></div>
+      <% end %>
+    </div>
+  </div>
+</div>
