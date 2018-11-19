@@ -1,7 +1,4 @@
 class UserFollowsController < ApplicationController
-  def new
-  end
-
   def create
     @user_follow = UserFollow.new
     @user_follow.follower = current_user
@@ -12,6 +9,6 @@ class UserFollowsController < ApplicationController
     redirect_to profile_path(@profile)
   end
 
-  def destroy
+  def update
   end
 end

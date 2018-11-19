@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
   resources :profiles, only: [:show, :index] do
     resources :profile_technologies, only: [:new, :create, :destroy]
-    resources :user_follows, only: [:new, :create, :destroy]
+    resources :user_follows, only: [ :create, :update]
   end
 
 
