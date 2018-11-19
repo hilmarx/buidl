@@ -4,14 +4,12 @@
   margin: 0 auto;
 }
 
-.child {
-  position: absolute;
-  bottom: 40px;
-  left: 60px;
+.fas {
+  color:white;
 }
 
-.parent {
-  position: relative;
+.fas:hover {
+  color: grey;
 }
 
 #edit_profile_2 {
