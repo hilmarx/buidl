@@ -17,6 +17,13 @@
 
             <p>[For test purposes] Your user ID is ... <%= @profile.user_id || 'nil' %></p>
 
+            <% if @profile.user_id != nil && @profile.user_id != current_user.id && current_user != nil %>
+            <!-- AND IF USER DOESN'T CURRENTLY FOLLOW THIS PROFILE -->
+              <%= link_to 'Follow this user', new_user_user_follow_path %>
+            <% else %>
+
+            <% end %>
+
             <br>
           </div>
         </div>

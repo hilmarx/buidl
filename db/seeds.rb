@@ -9,9 +9,23 @@ languages = ["vim script", "1c-enterprise","abap","abnf","actionscript","ada","a
 puts "lets create Technolgies for all available Github programming languages, heyyy"
 
 languages.each do |lang|
-  puts "created language"
   Technology.new(name: lang, category: "bla").save!
 end
+
+puts "Languages created"
+
+puts "Creating users"
+
+j = User.new(email: 'j@j.j', password: 'jjjjjj', first_name: 'Jethro', last_name: 'Williams', github_username: 'jro31')
+j.save!
+
+g = User.new(email: 'god@god.god', password: 'godgod', first_name: 'God', last_name: 'Clouds', github_username: 'god')
+g.save!
+
+d = User.new(email: 'dog@dog.dog', password: 'dogdog', first_name: 'Dog', last_name: 'Woof', github_username: 'dog')
+d.save!
+
+puts "Users created"
 
 puts "done habib"
 
