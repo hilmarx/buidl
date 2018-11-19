@@ -39,11 +39,22 @@
             <div class="tech-container">
               <div class="h5">Project Technologies</div>
               <ul>
-                <% project.project_technologies.each do |pro_tech| %>
-                <li><%= Technology.find(pro_tech.technology_id).name %> : <%= pro_tech.size_bytes %> bytes
-                </li>
+                <% chartLabelData = {} %>
+
+                <% project.project_technologies.limit(5).each do |pro_tech| %>
+                  <% technology = Technology.find(pro_tech.technology_id).name %>
+                  <% chartLabelData[technology] = pro_tech.size_bytes %>
+                  <li>
+                    <%#= technology %> <%#= pro_tech.size_bytes %>
+                  </li>
                 <% end %>
+
+                <% chartLabelData = chartLabelData.to_json %>
               </ul>
+
+              <div class="chart-container">
+                <canvas id="product-chart-<%= project.id %>" class="js-product-chart" data-chartlabeldata="<%= chartLabelData %>" data-projectid="<%= project.id %>"></canvas>
+              </div>
             </div>
           </div>
         </div>
@@ -51,4 +62,6 @@
     </div>
   </div>
 </div>
+
+
 

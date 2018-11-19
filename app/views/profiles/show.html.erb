@@ -20,13 +20,15 @@
         </div>
     </div>
 
-    <%= render 'shared/biocards' %>
+
+
 
 
       <!-- <div class=""> -->
         <h3>Github Projects</h3>
         <% @profile.projects.each do |project| %>
-        <%= render 'shared/project_card', project: project %>
+          <%= render 'shared/project_card', project: project %>
+
         <br>
         <% end %>
       <!-- </div> -->
