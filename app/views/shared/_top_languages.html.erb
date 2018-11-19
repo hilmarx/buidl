@@ -11,3 +11,28 @@
     </div>
   </div>
 </div>
+
+
+<div class="lang-data">
+  <div class="tech-container">
+    <div class="h5">top language</div>
+    <ul>
+      <% chartLabelData = {} %>
+
+      <% @profile.top_languages.each do |pro_tech| %>
+        <% technology = Technology.find(pro_tech.technology_id).name %>
+        <% chartLabelData[technology] = pro_tech.size_bytes %>
+        <li>
+          <%#= technology %> <%#= pro_tech.size_bytes %>
+        </li>
+      <% end %>
+
+      <% chartLabelData = chartLabelData.to_json %>
+    </ul>
+
+    <div class="chart-container">
+      <canvas id="product-chart-<%= project.id %>" class="js-product-chart" data-chartlabeldata="<%= chartLabelData %>" data-projectid="<%= project.id %>"></canvas>
+    </div>
+  </div>
+</div>
+</div>
