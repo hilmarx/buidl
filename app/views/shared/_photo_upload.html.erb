@@ -1,0 +1,6 @@
+<%= simple_form_for(@profile) do |f| %>
+  <!-- [...] -->
+  <%= f.input :photo, label: false%>
+  <%= f.input :photo_cache, as: :hidden %>
+  <%= f.submit %>
+<% end %>

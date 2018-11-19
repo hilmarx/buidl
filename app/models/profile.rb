@@ -2,6 +2,8 @@ require 'json'
 require 'open-uri'
 
 class Profile < ApplicationRecord
+  mount_uploader :photo, PhotoUploader
+
   belongs_to :user, optional: true
 
   has_many :leaders, class_name: "UserFollow", foreign_key: "follower_id", dependent: :destroy
@@ -17,6 +19,7 @@ class Profile < ApplicationRecord
   has_many :projects, through: :contributions
 
   before_save :fetch_github
+  mount_uploader :photo, PhotoUploader
 
 
   def top_languages
