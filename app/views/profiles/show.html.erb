@@ -17,20 +17,33 @@
 
             <p>[For test purposes] Your user ID is ... <%= @profile.user_id || 'nil' %></p>
 
-            <% if current_user != nil %>
-            <% if @profile.user_id != nil %>
-            <% if @profile.user_id != current_user.id %>
-            <!-- AND IF USER DOESN'T CURRENTLY FOLLOW THIS PROFILE -->
-
-            <%= link_to 'Follow this user', profile_user_follows_path(@profile), method: :post %>
+            <% if current_user %>
+              <% if @profile.user_id %>
+                <% if @profile.user_id != current_user.id %>
+                  <% bool_array = [] %>
+                  <% ufa = UserFollow.all %>
+                  <% ufa.each do |uf| %>
+                    <% if uf.leader_id == @profile.user_id && uf.follower_id == current_user.id && uf.status == true %>
+                      <% bool_array << false %>
+                    <% else %>
+                      <% bool_array << true %>
+                    <% end %>
+                  <% end %>
+                    <% if bool_array.include?(false) %>
+                      <%= link_to 'Unfollow this user', profile_user_follows_path(@profile), method: :post, class: 'btn btn-success' %>
+                    <% else %>
+                      <%= link_to 'Follow this user', profile_user_follows_path(@profile), method: :post, class: 'btn btn-primary' %>
+                    <% end %>
+                  <% else %>
+                  <p>You can't follow your own profile 😋</p>
+                <% end %>
+              <% else %>
+                <p>You cannot follow <%= @profile.github_username %>, they are not a registered BUIDL user</p>
+                <!-- PERHAPS OFFER A LINK TO SEND THIS USER AN EMAIL OFFER TO SIGN-UP TO BUIDL -->
+              <% end %>
             <% else %>
-            <!-- USER CANNOT FOLLOW THEIR OWN PROFILE -->
-            <% end %>
-            <% else %>
-            <!-- USER CANNOT FOLLOW A PROFILE THAT DOESN'T HAVE A SIGNED-UP USER -->
-            <% end %>
-            <% else %>
-            <!-- USER MUST SIGN-IN IN ORDER TO FOLLOW ANOTHER USER -->
+              <%= link_to 'Sign-in to follow [username]', new_user_session_path, class: 'btn btn-primary' %>
+              <!-- THIS ALSO NEEDS TO REDIRECT THE USER BACK TO THE PROFILE PAGE THEY WERE ON, ONCE THEY'VE SIGNED IN -->
             <% end %>
             <br>
 
