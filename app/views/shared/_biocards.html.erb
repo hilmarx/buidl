@@ -26,16 +26,7 @@
     <div class="card">
       <div class="card-category">Top Language</div>
       <div class="card-description">
-
-        <% @profile.top_languages.sort_by {|_key, value| value}.reverse.each do |lang| %>
-
-        <div class ="lang-display" style="flex: 1 0 30%"><strong> <%= lang.first %>
-          <br>
-          byte size: <%= lang[1] %></strong></div>
-
-
-
-          <% end %>
+        <%= render 'shared/top_languages' %>
 
 
         </div>

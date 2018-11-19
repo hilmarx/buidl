@@ -1,13 +1,13 @@
-const createChart = (id, argChartData, argChartLabels) => {
-  var ctx = document.getElementById("product-chart-");
+const createTopLChart = (argChartData, argChartLabels) => {
+  var ctx = document.getElementById("top-lang-chart");
 
   let chartData = argChartData;
   let chartLabels = argChartLabels;
-  console.log("creating chart");
+  // console.log("creating chart");
 
-  var ctx = document.getElementById(`product-chart-${id}`).getContext('2d');
+  var ctx = document.getElementById(`top-lang-chart`).getContext('2d');
   var myChart = new Chart(ctx, {
-      type: 'pie',
+      type: 'bar',
       data: {
           labels: chartLabels,
           datasets: [{
@@ -46,34 +46,29 @@ const createChart = (id, argChartData, argChartLabels) => {
 }
 
 
-const generateCharts = () => {
+const generateTopLCharts = () => {
 
-  const productCharts = document.querySelectorAll(".js-product-chart");
+  const productCharts = document.querySelectorAll(".toplang-chart");
 
 
 
   productCharts.forEach((productChart) => {
 
-    let id = productChart.dataset.projectid;
-    console.log("productChart");
 
-    console.log(typeof productChart.dataset.chartlabeldata);
-    console.log(productChart.dataset.chartlabeldata);
-    let string = productChart.dataset.chartlabeldata;
+
+    let string = productChart.dataset.toplchartlabeldata;
     let jsObj = JSON.parse(string);
-    console.log(jsObj);
+
 
     let chartData = Object.values(jsObj);
     let chartLabels = Object.keys(jsObj);
-    console.log(chartLabels);
-    console.log(chartData);
-    // let chartLabels = productChart.dataset.chartlabel;
-    createChart(id, chartData, chartLabels);
+
+    createTopLChart(chartData, chartLabels);
 
   });
 
 }
 
-generateCharts()
+generateTopLCharts()
 
-export { createChart };
+export { createTopLChart };

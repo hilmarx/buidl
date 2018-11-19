@@ -1,38 +1,20 @@
-<div class="card">
-  <div class="card-title">Top Language</div>
-  <div class="card-data">
+<div class="graph-div">
+    <div class="toplgraph">
 
-    <% @profile.top_languages.sort_by {|_key, value| value}.reverse.each do |lang| %>
+      <% toplchartLabelData = {} %>
 
-    <div class ="lang-display"> <%= lang.first %>
-      <br>
-      byte size: <%= lang[1] %></strong></div>
+      <% @profile.top_languages.each do |lang| %>
+        <% technology = lang[0] %>
+        <% toplchartLabelData[technology] = lang[1] %>
+        <% toplchartLabelData  %>
       <% end %>
+
+      <% toplchartLabelData = toplchartLabelData.to_json %>
+
+      <div class="chart-container">
+      <canvas id="top-lang-chart" class="toplang-chart" data-toplchartlabeldata="<%= toplchartLabelData %>"</canvas>
+      </div>
     </div>
   </div>
 </div>
 
-
-<div class="lang-data">
-  <div class="tech-container">
-    <div class="h5">top language</div>
-    <ul>
-      <% chartLabelData = {} %>
-
-      <% @profile.top_languages.each do |pro_tech| %>
-        <% technology = Technology.find(pro_tech.technology_id).name %>
-        <% chartLabelData[technology] = pro_tech.size_bytes %>
-        <li>
-          <%#= technology %> <%#= pro_tech.size_bytes %>
-        </li>
-      <% end %>
-
-      <% chartLabelData = chartLabelData.to_json %>
-    </ul>
-
-    <div class="chart-container">
-      <canvas id="product-chart-<%= project.id %>" class="js-product-chart" data-chartlabeldata="<%= chartLabelData %>" data-projectid="<%= project.id %>"></canvas>
-    </div>
-  </div>
-</div>
-</div>
