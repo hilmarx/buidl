@@ -18,19 +18,19 @@
             <p>[For test purposes] Your user ID is ... <%= @profile.user_id || 'nil' %></p>
 
             <% if current_user != nil %>
-              <% if @profile.user_id != nil %>
-                <% if @profile.user_id != current_user.id %>
-                    <!-- AND IF USER DOESN'T CURRENTLY FOLLOW THIS PROFILE -->
+            <% if @profile.user_id != nil %>
+            <% if @profile.user_id != current_user.id %>
+            <!-- AND IF USER DOESN'T CURRENTLY FOLLOW THIS PROFILE -->
 
-                  <%= link_to 'Follow this user', profile_user_follows_path(@profile), method: :post %>
-                <% else %>
-                  <!-- USER CANNOT FOLLOW THEIR OWN PROFILE -->
-                <% end %>
-              <% else %>
-                <!-- USER CANNOT FOLLOW A PROFILE THAT DOESN'T HAVE A SIGNED-UP USER -->
-              <% end %>
+            <%= link_to 'Follow this user', profile_user_follows_path(@profile), method: :post %>
             <% else %>
-              <!-- USER MUST SIGN-IN IN ORDER TO FOLLOW ANOTHER USER -->
+            <!-- USER CANNOT FOLLOW THEIR OWN PROFILE -->
+            <% end %>
+            <% else %>
+            <!-- USER CANNOT FOLLOW A PROFILE THAT DOESN'T HAVE A SIGNED-UP USER -->
+            <% end %>
+            <% else %>
+            <!-- USER MUST SIGN-IN IN ORDER TO FOLLOW ANOTHER USER -->
             <% end %>
             <br>
 
@@ -56,7 +56,6 @@
         </div>
       </div>
     </div>
-    <div class="col-offset-xs-0 col-offset-sm-3"></div>
   </div>
 </div>
 
@@ -71,8 +70,8 @@
   <br>
   <% end %>
 
-  <div class="text-center">
-    <p> <%= link_to "Home", root_path %></p>
+    <div class="text-center">
+      <p> <%= link_to "Home", root_path %></p>
+    </div>
   </div>
-</div>
 </div>
