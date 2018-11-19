@@ -9,7 +9,7 @@ class User < ApplicationRecord
   has_one :profile
 
   after_create :link_github
-  
+
   private
 
   def link_github
@@ -22,7 +22,5 @@ class User < ApplicationRecord
     end
     profile.save
   end
-
-
 
 end
