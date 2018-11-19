@@ -1,12 +1,15 @@
+require 'date'
 class FetchGithub
+  attr_accessor :hash
   def initialize(profile)
     @profile = profile
     @key = ENV['GITHUB_TOKEN']
     @projects = []
     @github_username = profile.github_username
+    @hash = {}
     fetch_github
+    # send_data
   end
-
 
   def fetch_repo_commits(projects)
     projects.each do |repo|
@@ -16,12 +19,23 @@ class FetchGithub
     end
   end
 
+  def activity(project_name)
+    @hash.store(project_name, {})
+  end
+
+  def append_activity(datetime, commits, project_name)
+    date_time = Time.at(datetime).to_datetime
+    @hash[project_name].store(date_time, commits)
+  end
+
 
   def sum_up_contributions(repo_contributions, repo)
     repo_contributions.each do |contributions|
       lines_added = 0
       lines_deleted = 0
       commits = 0
+      # Create hash for activities in profile.rb
+      activity(repo.name)
       if contributions['author']['login'] == @github_username
         contributions['weeks'].each do |contribution|
           if contribution['c'].nil?
@@ -30,6 +44,8 @@ class FetchGithub
             lines_deleted += contribution['d'].to_i
             commits += contribution['c'].to_i
           end
+          # Call  append_activity method with unix timestamp and commit number
+          append_activity(contribution['w'], contribution['c'].to_i, repo.name)
         end
       end
     create_contributions(lines_added, lines_deleted, commits, repo)
@@ -102,5 +118,11 @@ class FetchGithub
     github_repos = fetch_and_parse("https://api.github.com/users/#{@github_username}/repos?access_token=#{@key}")
     fetch_projects(github_repos)
     fetch_repo_commits(@projects)
+    return @hash
   end
+
+
+  # def send_data
+  #   DataSender.new(hash: @hash, github_username: @github_username).save
+  # end
 end

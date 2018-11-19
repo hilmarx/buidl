@@ -2,6 +2,7 @@ require 'json'
 require 'open-uri'
 
 class Profile < ApplicationRecord
+
   belongs_to :user, optional: true
 
   has_many :leaders, class_name: "UserFollow", foreign_key: "follower_id", dependent: :destroy
@@ -19,6 +20,18 @@ class Profile < ApplicationRecord
   # Inside the service, if the response is good, save the profile and continue rest of service
   # else return an error
   after_create :fetch_github
+  after_create :activity
+
+
+  def activity
+    DataSender.find_by(github_username: self.github_username).hash
+  end
+
+  def input_activity(activities)
+    activities.each do |key, value|
+      @activity.store(key, value)
+    end
+  end
 
   def top_languages
     # Calculations for finding the most used programming langugages in all repos owned by a profile
@@ -64,7 +77,8 @@ class Profile < ApplicationRecord
   private
 
   def fetch_github
-    FetchGithub.new(self)
+    my_hash = FetchGithub.new(self)
+    binding.pry
     self.save
   end
 
