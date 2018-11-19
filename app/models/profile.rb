@@ -19,7 +19,6 @@ class Profile < ApplicationRecord
   has_many :projects, through: :contributions
 
 
-  before_save :fetch_github
   mount_uploader :photo, PhotoUploader
 
   # before_save

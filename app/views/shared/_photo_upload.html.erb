@@ -1,6 +1,8 @@
 <%= simple_form_for(@profile) do |f| %>
   <!-- [...] -->
-  <%= f.input :photo, label: false%>
+  <label class= 'form-control-label string optional' for="profile_photo"></label>
+  <%= f.input :photo, label: false, input_html: {style: 'display: none'}  %>
   <%= f.input :photo_cache, as: :hidden %>
-  <%= f.submit %>
+  <a href="#" class='btn' id='upload-fake-btn'><i class="fas fa-edit"></i></a>
+  <%= submit_tag "", :style => "display: none;" %>
 <% end %>

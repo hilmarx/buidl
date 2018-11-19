@@ -10,9 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
-ActiveRecord::Schema.define(version: 2018_11_19_014129) do
-
+ActiveRecord::Schema.define(version: 2018_11_19_021143) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,12 +44,9 @@ ActiveRecord::Schema.define(version: 2018_11_19_014129) do
     t.string "github_url"
     t.string "description"
     t.string "full_name"
-
     t.string "photo"
-
     t.bigint "user_id"
     t.index ["user_id"], name: "index_profiles_on_user_id"
-
   end
 
   create_table "project_follows", force: :cascade do |t|
@@ -107,15 +102,6 @@ ActiveRecord::Schema.define(version: 2018_11_19_014129) do
     t.integer "follower_id"
   end
 
-  create_table "user_technologies", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.bigint "technology_id"
-    t.bigint "user_id"
-    t.index ["technology_id"], name: "index_user_technologies_on_technology_id"
-    t.index ["user_id"], name: "index_user_technologies_on_user_id"
-  end
-
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -143,20 +129,11 @@ ActiveRecord::Schema.define(version: 2018_11_19_014129) do
 
   add_foreign_key "contributions", "profiles"
   add_foreign_key "contributions", "projects"
-
   add_foreign_key "profile_technologies", "profiles"
   add_foreign_key "profile_technologies", "technologies"
   add_foreign_key "profiles", "users"
-  add_foreign_key "project_follows", "profiles"
-
   add_foreign_key "project_follows", "projects"
   add_foreign_key "project_follows", "users"
   add_foreign_key "project_technologies", "projects"
   add_foreign_key "project_technologies", "technologies"
-
-
-  add_foreign_key "user_technologies", "profiles"
-
-  add_foreign_key "user_technologies", "technologies"
-  add_foreign_key "user_technologies", "users"
 end
