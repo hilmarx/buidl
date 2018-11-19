@@ -1,30 +1,19 @@
 <div class="wrapper">
-  <div class="container">
-    <h1>Profile page</h1>
-    <div class="row">
-      <div class="col-xs-6 col-offset-3">
+  <div class="profile_header">
+    <!-- ADD USER COVER PHOTO HERE -->
+    <%= image_tag 'stock_cover_photo.jpg', class: "cover_photo" %>
 
-        <h3><%= @profile.full_name %></h3>
-        <ul class="list-group">
-          <li class="list-item">
-            <img src="<%= @profile.profile_photo %>" alt="">
-          </li>
-          <li>
-            <p>Description: <%= @profile.description %></p>
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12 col-sm-3">
+          <%= image_tag @profile.profile_photo, class: "profile_photo" %>
+        </div>
 
-          </li>
-          <li>
-            <p>Github URL: <%=  @profile.github_url %></p>
-          </li>
-          <li>
-            Top Languages
-            <ul>
-              <br>
+        <div class="col-xs-12 col-sm-6">
+          <div class="information">
+            <h1 class="name"><%= @profile.full_name %></h1>
 
-            <% @profile.top_languages.sort_by {|_key, value| value}.reverse.each do |lang| %>
-            <li>
-              <strong> <%= lang.first %>:</strong> Byte Size: <%=  lang.last%>
-            </li>
+            <p class="bio"><%= @profile.description %></p>
 
             <br>
             <% end %>
@@ -52,26 +41,25 @@
           <% end %>
           </ul>
 
-          <br>
+          </div>
+        </div>
+        <div class="col-offset-xs-0 col-offset-sm-3"></div>
+      </div>
+    </div>
+
+    <%= render 'shared/biocards' %>
+
+
+      <div class="">
+        <h3 class="text-center" >Github Projects</h3>
+
+        <% @profile.projects.each do |project| %>
+        <%= render 'shared/project_card', project: project %>
+        <br>
         <% end %>
 
+      <div class="bottom_links">
+        <p> <%= link_to "Home", root_path %></p>
       </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
     </div>
-    <p> <%= link_to "Back Home", root_path %></p>
-    <p> <%= link_to "Go to a user show page", user_path(1) %></p>
-    <p> <%= link_to "Go to a project page", project_path(1) %></p>
   </div>
-</div>
