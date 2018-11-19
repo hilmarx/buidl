@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   root to: 'pages#home'
 
   resources :users, only: [:show, :index] do
-    resources :user_technologies, only: [:new, :create, :destroy]
+    resources :profile_technologies, only: [:new, :create, :destroy]
     resources :user_follows, only: [:new, :create, :destroy]
   end
 
