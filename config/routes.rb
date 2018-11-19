@@ -21,7 +21,3 @@ Rails.application.routes.draw do
   resources :profiles, only: [:show, :create]
 
 end
-
-# ANYWHERE IT SAYS USER_SOMETHING SHOULD NOW SAY PROFILE_SOMETHING
-
-# ADD VALIDATIONS SO THAT LEADER ID/FOLLOWER ID COMBO IS UNIQUE
