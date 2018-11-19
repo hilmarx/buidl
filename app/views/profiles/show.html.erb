@@ -16,7 +16,7 @@
             <p class="bio"><%= @profile.description %></p>
 
             <br>
-            <% end %>
+
             </ul>
           </li>
 
@@ -40,7 +40,7 @@
           </li>
           <% end %>
           </ul>
-
+<% end %>
           </div>
         </div>
         <div class="col-offset-xs-0 col-offset-sm-3"></div>
@@ -50,19 +50,9 @@
     <%= render 'shared/biocards' %>
 
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-      <div class="">
-        <h3 class="text-center" >Github Projects</h3>
-=======
-      <!-- <div class=""> -->
-        <h3>Github Projects</h3>
->>>>>>> ea3cd74de5d1f9799f27af389c51a009a1682e7e
-=======
       <div class="">
         <h3 class="text-center" >Github Projects</h3>
 
->>>>>>> 3b395a6289ee23f382d0f476cd7118bfcb698256
         <% @profile.projects.each do |project| %>
         <%= render 'shared/project_card', project: project %>
         <br>
