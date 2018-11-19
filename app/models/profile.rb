@@ -9,16 +9,13 @@ class Profile < ApplicationRecord
 
   has_many :profile_technologies, dependent: :destroy
   has_many :technologies, through: :profile_technologies
-  
+
   has_many :project_follows, dependent: :destroy
   has_many :followed_projects, through: :project_follows, source: "Project"
 
   has_many :contributions, dependent: :destroy
   has_many :projects, through: :contributions
 
-  # before_save
-
-  # BEFORE SAVE - feth github
   # Inside the service, if the response is good, save the profile and continue rest of service
   # else return an error
   after_create :fetch_github
@@ -37,17 +34,32 @@ class Profile < ApplicationRecord
         end
       end
     end
-    hash
+    hash.sort_by{|_key, value| value}
   end
-
 
   def repo_number
     self.projects.length
   end
 
+  def contribution_number
+    # Total number of commits
+    total_commits = 0
+    # Total number of lines added
+    total_lines_added = 0
+    # Total number of lines deleted
+    total_lines_deleted = 0
+    self.contributions.each do |contribution|
+      total_commits += contribution.commits
+      total_lines_added += contribution.lines_added
+      total_lines_deleted += contribution.lines_deleted
+    end
 
-
-  # Create contribution for user passing in the project name
+    hash = {
+      commits: total_commits,
+      lines_added: total_lines_added,
+      lines_deleted: total_lines_deleted
+    }
+  end
 
   private
 
@@ -55,6 +67,5 @@ class Profile < ApplicationRecord
     FetchGithub.new(self)
     self.save
   end
-
 
 end
