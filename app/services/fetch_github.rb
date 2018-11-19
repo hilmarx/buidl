@@ -7,30 +7,39 @@ class FetchGithub
     fetch_github
   end
 
-  def create_contributions(projects)
+
+  def fetch_repo_commits(projects)
     projects.each do |repo|
-      key = ENV['GITHUB_TOKEN']
       repo_contributions_serialized = open("https://api.github.com/repos/#{@github_username}/#{repo.name}/stats/contributors?access_token=#{@key}").read
       repo_contributions = JSON.parse(repo_contributions_serialized)
-      repo_contributions.each do |contributions|
-        lines_added = 0
-        lines_deleted = 0
-        commits = 0
-        if contributions['author']['login'] == @github_username
-          contributions['weeks'].each do |contribution|
-            if contribution['c'].nil?
-            else
-              lines_added += contribution['a'].to_i
-              lines_deleted += contribution['d'].to_i
-              commits += contribution['c'].to_i
-            end
+      sum_up_contributions(repo_contributions, repo)
+    end
+  end
+
+
+  def sum_up_contributions(repo_contributions, repo)
+    repo_contributions.each do |contributions|
+      lines_added = 0
+      lines_deleted = 0
+      commits = 0
+      if contributions['author']['login'] == @github_username
+        contributions['weeks'].each do |contribution|
+          if contribution['c'].nil?
+          else
+            lines_added += contribution['a'].to_i
+            lines_deleted += contribution['d'].to_i
+            commits += contribution['c'].to_i
           end
         end
-        if commits != nil && commits != 0 && lines_deleted != nil && lines_added != nil
-          new_contribution = Contribution.new(lines_added: lines_added, lines_deleted: lines_deleted, commits: commits, profile_id: @profile.id, project_id: repo.id)
-          new_contribution.save!
-        end
       end
+    create_contributions(lines_added, lines_deleted, commits, repo)
+    end
+  end
+
+  def create_contributions(lines_added, lines_deleted, commits, repo)
+    if commits != 0
+      new_contribution = Contribution.new(lines_added: lines_added, lines_deleted: lines_deleted, commits: commits, profile_id: @profile.id, project_id: repo.id)
+      new_contribution.save!
     end
   end
 
@@ -92,6 +101,6 @@ class FetchGithub
     set_profile(github_profile)
     github_repos = fetch_and_parse("https://api.github.com/users/#{@github_username}/repos?access_token=#{@key}")
     fetch_projects(github_repos)
-    create_contributions(@projects)
+    fetch_repo_commits(@projects)
   end
 end
