@@ -5,11 +5,20 @@
 }
 
 .child {
-position: absolute;
-bottom: 40px;
+  position: absolute;
+  bottom: 40px;
   left: 60px;
 }
 
 .parent {
   position: relative;
+}
+
+#edit_profile_2 {
+  // position: absolute;
+  // border-radius: 50%;
+  // top: 0;
+  // right: 0;
+  // left: 0;
+  // bottom: 0;
 }
