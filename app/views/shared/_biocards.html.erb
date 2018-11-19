@@ -28,7 +28,9 @@
 
             <% @profile.top_languages.sort_by {|_key, value| value}.reverse.each do |lang| %>
 
-              <div style="flex: 1 0 30%"><strong> <%= lang.first %></strong></div>
+              <div class ="lang-display" style="flex: 1 0 30%"><strong> <%= lang.first %>
+                <br>
+                byte size: <%= lang[1] %></strong></div>
 
 
 
