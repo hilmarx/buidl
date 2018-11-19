@@ -5,9 +5,15 @@ class ProfilesController < ApplicationController
   def create
     if Profile.find_by(github_username: profile_params[:github_username]).present?
       @profile = Profile.find_by(github_username: profile_params[:github_username])
+      if current_user != nil
+        @profile.user = current_user
+      end
       redirect_to profile_path(@profile)
     else
       @profile = Profile.new(profile_params)
+      if current_user != nil
+        @profile.user = current_user
+      end
       @profile.save!
       redirect_to profile_path(@profile)
     end
@@ -15,9 +21,10 @@ class ProfilesController < ApplicationController
   end
 
   def show
-    @project = Project.new
     @profile = Profile.find(params[:id])
-    # @profile.fetch_github
+    if current_user != nil
+      @profile.user = current_user
+    end
   end
 
   def profile_params
