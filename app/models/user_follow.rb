@@ -3,4 +3,5 @@ class UserFollow < ApplicationRecord
   belongs_to :follower, class_name: "User"
 
   # ADD VALIDATION FOR UNIQUENESS BETWEEN THE LEADER/FOLLOWER COMBO
+  validates :leader, uniqueness: { scope: :follower }
 end
