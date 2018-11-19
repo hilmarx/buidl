@@ -34,7 +34,7 @@ class Profile < ApplicationRecord
         end
       end
     end
-    hash.sort_by{|_key, value| value}
+    hash.sort_by{|_key, value| value}.reverse
   end
 
   def repo_number
