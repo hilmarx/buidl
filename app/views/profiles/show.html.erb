@@ -45,7 +45,7 @@
                   <% if bool_array.include?(false) %>
                     <%= link_to 'Unfollow this user', profile_user_follow_path(@profile, current_user), method: :patch, class: 'btn btn-success' %>
 
-                    <!-- OTHERWISE DISPLAY THE FOLLOW BUTTON: -->
+                  <!-- OTHERWISE DISPLAY THE FOLLOW BUTTON: -->
                   <% else %>
                     <% another_bool_array = [] %>
                     <% allaywufa = UserFollow.all %>
@@ -58,7 +58,7 @@
                     <% end %>
 
                     <!-- IF THE FOLLOW RELATIONSHIP ALREADY EXISTS, CHANGE ITS STATUS TO TRUE: -->
-                    <% if bool_array.include?(true) %>
+                    <% if another_bool_array.include?(true) %>
                       <%= link_to 'Follow this user [1]', profile_user_follow_path(@profile, current_user), method: :patch, class: 'btn btn-primary' %>
 
                     <!-- OTHERWISE CREATE A NEW USERFOLLOW INSTANCE: -->
