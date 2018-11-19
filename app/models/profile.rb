@@ -7,7 +7,6 @@ class Profile < ApplicationRecord
   has_many :leaders, class_name: "UserFollow", foreign_key: "follower_id", dependent: :destroy
   has_many :followers, class_name: "UserFollow", foreign_key: "leader_id", dependent: :destroy
 
-
   has_many :user_technologies, dependent: :destroy
   has_many :technologies, through: :user_technologies
   has_many :project_follows, dependent: :destroy
