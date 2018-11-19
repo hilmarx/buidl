@@ -15,53 +15,46 @@
 
             <p class="bio"><%= @profile.description %></p>
 
-            <p>For test purposes: Your user ID is ... <%= @profile.user_id %></p>
+            <p>[For test purposes] Your user ID is ... <%= @profile.user_id || 'nil' %></p>
 
             <br>
-            <% end %>
-            </ul>
-          </li>
+          </div>
+        </div>
+        <div class="col-xs-6 col-offset-3">
+          <h3>Github Projects</h3>
 
-          <li>Contribution stats</li>
-          <li><%  @profile.create_contributions  %></li>
-        </ul>
-
-
-      </div>
-      <div class="col-xs-6 col-offset-3">
-        <h3>Github Projects</h3>
-        <% @profile.projects.each do |project| %>
-          <h5><strong> Name: <%= project.name %></strong></h5>
+          <% @profile.projects.each do |project| %>
+          <h5><strong>Name: <%= project.name %></strong></h5>
           <p>Description: <%= project.description %> </p>
           <p>Primary Language: <%= project.primary_language %> </p>
           <p>Size in Bytes: <%= project.size_kilobytes %>  </p>
           <p>Project Technologies</p>
           <ul>
-          <% project.project_technologies.each do |pro_tech| %>
-          <li>Name: <%= Technology.find(pro_tech.technology_id).name %> - Bytesize: <%= pro_tech.size_bytes %> bytes
-          </li>
-          <% end %>
+            <% project.project_technologies.each do |pro_tech| %>
+            <li>Name: <%= Technology.find(pro_tech.technology_id).name %> - Bytesize: <%= pro_tech.size_bytes %> bytes
+            </li>
+            <% end %>
           </ul>
-
-          </div>
+          <% end %>
         </div>
-        <div class="col-offset-xs-0 col-offset-sm-3"></div>
       </div>
-    </div>
-
-    <%= render 'shared/biocards' %>
-
-
-      <div class="">
-        <h3 class="text-center" >Github Projects</h3>
-
-        <% @profile.projects.each do |project| %>
-        <%= render 'shared/project_card', project: project %>
-        <br>
-        <% end %>
-
-      <div class="bottom_links">
-        <p> <%= link_to "Home", root_path %></p>
-      </div>
+      <div class="col-offset-xs-0 col-offset-sm-3"></div>
     </div>
   </div>
+
+  <%= render 'shared/biocards' %>
+
+
+  <div class="">
+    <h3 class="text-center">Github Projects</h3>
+
+    <% @profile.projects.each do |project| %>
+    <%= render 'shared/project_card', project: project %>
+    <br>
+    <% end %>
+
+    <div class="text-center">
+      <p> <%= link_to "Home", root_path %></p>
+    </div>
+  </div>
+</div>
