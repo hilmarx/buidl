@@ -11,6 +11,7 @@
 
 
     <div class="container">
+
         <div class="row">
           <div class="col-xs-12 col-sm-3">
 
@@ -23,20 +24,45 @@
 
           </div>
 
-          <div class="col-xs-12 col-sm-6">
-            <div class="information">
+        <div class="col-xs-12 col-sm-6">
+          <div class="information">
             <h1 class="name"><%= @profile.full_name %></h1>
 
             <p class="bio"><%= @profile.description %></p>
+
+            <br>
+            <% end %>
+            </ul>
+          </li>
+
+          <li>Contribution stats</li>
+          <li><%  @profile.create_contributions  %></li>
+        </ul>
+
+
+      </div>
+      <div class="col-xs-6 col-offset-3">
+        <h3>Github Projects</h3>
+        <% @profile.projects.each do |project| %>
+          <h5><strong> Name: <%= project.name %></strong></h5>
+          <p>Description: <%= project.description %> </p>
+          <p>Primary Language: <%= project.primary_language %> </p>
+          <p>Size in Bytes: <%= project.size_kilobytes %>  </p>
+          <p>Project Technologies</p>
+          <ul>
+          <% project.project_technologies.each do |pro_tech| %>
+          <li>Name: <%= Technology.find(pro_tech.technology_id).name %> - Bytesize: <%= pro_tech.size_bytes %> bytes
+          </li>
+          <% end %>
+          </ul>
+
           </div>
-          </div>
-          <div class="col-offset-xs-0 col-offset-sm-3"></div>
         </div>
+        <div class="col-offset-xs-0 col-offset-sm-3"></div>
+      </div>
     </div>
 
     <%= render 'shared/biocards' %>
-
-
 
 
       <div class="">
@@ -48,10 +74,10 @@
 
         <br>
         <% end %>
-      <!-- </div> -->
 
-  <div class="bottom_links">
-    <p> <%= link_to "Home", root_path %></p>
+      <div class="bottom_links">
+        <p> <%= link_to "Home", root_path %></p>
+      </div>
     </div>
   </div>
 </div>
@@ -60,3 +86,5 @@
 
 
 
+=======
+>>>>>>> master
