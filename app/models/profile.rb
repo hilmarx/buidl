@@ -2,6 +2,8 @@ require 'json'
 require 'open-uri'
 
 class Profile < ApplicationRecord
+  mount_uploader :photo, PhotoUploader
+
   belongs_to :user, optional: true
 
   has_many :leaders, class_name: "UserFollow", foreign_key: "follower_id", dependent: :destroy
@@ -9,14 +11,18 @@ class Profile < ApplicationRecord
 
   has_many :profile_technologies, dependent: :destroy
   has_many :technologies, through: :profile_technologies
-  
+
   has_many :project_follows, dependent: :destroy
   has_many :followed_projects, through: :project_follows, source: "Project"
 
   has_many :contributions, dependent: :destroy
   has_many :projects, through: :contributions
 
+
+  mount_uploader :photo, PhotoUploader
+
   # before_save
+
 
   # BEFORE SAVE - feth github
   # Inside the service, if the response is good, save the profile and continue rest of service
