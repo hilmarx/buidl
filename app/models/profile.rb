@@ -15,7 +15,9 @@ class Profile < ApplicationRecord
   has_many :followed_projects, through: :project_follows, source: "Project"
 
   has_many :contributions, dependent: :destroy
-  has_many :projects, through: :contributions
+  has_many :projects, -> { distinct }, through: :contributions
+
+  # self.contributions.map { |contr| contr.project }
 
   # Inside the service, if the response is good, save the profile and continue rest of service
   # else return an error
@@ -32,15 +34,6 @@ class Profile < ApplicationRecord
       end
     end
     hash
-
-
-  #   @hash.store(project_name, {})
-  # end
-
-  # def append_activity(datetime, commits, project_name)
-  #   date_time = Time.at(datetime).to_datetime
-  #   @hash[project_name].store(date_time, commits)
-
   end
 
   # Show total contribution for a specific project
@@ -110,8 +103,7 @@ class Profile < ApplicationRecord
   private
 
   def fetch_github
-    my_hash = FetchGithub.new(self)
-    my_hash.hash
+    FetchGithub.new(self)
     self.save
   end
 
