@@ -23,8 +23,9 @@ class Profile < ApplicationRecord
   after_create :activity
 
 
+
   def activity
-    DataSender.find_by(github_username: self.github_username).hash
+
   end
 
   def input_activity(activities)
@@ -78,7 +79,7 @@ class Profile < ApplicationRecord
 
   def fetch_github
     my_hash = FetchGithub.new(self)
-    binding.pry
+    my_hash.hash
     self.save
   end
 

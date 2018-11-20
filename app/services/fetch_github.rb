@@ -118,7 +118,6 @@ class FetchGithub
     github_repos = fetch_and_parse("https://api.github.com/users/#{@github_username}/repos?access_token=#{@key}")
     fetch_projects(github_repos)
     fetch_repo_commits(@projects)
-    return @hash
   end
 
 
