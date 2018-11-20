@@ -6,7 +6,6 @@ class FetchGithub
     @key = ENV['GITHUB_TOKEN']
     @projects = []
     @github_username = profile.github_username
-    @hash = {}
     fetch_github
   end
 
