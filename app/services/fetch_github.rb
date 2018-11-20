@@ -12,8 +12,11 @@ class FetchGithub
   def fetch_repo_commits(projects)
     projects.each do |repo|
       repo_contributions_serialized = open("https://api.github.com/repos/#{@github_username}/#{repo.name}/stats/contributors?access_token=#{@key}").read
-      repo_contributions = JSON.parse(repo_contributions_serialized)
-      store_contribution_data(repo_contributions, repo)
+      if repo_contributions_serialized == ""
+      else
+        repo_contributions = JSON.parse(repo_contributions_serialized)
+        store_contribution_data(repo_contributions, repo)
+      end
     end
   end
 
