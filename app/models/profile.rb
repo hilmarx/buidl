@@ -3,6 +3,9 @@ require 'open-uri'
 
 class Profile < ApplicationRecord
 
+  mount_uploader :photo, PhotoUploader
+
+
   belongs_to :user, optional: true
 
   has_many :leaders, class_name: "UserFollow", foreign_key: "follower_id", dependent: :destroy
@@ -18,6 +21,15 @@ class Profile < ApplicationRecord
   has_many :projects, -> { distinct }, through: :contributions
 
   # self.contributions.map { |contr| contr.project }
+
+
+
+  mount_uploader :photo, PhotoUploader
+
+  # before_save
+
+
+  # BEFORE SAVE - feth github
 
   # Inside the service, if the response is good, save the profile and continue rest of service
   # else return an error

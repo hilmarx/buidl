@@ -1,13 +1,36 @@
 <div class="wrapper">
   <div class="profile_header">
     <!-- ADD USER COVER PHOTO HERE -->
-    <%= image_tag 'stock_cover_photo.jpg', class: "cover_photo" %>
+  <div class="profile-banner">
+    <%= image_tag 'stock_cover_photo.jpg', class: "cover_photo", id: "profile-pic" %>
+    <% unless %>
+    <%= cl_image_tag @profile.photo, height: 300, width: 400, crop: :fill %>
+    <% end %>
+
+  </div>
+
 
     <div class="container">
-      <div class="row">
-        <div class="col-xs-12 col-sm-3">
-          <%= image_tag @profile.profile_photo, class: "profile_photo" %>
-        </div>
+
+        <div class="row">
+          <div class="col-xs-12 col-sm-3">
+            <% if @profile.photo %>
+             <% @image =  @profile.photo %>
+              <%#= render 'shared/photo_upload'%>
+            <% else %>
+              <% @image = @profile.profile_photo %>
+                <%#= render 'shared/photo_upload'%>
+            <% end %>
+            <div class="profile-img profile-photo" style="background-image: url('<%= cl_image_path @image %>');">
+
+                <div id="profile-img-hover" class="text-center">
+                    <!-- <a href="#" class='btn' id='upload-fake-btn'><i class="fas fa-edit"></i></a> -->
+
+                    <%= render 'shared/photo_upload'%>
+                    <!-- <a href="#" class='btn' id='upload-fake-btn'><i class="fas fa-edit"></i></a> -->
+                </div>
+            </div>
+          </div>
 
         <div class="col-xs-12 col-sm-6">
           <div class="information">
@@ -16,50 +39,40 @@
             <p class="bio"><%= @profile.description %></p>
 
             <br>
-            <% end %>
-            </ul>
-          </li>
 
+
+        <ul>
           <li>Contribution stats</li>
-          <li><%  @profile.create_contributions  %></li>
         </ul>
 
 
       </div>
       <div class="col-xs-6 col-offset-3">
         <h3>Github Projects</h3>
-        <% @profile.projects.each do |project| %>
-          <h5><strong> Name: <%= project.name %></strong></h5>
-          <p>Description: <%= project.description %> </p>
-          <p>Primary Language: <%= project.primary_language %> </p>
-          <p>Size in Bytes: <%= project.size_kilobytes %>  </p>
-          <p>Project Technologies</p>
-          <ul>
-          <% project.project_technologies.each do |pro_tech| %>
-          <li>Name: <%= Technology.find(pro_tech.technology_id).name %> - Bytesize: <%= pro_tech.size_bytes %> bytes
-          </li>
-          <% end %>
-          </ul>
-
-          </div>
-        </div>
-        <div class="col-offset-xs-0 col-offset-sm-3"></div>
-      </div>
-    </div>
-
-    <%= render 'shared/biocards' %>
 
 
-      <div class="">
-        <h3 class="text-center" >Github Projects</h3>
+        <%= render 'shared/biocards' %>
+
+        <div class="">
+          <h3 class="text-center" >Github Projects</h3>
+
+          <% @profile.projects.each do |project| %>
+          <%= render 'shared/project_card', project: project %>
+
 
         <% @profile.projects.each do |project| %>
-        <%= render 'shared/project_card', project: project %>
-        <br>
+          <%= render 'shared/project_card', project: project %>
+          <br>
         <% end %>
 
-      <div class="bottom_links">
-        <p> <%= link_to "Home", root_path %></p>
+
+          <div class="bottom_links">
+            <p> <%= link_to "Home", root_path %></p>
+          </div>
+        </div>
       </div>
+
     </div>
   </div>
+</div>
+
