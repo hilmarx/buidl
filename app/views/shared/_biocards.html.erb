@@ -2,45 +2,38 @@
   <div class="row">
     <div class="col-xs-12 col-sm-4">
       <div class="card">
-          <div class="card-category">Stats</div>
-            <div class="card-description">
+        <div class="card-category">Stats</div>
+        <div class="card-description">
 
-            </div>
-          <i id="ghub" class="fab fa-github fa-2x"><%= link_to @profile.github_username, "https://github.com/#{@profile.github_username}", :target => "_blank", :style=> 'color:#FFFFFF;', :class => 'link_to'%></i>
+        </div>
+        <i id="ghub" class="fab fa-github fa-2x"><%= link_to @profile.github_username, "https://github.com/#{@profile.github_username}", :target => "_blank", :style=> 'color:#FFFFFF;', :class => 'link_to'%></i>
 
       </div>
     </div>
 
-      <div class="col-xs-12 col-sm-4">
-        <div class="card">
-            <div class="card-category">Waiting for data</div>
-              <div class="card-description">
+    <div class="col-xs-12 col-sm-4">
+      <div class="card">
+        <div class="card-category">Waiting for data</div>
+        <div class="card-description">
 
-              </div>
-        </div>
-      </div>
-
-
-        <div class="col-xs-12 col-sm-4">
-          <div class="card">
-              <div class="card-category">Top Language</div>
-                <div class="card-description">
-
-            <% @profile.top_languages.sort_by {|_key, value| value}.reverse.each do |lang| %>
-
-              <div class ="lang-display"><strong> <%= lang.first %>
-                <br>
-                byte size: <%= lang[1] %></strong>
-              </div>
-
-
-
-            <% end %>
-
-
-              </div>
-            <a class="card-link" href="#" ></a>
-          </div>
         </div>
       </div>
     </div>
+  </div>
+
+
+
+  <div class="col-xs-12 col-sm-4">
+    <div class="card">
+      <div class="card-category">Top Language</div>
+      <div class="card-description">
+        <%= render 'shared/top_languages' %>
+
+
+
+        </div>
+        <a class="card-link" href="#" ></a>
+      </div>
+    </div>
+  </div>
+</div>
