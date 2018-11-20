@@ -11,8 +11,13 @@ class FetchGithub
   def fetch_repo_commits(projects)
     projects.each do |repo|
       repo_contributions_serialized = open("https://api.github.com/repos/#{@github_username}/#{repo.name}/stats/contributors?access_token=#{@key}").read
-      repo_contributions = JSON.parse(repo_contributions_serialized)
-      sum_up_contributions(repo_contributions, repo)
+      # repo_contributions = JSON.parse(repo_contributions_serialized)
+      repo_contributions = (repo_contributions_serialized && repo_contributions_serialized.length >= 2 )? JSON.parse(repo_contributions_serialized) : nil
+      if repo_contributions
+        sum_up_contributions(repo_contributions, repo)
+      else
+        puts "its empty"
+      end
     end
   end
 

@@ -4,7 +4,11 @@
     <div class="col-xs-12 col-md-4">
       <div class="card-1">
         <div class="box-1">
-          <div class="card-image" style=" background: url('<%= image_path "image-desk.jpg" %>'); background-size: cover; background-position: center; ">
+          <% if project.photo.present? %>
+            <div class="card-image" style=" background: url('<%= image_path project.photo %>'); background-size: cover; background-position: center; ">
+          <% else %>
+            <div class="card-image" style=" background: url('<%= image_path "image-desk.jpg" %>'); background-size: cover; background-position: center; ">
+          <% end %>
           </div>
         </div>
       </div>

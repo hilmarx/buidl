@@ -4,6 +4,7 @@ class ProfilesController < ApplicationController
 
 
   def create
+
     if Profile.find_by(github_username: profile_params[:github_username]).present?
       @profile = Profile.find_by(github_username: profile_params[:github_username])
       redirect_to profile_path(@profile)
@@ -16,12 +17,14 @@ class ProfilesController < ApplicationController
   end
 
   def show
-    @image = @profile.profile_photo
+    @user = current_user
     @project = Project.new
     @profile = Profile.find(params[:id])
     # raise
     # @profile.fetch_github
   end
+
+
 
   def update
     @profile = Profile.find(params[:id])
