@@ -17,67 +17,36 @@
 
             <p>[For test purposes] Your user ID is ... <%= @profile.user_id || 'nil' %></p>
 
-            <!-- IF THE CURRENT USER EXISTS: -->
             <% if current_user %>
+              <% if @profile.user %>
+                <% if @profile.user != current_user %>
+                  <% @user_follow = UserFollow.find_instance(@profile, current_user) %>
 
-              <!-- AND IF THEY'RE SIGNED IN: -->
-              <% if @profile.user_id %>
+                  <p>current_user.id: <%= current_user.id %></p>
+                  <p>@user_follow.status: <%= @user_follow.status %></p>
+                  <p>@user_follow.id: <%= @user_follow.id %></p>
+                  <p>@user_follow.leader.id: <%= @user_follow.leader.id %></p>
+                  <p>@user_follow.follower.id: <%= @user_follow.follower.id %></p>
 
-                <!-- AND IF THE CURRENT PROFILE DOES NOT BELONG TO THE CURRENT USER: -->
-                <% if @profile.user_id != current_user.id %>
+                  <%# raise %>
+                  <% if @user_follow %>
 
-                  <!-- THEN ITERATE OVER ALL THE CURRENT USERFOLLOW INSTANCES: -->
-                  <% bool_array = [] %>
-                  <% ufa = UserFollow.all %>
-                  <% ufa.each do |uf| %>
-
-                    <!-- IF THE USER DOES NOT CURRENTLY FOLLOW THE PROFILE THAT THEY'RE ON, THEN ADD FALSE TO THE ARRAY: -->
-                    <% if uf.leader_id == @profile.user_id && uf.follower_id == current_user.id && uf.status == true %>
-                      <% bool_array << false %>
-
-                    <!-- OTHERWISE ADD TRUE: -->
+                    <%# raise %>
+                    <% if @user_follow.status == true %>
+                      <h1>aaaaaaa</h1>
+                      <%= link_to 'Unfollow this user', profile_user_follow_path(@profile, @user_follow), method: :patch, class: 'btn btn-success' %>
                     <% else %>
-                      <% bool_array << true %>
+                      <%= link_to 'Follow this user [1]', profile_user_follow_path(@profile, @user_follow), method: :patch, class: 'btn btn-primary' %>
                     <% end %>
-                  <% end %>
-
-                  <!-- IF THE ARRAY INCLUDES AN INSTANCE OF FALSE, THEN DISPLAY THE UNFOLLOW BUTTON: -->
-                  <% if bool_array.include?(false) %>
-                    <%= link_to 'Unfollow this user', profile_user_follow_path(@profile, current_user), method: :patch, class: 'btn btn-success' %>
-
-                  <!-- OTHERWISE DISPLAY THE FOLLOW BUTTON: -->
                   <% else %>
-                    <% another_bool_array = [] %>
-                    <% allaywufa = UserFollow.all %>
-                    <% allaywufa.each do |allaywuf| %>
-                      <% if allaywuf.leader_id == @profile.user_id && allaywuf.follower_id == current_user.id %>
-                          <% another_bool_array << true %>
-                      <% else %>
-                          <% another_bool_array << false %>
-                      <% end %>
-                    <% end %>
-
-                    <!-- IF THE FOLLOW RELATIONSHIP ALREADY EXISTS, CHANGE ITS STATUS TO TRUE: -->
-                    <% if another_bool_array.include?(true) %>
-                      <%= link_to 'Follow this user [1]', profile_user_follow_path(@profile, current_user), method: :patch, class: 'btn btn-primary' %>
-
-                    <!-- OTHERWISE CREATE A NEW USERFOLLOW INSTANCE: -->
-                    <% else %>
-                      <%= link_to 'Follow this user [2]', profile_user_follows_path(@profile), method: :post, class: 'btn btn-primary' %>
-                    <% end %>
+                    <%= link_to 'Follow this user [2]', profile_user_follows_path(@profile), method: :post, class: 'btn btn-primary' %>
                   <% end %>
-
-                  <!-- IF THEY'RE ON THEIR OWN PROFILE, DISPLAY THIS MESSAGE: -->
-                  <% else %>
+                <% else %>
                   <p class="btn btn-warning">You can't follow your own profile 😋</p>
                 <% end %>
-
-              <!-- IF THEY'RE ON THE PROFILE OF AN UNREGISTERED USER, DISPLAY THIS MESSAGE (perhaps later add the option to send this user an email inviting them to join BUIDL): -->
               <% else %>
                 <p class="btn btn-danger">You cannot follow <%= @profile.github_username %>, they are not a registered BUIDL user</p>
               <% end %>
-
-            <!-- IF THE CURRENT USER ISN'T SIGNED-IN, REDIRECT THEM TO THE SIGN-IN PAGE (this should also redirect them to the profile they're currently on once signed-in; currently doesn't): -->
             <% else %>
               <%= link_to 'Sign-in to follow [username]', new_user_session_path, class: 'btn btn-primary' %>
             <% end %>

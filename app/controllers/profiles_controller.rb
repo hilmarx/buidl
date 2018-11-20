@@ -21,6 +21,8 @@ class ProfilesController < ApplicationController
 
   def show
     @profile = Profile.find(params[:id])
+    @user_follows = UserFollow.all
+    # @user_follow_test = UserFollow.where()
     if @profile.user == nil
       get_profile_user_id
     end
