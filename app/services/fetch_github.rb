@@ -1,4 +1,6 @@
+require 'date'
 class FetchGithub
+  attr_accessor :hash
   def initialize(profile)
     @profile = profile
     @key = ENV['GITHUB_TOKEN']
@@ -7,10 +9,10 @@ class FetchGithub
     fetch_github
   end
 
-
   def fetch_repo_commits(projects)
     projects.each do |repo|
       repo_contributions_serialized = open("https://api.github.com/repos/#{@github_username}/#{repo.name}/stats/contributors?access_token=#{@key}").read
+<<<<<<< HEAD
       # repo_contributions = JSON.parse(repo_contributions_serialized)
       repo_contributions = (repo_contributions_serialized && repo_contributions_serialized.length >= 2 )? JSON.parse(repo_contributions_serialized) : nil
       if repo_contributions
@@ -18,34 +20,34 @@ class FetchGithub
       else
         puts "its empty"
       end
+=======
+      repo_contributions = JSON.parse(repo_contributions_serialized)
+      store_contribution_data(repo_contributions, repo)
+>>>>>>> 0ef3832e1019691fa8dbfbb212dd94f3d9db0c42
     end
   end
 
-
-  def sum_up_contributions(repo_contributions, repo)
+  def store_contribution_data(repo_contributions, repo)
+    repo = repo
+    # Loop over all contributions of a single repository
     repo_contributions.each do |contributions|
-      lines_added = 0
-      lines_deleted = 0
-      commits = 0
       if contributions['author']['login'] == @github_username
+        # Loop over all contrubutions of a single contributor
         contributions['weeks'].each do |contribution|
-          if contribution['c'].nil?
-          else
-            lines_added += contribution['a'].to_i
-            lines_deleted += contribution['d'].to_i
-            commits += contribution['c'].to_i
-          end
+          lines_added = contribution['a'].to_i
+          lines_deleted = contribution['d'].to_i
+          commits = contribution['c'].to_i
+          datetime = Time.at(contribution['w']).to_datetime
+          # Call Create function
+          create_contributions(lines_added, lines_deleted, commits, repo, datetime)
         end
       end
-    create_contributions(lines_added, lines_deleted, commits, repo)
     end
   end
 
-  def create_contributions(lines_added, lines_deleted, commits, repo)
-    if commits != 0
-      new_contribution = Contribution.new(lines_added: lines_added, lines_deleted: lines_deleted, commits: commits, profile_id: @profile.id, project_id: repo.id)
+  def create_contributions(lines_added, lines_deleted, commits, repo, datetime)
+      new_contribution = Contribution.new(lines_added: lines_added, lines_deleted: lines_deleted, commits: commits, profile_id: @profile.id, project_id: repo.id, date: datetime)
       new_contribution.save!
-    end
   end
 
   def fetch_and_parse(url)
@@ -70,7 +72,7 @@ class FetchGithub
       github_url: repo['html_url'],
       url: repo['homepage'],
       owner_id: repo['owner']['id'],
-      github_id: repo['id'],
+      github_id: repo['id']
     )
   end
 
@@ -108,4 +110,5 @@ class FetchGithub
     fetch_projects(github_repos)
     fetch_repo_commits(@projects)
   end
+
 end

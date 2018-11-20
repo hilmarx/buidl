@@ -33,6 +33,7 @@
             <h1 class="name"><%= @profile.full_name %></h1>
             <p class="bio"><%= @profile.description %></p>
             <br>
+<<<<<<< HEAD
             </div>
             <div class="col-xs-6 col-offset-3">
           </div>
@@ -40,12 +41,28 @@
         <div class="col-offset-xs-0 col-offset-sm-3"></div>
       </div>
     </div>
+=======
 
-    <%= render 'shared/biocards' %>
+
+        <ul>
+          <li>Contribution stats</li>
+        </ul>
 
 
-      <div class="">
-        <h3 class="text-center" >Github Projects</h3>
+      </div>
+      <div class="col-xs-6 col-offset-3">
+        <h3>Github Projects</h3>
+
+>>>>>>> 0ef3832e1019691fa8dbfbb212dd94f3d9db0c42
+
+        <%= render 'shared/biocards' %>
+
+        <div class="">
+          <h3 class="text-center" >Github Projects</h3>
+
+          <% @profile.projects.each do |project| %>
+          <%= render 'shared/project_card', project: project %>
+
 
         <% @profile.projects.each do |project| %>
           <%= render 'shared/project_card', project: project %>
@@ -53,13 +70,18 @@
           <br>
         <% end %>
 
-      <div class="bottom_links">
-        <p> <%= link_to "Home", root_path %></p>
+
+          <div class="bottom_links">
+            <p> <%= link_to "Home", root_path %></p>
+          </div>
+        </div>
       </div>
+
     </div>
   </div>
 </div>
 
+<<<<<<< HEAD
 
 
 <!-- install multiple image uploaders
@@ -69,3 +91,5 @@ fix routes -->
 
 
 
+=======
+>>>>>>> 0ef3832e1019691fa8dbfbb212dd94f3d9db0c42
