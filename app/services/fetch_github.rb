@@ -6,7 +6,6 @@ class FetchGithub
     @key = ENV['GITHUB_TOKEN']
     @projects = []
     @github_username = profile.github_username
-    @hash = {}
     fetch_github
   end
 
@@ -19,6 +18,7 @@ class FetchGithub
   end
 
   def store_contribution_data(repo_contributions, repo)
+    repo = repo
     # Loop over all contributions of a single repository
     repo_contributions.each do |contributions|
       if contributions['author']['login'] == @github_username
@@ -62,7 +62,7 @@ class FetchGithub
       github_url: repo['html_url'],
       url: repo['homepage'],
       owner_id: repo['owner']['id'],
-      github_id: repo['id'],
+      github_id: repo['id']
     )
   end
 
