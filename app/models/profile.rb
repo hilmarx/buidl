@@ -25,14 +25,20 @@ class Profile < ApplicationRecord
 
 
   def activity
+  #   @hash.store(project_name, {})
+  # end
+
+  # def append_activity(datetime, commits, project_name)
+  #   date_time = Time.at(datetime).to_datetime
+  #   @hash[project_name].store(date_time, commits)
 
   end
 
-  def input_activity(activities)
-    activities.each do |key, value|
-      @activity.store(key, value)
-    end
+  # Show total contribution for a specific project
+  def project_contribution_sum
+
   end
+
 
   def top_languages
     # Calculations for finding the most used programming langugages in all repos owned by a profile
@@ -55,7 +61,8 @@ class Profile < ApplicationRecord
     self.projects.length
   end
 
-  def contribution_number
+  # Show total contribution of a profile
+  def total_contributions
     # Total number of commits
     total_commits = 0
     # Total number of lines added

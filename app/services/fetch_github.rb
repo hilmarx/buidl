@@ -8,55 +8,36 @@ class FetchGithub
     @github_username = profile.github_username
     @hash = {}
     fetch_github
-    # send_data
   end
 
   def fetch_repo_commits(projects)
     projects.each do |repo|
       repo_contributions_serialized = open("https://api.github.com/repos/#{@github_username}/#{repo.name}/stats/contributors?access_token=#{@key}").read
       repo_contributions = JSON.parse(repo_contributions_serialized)
-      sum_up_contributions(repo_contributions, repo)
+      store_contribution_data(repo_contributions, repo)
     end
   end
 
-  def activity(project_name)
-    @hash.store(project_name, {})
-  end
-
-  def append_activity(datetime, commits, project_name)
-    date_time = Time.at(datetime).to_datetime
-    @hash[project_name].store(date_time, commits)
-  end
-
-
-  def sum_up_contributions(repo_contributions, repo)
+  def store_contribution_data(repo_contributions, repo)
+    # Loop over all contributions of a single repository
     repo_contributions.each do |contributions|
-      lines_added = 0
-      lines_deleted = 0
-      commits = 0
-      # Create hash for activities in profile.rb
-      activity(repo.name)
       if contributions['author']['login'] == @github_username
+        # Loop over all contrubutions of a single contributor
         contributions['weeks'].each do |contribution|
-          if contribution['c'].nil?
-          else
-            lines_added += contribution['a'].to_i
-            lines_deleted += contribution['d'].to_i
-            commits += contribution['c'].to_i
-          end
-          # Call  append_activity method with unix timestamp and commit number
-          append_activity(contribution['w'], contribution['c'].to_i, repo.name)
+          lines_added = contribution['a'].to_i
+          lines_deleted = contribution['d'].to_i
+          commits = contribution['c'].to_i
+          datetime = Time.at(contribution['w']).to_datetime
+          # Call Create function
+          create_contributions(lines_added, lines_deleted, commits, repo, datetime)
         end
       end
-    create_contributions(lines_added, lines_deleted, commits, repo)
     end
   end
 
-  def create_contributions(lines_added, lines_deleted, commits, repo)
-    if commits != 0
-      new_contribution = Contribution.new(lines_added: lines_added, lines_deleted: lines_deleted, commits: commits, profile_id: @profile.id, project_id: repo.id)
+  def create_contributions(lines_added, lines_deleted, commits, repo, datetime)
+      new_contribution = Contribution.new(lines_added: lines_added, lines_deleted: lines_deleted, commits: commits, profile_id: @profile.id, project_id: repo.id, date: datetime)
       new_contribution.save!
-    end
   end
 
   def fetch_and_parse(url)
@@ -120,8 +101,4 @@ class FetchGithub
     fetch_repo_commits(@projects)
   end
 
-
-  # def send_data
-  #   DataSender.new(hash: @hash, github_username: @github_username).save
-  # end
 end
