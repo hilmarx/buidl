@@ -20,11 +20,20 @@ class Profile < ApplicationRecord
   # Inside the service, if the response is good, save the profile and continue rest of service
   # else return an error
   after_create :fetch_github
-  after_create :activity
-
-
 
   def activity
+    hash = {}
+    self.projects.each do |project|
+      hash.store(project.name, {})
+      self.contributions.each do |contribution|
+        if contribution.project_id == project.id
+          hash[project.name].store(contribution.date, contribution.commits)
+        end
+      end
+    end
+    hash
+
+
   #   @hash.store(project_name, {})
   # end
 
@@ -35,9 +44,25 @@ class Profile < ApplicationRecord
   end
 
   # Show total contribution for a specific project
-  def project_contribution_sum
-
+  def project_contribution_sum(project_id)
+    total_commits = 0
+    total_lines_added = 0
+    total_lines_deleted = 0
+    # Loop through all contributions of a single project
+    self.contributions.where(project_id: project_id).each do |contribution|
+      # Add contributions together
+      total_commits += contribution.commits
+      total_lines_added += contribution.lines_added
+      total_lines_deleted += contribution.lines_deleted
+    end
+    hash = {
+      name: Project.find(project_id).name,
+      commits: total_commits,
+      lines_added: total_lines_added,
+      lines_deleted: total_lines_deleted
+    }
   end
+
 
 
   def top_languages
