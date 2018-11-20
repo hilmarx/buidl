@@ -21,15 +21,17 @@
               <% @image = @profile.profile_photo %>
                 <%#= render 'shared/photo_upload'%>
             <% end %>
-            <div class="profile-img profile-photo" style="background-image: url('<%= cl_image_path @image %>');">
+            <% unless @image.file.nil? %>
+              <div class="profile-img profile-photo" style="background-image: url('<%= cl_image_path @image %>');">
 
-                <div id="profile-img-hover" class="text-center">
-                    <!-- <a href="#" class='btn' id='upload-fake-btn'><i class="fas fa-edit"></i></a> -->
+                  <div id="profile-img-hover" class="text-center">
+                      <!-- <a href="#" class='btn' id='upload-fake-btn'><i class="fas fa-edit"></i></a> -->
 
-                    <%= render 'shared/photo_upload'%>
-                    <!-- <a href="#" class='btn' id='upload-fake-btn'><i class="fas fa-edit"></i></a> -->
-                </div>
-            </div>
+                      <%= render 'shared/photo_upload'%>
+                      <!-- <a href="#" class='btn' id='upload-fake-btn'><i class="fas fa-edit"></i></a> -->
+                  </div>
+              </div>
+            <% end %>
           </div>
 
         <div class="col-xs-12 col-sm-6">
@@ -45,27 +47,14 @@
               <% if @profile.user %>
                 <% if @profile.user != current_user %>
                   <% @user_follow = UserFollow.find_instance(@profile, current_user) %>
-
-                  <p>current_user.id: <%= current_user.id %></p>
-                  <p>@user_follow.status: <%= @user_follow.status %></p>
-                  <p>@user_follow.id: <%= @user_follow.id %></p>
-                  <p>@user_follow.leader.id: <%= @user_follow.leader.id %></p>
-                  <p>@user_follow.follower.id: <%= @user_follow.follower.id %></p>
-
-
-                  <%# raise %>
                   <% if @user_follow %>
-
-<<<<<<< HEAD
-                    <%# raise %>
                     <% if @user_follow.status == true %>
-                      <h1>aaaaaaa</h1>
                       <%= link_to 'Unfollow this user', profile_user_follow_path(@profile, @user_follow), method: :patch, class: 'btn btn-success' %>
                     <% else %>
-                      <%= link_to 'Follow this user [1]', profile_user_follow_path(@profile, @user_follow), method: :patch, class: 'btn btn-primary' %>
+                      <%= link_to 'Follow this user', profile_user_follow_path(@profile, @user_follow), method: :patch, class: 'btn btn-primary' %>
                     <% end %>
                   <% else %>
-                    <%= link_to 'Follow this user [2]', profile_user_follows_path(@profile), method: :post, class: 'btn btn-primary' %>
+                    <%= link_to 'Follow this user', profile_user_follows_path(@profile), method: :post, class: 'btn btn-primary' %>
                   <% end %>
                 <% else %>
                   <p class="btn btn-warning">You can't follow your own profile 😋</p>
@@ -76,7 +65,6 @@
             <% else %>
               <%= link_to 'Sign-in to follow [username]', new_user_session_path, class: 'btn btn-primary' %>
             <% end %>
-            <br>
 
           </div>
         </div>
