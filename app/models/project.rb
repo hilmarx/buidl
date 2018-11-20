@@ -1,4 +1,5 @@
 class Project < ApplicationRecord
+  validates :id, uniqueness: true
   has_many :project_follows
   has_many :users, through: :project_follows
 
