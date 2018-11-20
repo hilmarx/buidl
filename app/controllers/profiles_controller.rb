@@ -16,8 +16,10 @@ class ProfilesController < ApplicationController
   end
 
   def show
+    @image = @profile.profile_photo
     @project = Project.new
     @profile = Profile.find(params[:id])
+    # raise
     # @profile.fetch_github
   end
 
