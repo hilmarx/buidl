@@ -17,9 +17,6 @@ class ProjectsController < ApplicationController
     redirect_to profile_path(@profile)
   end
 
-  def destroy
-  end
-
   private
 
   def project_params

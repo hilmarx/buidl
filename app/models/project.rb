@@ -1,10 +1,8 @@
 class Project < ApplicationRecord
-<<<<<<< HEAD
   mount_uploader :photo, PhotoUploader
 
-=======
+
   validates :id, uniqueness: true
->>>>>>> 0ef3832e1019691fa8dbfbb212dd94f3d9db0c42
   has_many :project_follows
   has_many :users, through: :project_follows
 
