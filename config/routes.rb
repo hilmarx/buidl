@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
-  devise_for :users
+  # devise_for :users
+  # Github OAutch connection
+  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
 
   get 'pages' => 'pages#search'
   get 'pages/test' => 'pages#test'
