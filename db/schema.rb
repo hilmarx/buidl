@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_19_014129) do
+ActiveRecord::Schema.define(version: 2018_11_20_024841) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 2018_11_19_014129) do
     t.integer "lines_deleted"
     t.integer "commits"
     t.bigint "profile_id"
+    t.datetime "date"
     t.index ["profile_id"], name: "index_contributions_on_profile_id"
     t.index ["project_id"], name: "index_contributions_on_project_id"
   end
