@@ -10,6 +10,9 @@ Rails.application.routes.draw do
   resources :users, only: [:show, :index] do
     resources :profile_technologies, only: [:new, :create, :destroy]
     resources :user_follows, only: [:new, :create, :destroy]
+      resources :profiles, only: [:show, :create, :update]
+
+
   end
 
 
