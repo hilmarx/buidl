@@ -1,0 +1,20 @@
+<div class="graph-div">
+    <div class="toplgraph">
+
+      <% toplchartLabelData = {} %>
+
+      <% @profile.top_languages.each do |lang| %>
+        <% technology = lang[0] %>
+        <% toplchartLabelData[technology] = lang[1] %>
+        <% toplchartLabelData  %>
+      <% end %>
+
+      <% toplchartLabelData = toplchartLabelData.to_json %>
+
+      <div class="chart-container">
+      <canvas id="top-lang-chart" class="toplang-chart" data-toplchartlabeldata="<%= toplchartLabelData %>"</canvas>
+      </div>
+    </div>
+  </div>
+</div>
+

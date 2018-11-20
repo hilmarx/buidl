@@ -1,13 +1,36 @@
 <div class="wrapper">
   <div class="profile_header">
     <!-- ADD USER COVER PHOTO HERE -->
-    <%= image_tag 'stock_cover_photo.jpg', class: "cover_photo" %>
+  <div class="profile-banner">
+    <%= image_tag 'stock_cover_photo.jpg', class: "cover_photo", id: "profile-pic" %>
+    <% unless %>
+    <%= cl_image_tag @profile.photo, height: 300, width: 400, crop: :fill %>
+    <% end %>
+
+  </div>
+
 
     <div class="container">
-      <div class="row">
-        <div class="col-xs-12 col-sm-3">
-          <%= image_tag @profile.profile_photo, class: "profile_photo" %>
-        </div>
+
+        <div class="row">
+          <div class="col-xs-12 col-sm-3">
+            <% if @profile.photo %>
+             <% @image =  @profile.photo %>
+              <%#= render 'shared/photo_upload'%>
+            <% else %>
+              <% @image = @profile.profile_photo %>
+                <%#= render 'shared/photo_upload'%>
+            <% end %>
+            <div class="profile-img profile-photo" style="background-image: url('<%= cl_image_path @image %>');">
+
+                <div id="profile-img-hover" class="text-center">
+                    <!-- <a href="#" class='btn' id='upload-fake-btn'><i class="fas fa-edit"></i></a> -->
+
+                    <%= render 'shared/photo_upload'%>
+                    <!-- <a href="#" class='btn' id='upload-fake-btn'><i class="fas fa-edit"></i></a> -->
+                </div>
+            </div>
+          </div>
 
         <div class="col-xs-12 col-sm-6">
           <div class="information">
@@ -16,6 +39,7 @@
             <p class="bio"><%= @profile.description %></p>
 
             <p>[For test purposes] Your user ID is ... <%= @profile.user_id || 'nil' %></p>
+
 
             <% if current_user %>
               <% if @profile.user %>
@@ -28,9 +52,11 @@
                   <p>@user_follow.leader.id: <%= @user_follow.leader.id %></p>
                   <p>@user_follow.follower.id: <%= @user_follow.follower.id %></p>
 
+
                   <%# raise %>
                   <% if @user_follow %>
 
+<<<<<<< HEAD
                     <%# raise %>
                     <% if @user_follow.status == true %>
                       <h1>aaaaaaa</h1>
@@ -93,3 +119,4 @@
     </div>
   </div>
 </div>
+

@@ -28,8 +28,14 @@ class ProfilesController < ApplicationController
     end
   end
 
+  def update
+    @profile = Profile.find(params[:id])
+    @profile.update(profile_params)
+    redirect_to profile_path(@profile)
+  end
+
   def profile_params
-    params.require(:profile).permit(:github_username)
+    params.require(:profile).permit(:github_username, :photo)
   end
 
   def get_profile_user_id

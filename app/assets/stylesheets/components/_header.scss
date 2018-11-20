@@ -1,9 +1,11 @@
-.profile_header img.profile_photo {
+.profile_header .profile-photo {
   margin-top: -125px;
   height: 250px;
   width: 250px;
   border-radius: 50%;
   border: 2px white solid;
+  background-position: center;
+  background-size: cover;
 }
 
 .profile_header img.cover_photo {
@@ -20,6 +22,42 @@
 .profile_header h3 {
   text-align: center;
 }
+
+.profile_header div.bottom_links {
+  text-align: center;
+}
+
+// image hover
+.profile-img {
+  position: relative;
+  border-radius: 50%;
+  height: 250px;
+  width: 250px;
+}
+
+#profile-img-hover {
+  position: absolute;
+  border-radius: 50%;
+  border: 2px white solid;
+  background: black;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  opacity: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#profile-img-hover:hover {
+  opacity: 0.6;
+  color: white;
+}
+
+// .fa-edit {
+//   color: white;
+// }
 
 @media (max-width : 1200px) {
   .profile_header img.profile_photo {
