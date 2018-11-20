@@ -13,6 +13,8 @@ class FetchGithub
     projects.each do |repo|
       repo_contributions_serialized = open("https://api.github.com/repos/#{@github_username}/#{repo.name}/stats/contributors?access_token=#{@key}").read
       if repo_contributions_serialized == ""
+        # If API call retries an empty string, create empty contribution to link project to profile
+        Contribution.new(profile_id: @profile.id, project_id: repo.id).save!
       else
         repo_contributions = JSON.parse(repo_contributions_serialized)
         store_contribution_data(repo_contributions, repo)
@@ -39,8 +41,8 @@ class FetchGithub
   end
 
   def create_contributions(lines_added, lines_deleted, commits, repo, datetime)
-      new_contribution = Contribution.new(lines_added: lines_added, lines_deleted: lines_deleted, commits: commits, profile_id: @profile.id, project_id: repo.id, date: datetime)
-      new_contribution.save!
+    new_contribution = Contribution.new(lines_added: lines_added, lines_deleted: lines_deleted, commits: commits, profile_id: @profile.id, project_id: repo.id, date: datetime)
+    new_contribution.save!
   end
 
   def fetch_and_parse(url)
