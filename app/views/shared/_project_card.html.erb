@@ -41,7 +41,7 @@
               <ul>
                 <% chartLabelData = {} %>
 
-                <% project.project_technologies.limit(5).each do |pro_tech| %>
+                <% project.project_technologies.each do |pro_tech| %>
                   <% technology = Technology.find(pro_tech.technology_id).name %>
                   <% chartLabelData[technology] = pro_tech.size_bytes %>
                   <li>
