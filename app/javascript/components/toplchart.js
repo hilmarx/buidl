@@ -33,7 +33,13 @@ const createTopLChart = (argChartData, argChartLabels) => {
           }]
       },
       options: {
-      }
+        legend: {
+           display: false
+        },
+        tooltips: {
+           enabled: false
+        }
+   }
   });
 
 }
