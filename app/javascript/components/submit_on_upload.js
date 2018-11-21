@@ -4,6 +4,7 @@ function submitOnUpload () {
     const form = document.getElementById('form')
     form.submit()
   })
+
   // file.onchange = function() {
   // }
 }

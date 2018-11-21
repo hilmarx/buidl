@@ -24,11 +24,18 @@ class FetchGithub
 
   def store_contribution_data(repo_contributions, repo)
     repo = repo
+    #binding.pry
     # Loop over all contributions of a single repository
     repo_contributions.each do |contributions|
+      #binding.pry
+
       if contributions['author']['login'] == @github_username
+        #binding.pry
+
         # Loop over all contrubutions of a single contributor
         contributions['weeks'].each do |contribution|
+          #binding.pry
+
           lines_added = contribution['a'].to_i
           lines_deleted = contribution['d'].to_i
           commits = contribution['c'].to_i
@@ -55,6 +62,9 @@ class FetchGithub
     @profile.github_url = github_profile['html_url']
     @profile.description = github_profile['bio']
     @profile.full_name = github_profile['name']
+    @profile.github_username = github_profile['login']
+    @github_username = @profile.github_username
+
   end
 
   def set_project(repo)

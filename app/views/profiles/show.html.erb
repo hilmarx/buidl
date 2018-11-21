@@ -7,8 +7,6 @@
     <%= cl_image_tag @profile.photo, height: 300, width: 400, crop: :fill %>
     <% end %>
 
-  </div>
-
 
         <div class="container">
 
@@ -31,6 +29,10 @@
           </div>
         <div class="col-xs-12 col-sm-6">
           <div class="information">
+            <!--- Owains Big beautiful graph ---->
+              <%= render 'shared/com-ovr-time'%>
+             <!--- Owains Big beautiful graph end ---->
+
 
             <h1 class="name"><%= @profile.full_name %></h1>
             <p class="bio"><%= @profile.description %></p>
@@ -42,21 +44,29 @@
                   <% @user_follow = UserFollow.find_instance(@profile, current_user) %>
                   <% if @user_follow %>
                     <% if @user_follow.status == true %>
-                      <%= link_to 'Unfollow this user', profile_user_follow_path(@profile, @user_follow), method: :patch, class: 'btn btn-success' %>
+                      <%= link_to(profile_user_follow_path(@profile, @user_follow), method: :patch, class: 'btn btn-success') do %>
+                          Unfollow <%= @profile.full_name %>
+                      <% end %>
                     <% else %>
-                      <%= link_to 'Follow this user', profile_user_follow_path(@profile, @user_follow), method: :patch, class: 'btn btn-primary' %>
+                      <%= link_to(profile_user_follow_path(@profile, @user_follow), method: :patch, class: 'btn btn-primary') do %>
+                        Follow <%= @profile.full_name %>
+                      <% end %>
                     <% end %>
                   <% else %>
-                    <%= link_to 'Follow this user', profile_user_follows_path(@profile), method: :post, class: 'btn btn-primary' %>
+                    <%= link_to(profile_user_follows_path(@profile), method: :post, class: 'btn btn-primary') do %>
+                      Follow <%= @profile.full_name %>
+                    <% end %>
                   <% end %>
                 <% else %>
-                  <p class="btn btn-warning">You can't follow your own profile 😋</p>
+                  <!-- <p class="btn btn-warning">You can't follow your own profile 😋</p> -->
                 <% end %>
               <% else %>
-                <p class="btn btn-danger">You cannot follow <%= @profile.github_username %>, they are not a registered BUIDL user</p>
+                <p class="btn btn-danger">Invite <%= @profile.github_username %> to BUIDL</p>
               <% end %>
             <% else %>
-              <%= link_to 'Sign-in to follow [username]', new_user_session_path, class: 'btn btn-primary' %>
+              <%= link_to(new_user_session_path, class: 'btn btn-primary') do %>
+              Sign in to follow <%= @profile.full_name %>
+              <% end %>
             <% end %>
 
             <!--- Jethro's Follow Button End---->
@@ -83,7 +93,7 @@
         <!-- don't delete, this is photo uploader -->
         <% end %>
 
-      <div class="bottom_links">
+      <div class="text-center">
         <p> <%= link_to "Home", root_path %></p>
       </div>
     </div>

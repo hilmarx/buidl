@@ -1,5 +1,6 @@
 function uploadButton () {
   const fakeButton = document.getElementById('upload-fake-btn') //this is the font awesome
+
   fakeButton.addEventListener("click", (event) => {
     event.preventDefault();
 
