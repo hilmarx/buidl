@@ -1,7 +1,7 @@
 function submitOnUpload () {
   const file = document.querySelector('.file')
   file.addEventListener('change', (event) => {
-    const form = document.getElementById('edit_profile_2')
+    const form = document.getElementById('form')
     form.submit()
   })
   // file.onchange = function() {
@@ -12,7 +12,9 @@ function submitOnUpload () {
 function submitOnUploadUser () {
   const file = document.querySelector('.file')
   file.addEventListener('change', (event) => {
-    const form = document.getElementById('edit_profile_1')
+    console.log(event)
+    const form = document.querySelector('.edit_profile')
+    console.log(form)
     form.submit()
   })
 }

@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   root to: 'pages#home'
 
 
-  resources :profiles, only: [:show, :index, :new, :create] do
+  resources :profiles, only: [:show, :index, :new, :create, :update] do
     resources :profile_technologies, only: [:new, :create, :destroy]
     resources :user_follows, only: [:create, :update]
     resources :projects, only: [ :update]
