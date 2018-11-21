@@ -10,39 +10,28 @@
   </div>
 
 
-    <div class="container">
+        <div class="container">
 
         <div class="row">
           <div class="col-xs-12 col-sm-3">
-            <% if @profile.photo %>
-             <% @image =  @profile.photo %>
+            <% if @profile.photo.present? %>
+            <!-- photo : user photo -->
+
+              <%= render "shared/profile-photo", profile: @profile  %>
+
+             <%# @image =  @profile.photo %>
               <%#= render 'shared/photo_upload'%>
             <% else %>
-              <% @image = @profile.profile_photo %>
+              <%= render "shared/github-photo", profile: @profile  %>
+              <%# @image = @profile.profile_photo %>
                 <%#= render 'shared/photo_upload'%>
             <% end %>
 
-            <!-- WHAT THE FUCK IS THIS? -->
-            <% unless @image.file.nil? %>
-              <div class="profile-img profile-photo" style="background-image: url('<%= cl_image_path @image %>');">
-
-                  <div id="profile-img-hover" class="text-center">
-                      <!-- <a href="#" class='btn' id='upload-fake-btn'><i class="fas fa-edit"></i></a> -->
-
-                      <%= render 'shared/photo_upload'%>
-                      <!-- <a href="#" class='btn' id='upload-fake-btn'><i class="fas fa-edit"></i></a> -->
-                  </div>
-              </div>
-            <% end %>
-            <!-- WHAT THE FUCK IS THIS END -->
           </div>
-
         <div class="col-xs-12 col-sm-6">
           <div class="information">
-            <h1 class="name"><%= @profile.full_name %></h1>
-
-            <p class="bio"><%= @profile.description %></p>
-
+            
+            <!--- Jethro's Follow Button ---->
             <p>[For test purposes] Your user ID is ... <%= @profile.user_id || 'nil' %></p>
 
 
@@ -68,27 +57,38 @@
             <% else %>
               <%= link_to 'Sign-in to follow [username]', new_user_session_path, class: 'btn btn-primary' %>
             <% end %>
+            
+            <!--- Jethro's Follow Button End---->
 
-      <div class="col-xs-6 col-offset-3">
-        <h3>Github Projects</h3>
+            
+            <h1 class="name"><%= @profile.full_name %></h1>
+            <p class="bio"><%= @profile.description %></p>
+            <br>
+            </div>
+            <div class="col-xs-6 col-offset-3">
+          </div>
+        </div>
+        <div class="col-offset-xs-0 col-offset-sm-3"></div>
+      </div>
+    </div>
+
+    <%= render 'shared/biocards' %>
 
 
-        <%= render 'shared/biocards' %>
+      <div class="">
+        <h3 class="text-center" >Github Projects</h3>
 
-        <div class="">
-          <h3 class="text-center" >Github Projects</h3>
+        <% @profile.projects.each do |project| %>
+          <%= render 'shared/project_card', project: project %>
+          <%#= render 'projects/photo-upload-project', project: project, profile: @profile %> 
+        <!-- don't delete, this is photo uploader -->
+        <% end %>
 
-<div class="">
-  <h3 class="text-center">Github Projects</h3>
-
-  <% @profile.projects.each do |project| %>
-  <%= render 'shared/project_card', project: project %>
-  <br>
-  <% end %>
-
-    <div class="text-center">
-      <p> <%= link_to "Home", root_path %></p>
+      <div class="bottom_links">
+        <p> <%= link_to "Home", root_path %></p>
+      </div>
     </div>
   </div>
 </div>
+  
 

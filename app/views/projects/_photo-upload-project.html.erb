@@ -1,0 +1,12 @@
+<%= simple_form_for([profile, project]) do |f| %>
+  <!-- [...] -->
+  <label class= 'form-control-label string optional' for="project_photo"></label>
+  <%= f.input :photo, label: false  %>
+  <%= f.input :photo_cache, as: :hidden %>
+  <p>Change photo</p>
+
+  <a href="#" class='btn' id='upload-fake-btn-project'><i class="fas fa-edit"></i></a>
+  <%= f.submit %>
+  <%= submit_tag "", :style => "display: none;" %>
+<% end %>
+

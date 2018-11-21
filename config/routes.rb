@@ -12,14 +12,19 @@ Rails.application.routes.draw do
   end
 
   get 'pages' => 'pages#search'
-  get 'pages/test' => 'pages#test'
 
   root to: 'pages#home'
+
 
   resources :profiles, only: [:show, :index] do
     resources :profile_technologies, only: [:new, :create, :destroy]
     resources :user_follows, only: [:create, :update]
+    resources :projects, only: [ :update]
   end
+
+
+
+
 
 
   resources :projects, only: [:show, :destroy] do
@@ -27,6 +32,6 @@ Rails.application.routes.draw do
     resources :project_follows, only: [:new, :create, :destroy]
   end
 
-  resources :profiles, only: [:show, :create, :update]
+
 
 end

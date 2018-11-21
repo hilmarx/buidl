@@ -10,6 +10,7 @@ class User < ApplicationRecord
 
   after_create :link_github
 
+
   # Need an after create method that updates the data of the corresponding profile with the inputted values from the github OAuth
 
   # Github Authentication Method

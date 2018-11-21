@@ -1,4 +1,7 @@
 class Project < ApplicationRecord
+  mount_uploader :photo, PhotoUploader
+
+
   validates :id, uniqueness: true
   has_many :project_follows
   has_many :users, through: :project_follows
