@@ -7,8 +7,6 @@
     <%= cl_image_tag @profile.photo, height: 300, width: 400, crop: :fill %>
     <% end %>
 
-  </div>
-
 
         <div class="container">
 
@@ -30,6 +28,10 @@
           </div>
         <div class="col-xs-12 col-sm-6">
           <div class="information">
+            <!--- Owains Big beautiful graph ---->
+              <%= render 'shared/com-ovr-time'%>
+             <!--- Owains Big beautiful graph end ---->
+
 
             <h1 class="name"><%= @profile.full_name %></h1>
             <p class="bio"><%= @profile.description %></p>
