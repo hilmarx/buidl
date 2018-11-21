@@ -14,8 +14,24 @@
     <!-- Avatar with dropdown menu -->
     <div class="navbar-wagon-item">
       <div class="dropdown">
-        <%= cl_image_tag @profile.photo, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
-        <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
+
+        <!-- Jethro code --->
+        <%# if @profile %>
+          <%#= cl_image_tag @profile.photo, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+        <%# else %>
+          <%#= image_tag('logo.png', class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown") %>
+        <%# end %>
+        <!-- Jethro code END --->
+
+
+        
+          <% if current_user.profile.photo.present? %>
+          <%= cl_image_tag current_user.profile.photo, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+          <% else %>
+            <%= image_tag current_user.profile_photo, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+          <% end %>
+        
+          <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
           <li>
             <%= link_to profile_path(current_user.profile) do %>
             <i class="fa fa-user"></i> <%= t(".profile", default: "Profile") %>
@@ -27,12 +43,15 @@
             <% end %>
           </li>
         </ul>
+
+      
       </div>
     </div>
     <% else %>
-    <!-- Hilmar Testing purposes -->
-    <%= link_to "Sign in with Github", user_github_omniauth_authorize_path, class: "navbar-wagon-item navbar-wagon-link" %>
-    <!-- Hilmar Testing purposes END -->
+    
+    <!-- Sign in with Github -->
+    <%= link_to "Sign up with Github", user_github_omniauth_authorize_path, class: "navbar-wagon-item navbar-wagon-link" %>
+    <!--Sign in with github end -->
 
     <!-- Login link - FOR TESTING PURPOSES - Remove this before deploying -->
     <%= link_to t(".sign_in", default: "Sign in"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>

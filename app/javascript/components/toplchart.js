@@ -7,7 +7,7 @@ const createTopLChart = (argChartData, argChartLabels) => {
 
   var ctx = document.getElementById(`top-lang-chart`).getContext('2d');
   var myChart = new Chart(ctx, {
-      type: 'bar',
+      type: 'pie',
       data: {
           labels: chartLabels,
           datasets: [{
@@ -33,13 +33,6 @@ const createTopLChart = (argChartData, argChartLabels) => {
           }]
       },
       options: {
-          scales: {
-              yAxes: [{
-                  ticks: {
-                      beginAtZero:true
-                  }
-              }]
-          }
       }
   });
 
