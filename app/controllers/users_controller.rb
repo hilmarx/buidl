@@ -13,10 +13,10 @@ class UsersController < ApplicationController
   def create
     @user = User.create(username: params[:username], email: "#{params[:username]}@gmail.com", password: 'password')
     redirect_to root_path
-    raise
-    # @user.fetch_github
   end
 
+  def update
+  end
 
   private
 
