@@ -101,6 +101,7 @@ ActiveRecord::Schema.define(version: 2018_11_20_071130) do
     t.datetime "updated_at", null: false
     t.integer "leader_id"
     t.integer "follower_id"
+    t.boolean "status", default: true, null: false
   end
 
   create_table "users", force: :cascade do |t|

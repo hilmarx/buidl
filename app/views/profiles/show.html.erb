@@ -22,6 +22,19 @@
                 <%#= render 'shared/photo_upload'%>
             <% end %>
 
+            <!-- WHAT THE FUCK IS THIS? -->
+            <% unless @image.file.nil? %>
+              <div class="profile-img profile-photo" style="background-image: url('<%= cl_image_path @image %>');">
+
+                  <div id="profile-img-hover" class="text-center">
+                      <!-- <a href="#" class='btn' id='upload-fake-btn'><i class="fas fa-edit"></i></a> -->
+
+                      <%= render 'shared/photo_upload'%>
+                      <!-- <a href="#" class='btn' id='upload-fake-btn'><i class="fas fa-edit"></i></a> -->
+                  </div>
+              </div>
+            <% end %>
+            <!-- WHAT THE FUCK IS THIS END -->
           </div>
 
         <div class="col-xs-12 col-sm-6">
@@ -30,15 +43,32 @@
 
             <p class="bio"><%= @profile.description %></p>
 
-            <br>
+            <p>[For test purposes] Your user ID is ... <%= @profile.user_id || 'nil' %></p>
 
 
-        <ul>
-          <li>Contribution stats</li>
-        </ul>
+            <% if current_user %>
+              <% if @profile.user %>
+                <% if @profile.user != current_user %>
+                  <% @user_follow = UserFollow.find_instance(@profile, current_user) %>
+                  <% if @user_follow %>
+                    <% if @user_follow.status == true %>
+                      <%= link_to 'Unfollow this user', profile_user_follow_path(@profile, @user_follow), method: :patch, class: 'btn btn-success' %>
+                    <% else %>
+                      <%= link_to 'Follow this user', profile_user_follow_path(@profile, @user_follow), method: :patch, class: 'btn btn-primary' %>
+                    <% end %>
+                  <% else %>
+                    <%= link_to 'Follow this user', profile_user_follows_path(@profile), method: :post, class: 'btn btn-primary' %>
+                  <% end %>
+                <% else %>
+                  <p class="btn btn-warning">You can't follow your own profile 😋</p>
+                <% end %>
+              <% else %>
+                <p class="btn btn-danger">You cannot follow <%= @profile.github_username %>, they are not a registered BUIDL user</p>
+              <% end %>
+            <% else %>
+              <%= link_to 'Sign-in to follow [username]', new_user_session_path, class: 'btn btn-primary' %>
+            <% end %>
 
-
-      </div>
       <div class="col-xs-6 col-offset-3">
         <h3>Github Projects</h3>
 
@@ -48,19 +78,16 @@
         <div class="">
           <h3 class="text-center" >Github Projects</h3>
 
+<div class="">
+  <h3 class="text-center">Github Projects</h3>
 
-        <% @profile.projects.each do |project| %>
-          <%= render 'shared/project_card', project: project %>
-          <br>
-        <% end %>
+  <% @profile.projects.each do |project| %>
+  <%= render 'shared/project_card', project: project %>
+  <br>
+  <% end %>
 
-
-          <div class="bottom_links">
-            <p> <%= link_to "Home", root_path %></p>
-          </div>
-        </div>
-      </div>
-
+    <div class="text-center">
+      <p> <%= link_to "Home", root_path %></p>
     </div>
   </div>
 </div>
