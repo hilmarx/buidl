@@ -14,6 +14,16 @@
     <!-- Avatar with dropdown menu -->
     <div class="navbar-wagon-item">
       <div class="dropdown">
+
+        <!-- Jethro code --->
+        <%# if @profile %>
+          <%#= cl_image_tag @profile.photo, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+        <%# else %>
+          <%#= image_tag('logo.png', class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown") %>
+        <%# end %>
+        <!-- Jethro code END --->
+
+
         
           <% if current_user.profile.photo.present? %>
           <%= cl_image_tag current_user.profile.photo, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
