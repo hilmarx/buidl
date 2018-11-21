@@ -69,28 +69,6 @@
               <%= link_to 'Sign-in to follow [username]', new_user_session_path, class: 'btn btn-primary' %>
             <% end %>
 
-          </div>
-        </div>
-        <div class="col-xs-6 col-offset-3">
-          <h3>Github Projects</h3>
-
-          <% @profile.projects.each do |project| %>
-
-          <h5><strong>Name: <%= project.name %></strong></h5>
-          <p>Description: <%= project.description %> </p>
-          <p>Primary Language: <%= project.primary_language %> </p>
-          <p>Size in Bytes: <%= project.size_kilobytes %>  </p>
-          <p>Project Technologies</p>
-          <ul>
-            <% project.project_technologies.each do |pro_tech| %>
-            <li>Name: <%= Technology.find(pro_tech.technology_id).name %> - Bytesize: <%= pro_tech.size_bytes %> bytes
-            </li>
-            <% end %>
-          </ul>
-          <% end %>
-        </div>
-      </div>
-
       <div class="col-xs-6 col-offset-3">
         <h3>Github Projects</h3>
 
