@@ -22,7 +22,7 @@
       <!-- Avatar with dropdown menu -->
       <div class="navbar-wagon-item">
         <div class="dropdown">
-          <% if @profile.photo.present? %>
+          <% if current_user.profile.photo.present? %>
           <%= cl_image_tag current_user.profile.photo, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
           <% else %>
             <%= image_tag current_user.profile_photo, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
