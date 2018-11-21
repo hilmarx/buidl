@@ -86,7 +86,6 @@
 
       <div class="">
         <h3 class="text-center" >Github Projects</h3>
-
         <% @profile.projects.each do |project| %>
           <%= render 'shared/project_card', project: project %>
           <%#= render 'projects/photo-upload-project', project: project, profile: @profile %>
