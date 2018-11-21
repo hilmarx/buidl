@@ -45,8 +45,8 @@ ActiveRecord::Schema.define(version: 2018_11_20_071130) do
     t.string "github_url"
     t.string "description"
     t.string "full_name"
-    t.bigint "user_id"
     t.string "photo"
+    t.bigint "user_id"
     t.index ["user_id"], name: "index_profiles_on_user_id"
   end
 
