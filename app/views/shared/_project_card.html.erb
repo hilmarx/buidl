@@ -64,7 +64,7 @@
                 <% chartLabelData = chartLabelData.to_json %>
               </ul>
 
-              <div class="chart-container">
+              <div class="chart-container"  style="width:250px; height:250px;">
                 <canvas id="product-chart-<%= project.id %>" class="js-product-chart" data-chartlabeldata="<%= chartLabelData %>" data-projectid="<%= project.id %>"></canvas>
               </div>
             </div>
