@@ -37,7 +37,7 @@ const createTopLChart = (argChartData, argChartLabels) => {
            display: false
         },
         tooltips: {
-           enabled: false
+           enabled: true
         }
    }
   });
