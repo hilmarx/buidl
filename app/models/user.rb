@@ -11,6 +11,7 @@ class User < ApplicationRecord
   after_create :link_github
 
 
+
   private
 
   def link_github
