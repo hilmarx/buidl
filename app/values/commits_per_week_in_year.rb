@@ -13,13 +13,15 @@ class CommitsPerWeekInYear
   def set_initial_commits_per_week
     @activity.each do |name, value|
       array = []
+      #raise
       value.each do |date, commits|
+        next unless date
         if date.year == @year
           cweek = Date.parse(date.to_s).cweek
           array[cweek] ? array[cweek] += commits : array[cweek] = commits
         end
       end
-      @commits_per_week[name]= array
+      @commits_per_week[name] = array
     end
   end
 
@@ -36,8 +38,13 @@ class CommitsPerWeekInYear
   def create_year_array
     lowest_indeces = []
     @commits_per_week.each do |name, array|
-      lowest_indeces << array.index { |x| x > 0 }
+      result = array.index { |x| x > 0 }
+      lowest_indeces << result if result != nil
     end
+    # If nil values are present, take first non nil value
+    # Temporary fix
+    # non_nil = lowest_indeces.select{|i| i != nil}
+    # lowest_index = non_nil.sort.first
     lowest_index = lowest_indeces.sort.first
     (lowest_index..Date.today.cweek).to_a
   end
