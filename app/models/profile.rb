@@ -21,7 +21,6 @@ class Profile < ApplicationRecord
 
   # self.contributions.map { |contr| contr.project }
 
-  mount_uploader :photo, PhotoUploader
 
   after_create :fetch_github
 

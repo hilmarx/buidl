@@ -12,18 +12,30 @@ class FetchGithub
   def fetch_repo_commits(projects)
     projects.each do |repo|
       repo_contributions_serialized = open("https://api.github.com/repos/#{@github_username}/#{repo.name}/stats/contributors?access_token=#{@key}").read
-      repo_contributions = JSON.parse(repo_contributions_serialized)
-      store_contribution_data(repo_contributions, repo)
+      if repo_contributions_serialized == ""
+        # If API call retries an empty string, create empty contribution to link project to profile
+        Contribution.new(profile_id: @profile.id, project_id: repo.id).save!
+      else
+        repo_contributions = JSON.parse(repo_contributions_serialized)
+        store_contribution_data(repo_contributions, repo)
+      end
     end
   end
 
   def store_contribution_data(repo_contributions, repo)
     repo = repo
+    #binding.pry
     # Loop over all contributions of a single repository
     repo_contributions.each do |contributions|
+      #binding.pry
+
       if contributions['author']['login'] == @github_username
+        #binding.pry
+
         # Loop over all contrubutions of a single contributor
         contributions['weeks'].each do |contribution|
+          #binding.pry
+
           lines_added = contribution['a'].to_i
           lines_deleted = contribution['d'].to_i
           commits = contribution['c'].to_i
@@ -36,8 +48,8 @@ class FetchGithub
   end
 
   def create_contributions(lines_added, lines_deleted, commits, repo, datetime)
-      new_contribution = Contribution.new(lines_added: lines_added, lines_deleted: lines_deleted, commits: commits, profile_id: @profile.id, project_id: repo.id, date: datetime)
-      new_contribution.save!
+    new_contribution = Contribution.new(lines_added: lines_added, lines_deleted: lines_deleted, commits: commits, profile_id: @profile.id, project_id: repo.id, date: datetime)
+    new_contribution.save!
   end
 
   def fetch_and_parse(url)
@@ -50,6 +62,9 @@ class FetchGithub
     @profile.github_url = github_profile['html_url']
     @profile.description = github_profile['bio']
     @profile.full_name = github_profile['name']
+    @profile.github_username = github_profile['login']
+    @github_username = @profile.github_username
+
   end
 
   def set_project(repo)
