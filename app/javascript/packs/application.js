@@ -9,7 +9,7 @@ uploadButton();
 submitOnUpload();
 
 import { createChart } from '../components/chart.js.erb'
-
 import { createTopLChart } from '../components/toplchart.js'
-
+import { createComovertChart, generateComovertCharts } from '../components/comovertChart.js'
+generateComovertCharts();
 

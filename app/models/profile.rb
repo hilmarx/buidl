@@ -77,6 +77,10 @@ class Profile < ApplicationRecord
     hash.sort_by{|_key, value| value}.reverse
   end
 
+  def commits_per_week_in_a_year(year)
+    CommitsPerWeekInYear.new(self.activity, year).run
+  end
+
   def repo_number
     self.projects.length
   end

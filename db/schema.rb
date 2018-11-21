@@ -146,9 +146,6 @@ ActiveRecord::Schema.define(version: 2018_11_20_024841) do
   add_foreign_key "project_follows", "projects"
   add_foreign_key "project_technologies", "projects"
   add_foreign_key "project_technologies", "technologies"
-<<<<<<< HEAD
-  add_foreign_key "user_technologies", "profiles"
-  add_foreign_key "user_technologies", "technologies"
-=======
->>>>>>> 0ef3832e1019691fa8dbfbb212dd94f3d9db0c42
+
+
 end
