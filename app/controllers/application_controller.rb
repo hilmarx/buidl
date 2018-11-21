@@ -11,4 +11,10 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:account_update, keys: [:github_username])
 
   end
+
+  # Github Oauth method
+  # def new_session_path(scope)
+  #   new_user_session_path
+  # end
+
 end

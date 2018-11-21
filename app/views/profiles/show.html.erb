@@ -21,15 +21,7 @@
               <% @image = @profile.profile_photo %>
                 <%#= render 'shared/photo_upload'%>
             <% end %>
-            <div class="profile-img profile-photo" style="background-image: url('<%= cl_image_path @image %>');">
 
-                <div id="profile-img-hover" class="text-center">
-                    <!-- <a href="#" class='btn' id='upload-fake-btn'><i class="fas fa-edit"></i></a> -->
-
-                    <%= render 'shared/photo_upload'%>
-                    <!-- <a href="#" class='btn' id='upload-fake-btn'><i class="fas fa-edit"></i></a> -->
-                </div>
-            </div>
           </div>
 
         <div class="col-xs-12 col-sm-6">
@@ -55,9 +47,6 @@
 
         <div class="">
           <h3 class="text-center" >Github Projects</h3>
-
-          <% @profile.projects.each do |project| %>
-          <%= render 'shared/project_card', project: project %>
 
 
         <% @profile.projects.each do |project| %>
