@@ -10,69 +10,85 @@
   </div>
 
 
-    <div class="container">
+        <div class="container">
 
         <div class="row">
           <div class="col-xs-12 col-sm-3">
-            <% if @profile.photo %>
-             <% @image =  @profile.photo %>
+            <% if @profile.photo.present? %>
+            <!-- photo : user photo -->
+
+              <%= render "shared/profile-photo", profile: @profile  %>
+
+             <%# @image =  @profile.photo %>
               <%#= render 'shared/photo_upload'%>
             <% else %>
-              <% @image = @profile.profile_photo %>
+              <%= render "shared/github-photo", profile: @profile  %>
+              <%# @image = @profile.profile_photo %>
                 <%#= render 'shared/photo_upload'%>
             <% end %>
-            <div class="profile-img profile-photo" style="background-image: url('<%= cl_image_path @image %>');">
 
-                <div id="profile-img-hover" class="text-center">
-                    <!-- <a href="#" class='btn' id='upload-fake-btn'><i class="fas fa-edit"></i></a> -->
-
-                    <%= render 'shared/photo_upload'%>
-                    <!-- <a href="#" class='btn' id='upload-fake-btn'><i class="fas fa-edit"></i></a> -->
-                </div>
-            </div>
           </div>
-
         <div class="col-xs-12 col-sm-6">
           <div class="information">
+            
+            <!--- Jethro's Follow Button ---->
+            <p>[For test purposes] Your user ID is ... <%= @profile.user_id || 'nil' %></p>
+
+
+            <% if current_user %>
+              <% if @profile.user %>
+                <% if @profile.user != current_user %>
+                  <% @user_follow = UserFollow.find_instance(@profile, current_user) %>
+                  <% if @user_follow %>
+                    <% if @user_follow.status == true %>
+                      <%= link_to 'Unfollow this user', profile_user_follow_path(@profile, @user_follow), method: :patch, class: 'btn btn-success' %>
+                    <% else %>
+                      <%= link_to 'Follow this user', profile_user_follow_path(@profile, @user_follow), method: :patch, class: 'btn btn-primary' %>
+                    <% end %>
+                  <% else %>
+                    <%= link_to 'Follow this user', profile_user_follows_path(@profile), method: :post, class: 'btn btn-primary' %>
+                  <% end %>
+                <% else %>
+                  <p class="btn btn-warning">You can't follow your own profile 😋</p>
+                <% end %>
+              <% else %>
+                <p class="btn btn-danger">You cannot follow <%= @profile.github_username %>, they are not a registered BUIDL user</p>
+              <% end %>
+            <% else %>
+              <%= link_to 'Sign-in to follow [username]', new_user_session_path, class: 'btn btn-primary' %>
+            <% end %>
+            
+            <!--- Jethro's Follow Button End---->
+
+            
             <h1 class="name"><%= @profile.full_name %></h1>
-
             <p class="bio"><%= @profile.description %></p>
-
             <br>
-
-
-        <ul>
-          <li>Contribution stats</li>
-        </ul>
-
-
+            </div>
+            <div class="col-xs-6 col-offset-3">
+          </div>
+        </div>
+        <div class="col-offset-xs-0 col-offset-sm-3"></div>
       </div>
-      <div class="col-xs-6 col-offset-3">
-        <h3>Github Projects</h3>
+    </div>
+
+    <%= render 'shared/biocards' %>
 
 
-        <%= render 'shared/biocards' %>
-
-        <div class="">
-          <h3 class="text-center" >Github Projects</h3>
-
-          <% @profile.projects.each do |project| %>
-          <%= render 'shared/project_card', project: project %>
-
+      <div class="">
+        <h3 class="text-center" >Github Projects</h3>
 
         <% @profile.projects.each do |project| %>
           <%= render 'shared/project_card', project: project %>
-          <br>
+          <%#= render 'projects/photo-upload-project', project: project, profile: @profile %> 
+        <!-- don't delete, this is photo uploader -->
         <% end %>
 
-
-          <div class="bottom_links">
-            <p> <%= link_to "Home", root_path %></p>
-          </div>
-        </div>
+      <div class="bottom_links">
+        <p> <%= link_to "Home", root_path %></p>
       </div>
-
     </div>
   </div>
 </div>
+  
 

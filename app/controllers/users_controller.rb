@@ -2,12 +2,12 @@ class UsersController < ApplicationController
   skip_before_action :authenticate_user!, only: [:show]
 
 
-  def new
 
+  def new
   end
 
   def show
-    @user = User.fetch_github
+    @user = current_user
   end
 
   def create
