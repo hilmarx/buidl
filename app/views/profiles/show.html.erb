@@ -49,8 +49,8 @@
 
         <% @profile.projects.each do |project| %>
           <%= render 'shared/project_card', project: project %>
-          <%= render 'projects/photo-upload-project', project: project, profile: @profile %>
-          <br>
+          <%#= render 'projects/photo-upload-project', project: project, profile: @profile %> <!-- don't delete, this is photo uploader
+ -->
         <% end %>
 
       <div class="bottom_links">
