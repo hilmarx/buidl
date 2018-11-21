@@ -77,7 +77,11 @@ class Profile < ApplicationRecord
   end
 
   def commits_per_week_in_a_year(year)
-    CommitsPerWeekInYear.new(self.activity, year).run
+    begin
+      CommitsPerWeekInYear.new(self.activity, year).run
+    rescue
+      false
+    end
   end
 
   def repo_number
