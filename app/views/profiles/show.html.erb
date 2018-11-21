@@ -30,10 +30,10 @@
           </div>
         <div class="col-xs-12 col-sm-6">
           <div class="information">
-            
-            <!--- Jethro's Follow Button ---->
-            <p>[For test purposes] Your user ID is ... <%= @profile.user_id || 'nil' %></p>
 
+            <h1 class="name"><%= @profile.full_name %></h1>
+            <p class="bio"><%= @profile.description %></p>
+            <!--- Jethro's Follow Button ---->
 
             <% if current_user %>
               <% if @profile.user %>
@@ -57,13 +57,11 @@
             <% else %>
               <%= link_to 'Sign-in to follow [username]', new_user_session_path, class: 'btn btn-primary' %>
             <% end %>
-            
+
             <!--- Jethro's Follow Button End---->
 
-            
-            <h1 class="name"><%= @profile.full_name %></h1>
-            <p class="bio"><%= @profile.description %></p>
-            <br>
+
+
             </div>
             <div class="col-xs-6 col-offset-3">
           </div>
@@ -80,7 +78,7 @@
 
         <% @profile.projects.each do |project| %>
           <%= render 'shared/project_card', project: project %>
-          <%#= render 'projects/photo-upload-project', project: project, profile: @profile %> 
+          <%#= render 'projects/photo-upload-project', project: project, profile: @profile %>
         <!-- don't delete, this is photo uploader -->
         <% end %>
 
@@ -90,5 +88,5 @@
     </div>
   </div>
 </div>
-  
+
 
