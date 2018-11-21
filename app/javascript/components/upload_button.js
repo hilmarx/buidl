@@ -1,5 +1,6 @@
 function uploadButton () {
   const fakeButton = document.getElementById('upload-fake-btn') //this is the font awesome
+
   fakeButton.addEventListener("click", (event) => {
     event.preventDefault();
 
@@ -8,20 +9,20 @@ function uploadButton () {
   });
 }
 
-function uploadButtonProject () {
-  const fakeButton = document.getElementById('upload-fake-btn-project') //this is the font awesome
-  fakeButton.addEventListener("click", (event) => {
-    event.preventDefault();
-    console.log('hello')
+// function uploadButtonProject () {
+//   const fakeButton = document.getElementById('upload-fake-btn-project') //this is the font awesome
+//   fakeButton.addEventListener("click", (event) => {
+//     event.preventDefault();
+//     console.log('hello')
 
-    const targetedButton = document.getElementById('project_photo')
-    targetedButton.click()
-  });
-}
+//     const targetedButton = document.getElementById('project_photo')
+//     targetedButton.click()
+//   });
+// }
 
 
 
 
 
 export {uploadButton}
-export { uploadButtonProject }
+// export { uploadButtonProject }
