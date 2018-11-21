@@ -1,4 +1,15 @@
 <div class="wrapper">
+  <div class="project_header">
+    <%= image_tag 'stock_cover_photo.jpg', class: "cover_photo", id: "profile-pic" %>
+    <% unless %>
+    <%= cl_image_tag @profile.photo, height: 300, width: 400, crop: :fill %>
+    <% end %>
+  </div>
+</div>
+
+
+
+<div class="wrapper">
   <div class="container">
     <h1><%= Project.find(1).name %></h1>
     <div class="row">
