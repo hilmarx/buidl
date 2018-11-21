@@ -21,6 +21,8 @@
               <% @image = @profile.profile_photo %>
                 <%#= render 'shared/photo_upload'%>
             <% end %>
+
+            <!-- WHAT THE FUCK IS THIS? -->
             <% unless @image.file.nil? %>
               <div class="profile-img profile-photo" style="background-image: url('<%= cl_image_path @image %>');">
 
@@ -32,6 +34,7 @@
                   </div>
               </div>
             <% end %>
+            <!-- WHAT THE FUCK IS THIS END -->
           </div>
 
         <div class="col-xs-12 col-sm-6">
@@ -87,12 +90,15 @@
           <% end %>
         </div>
       </div>
-    </div>
-  </div>
-</div>
 
-<%= render 'shared/biocards' %>
+      <div class="col-xs-6 col-offset-3">
+        <h3>Github Projects</h3>
 
+
+        <%= render 'shared/biocards' %>
+
+        <div class="">
+          <h3 class="text-center" >Github Projects</h3>
 
 <div class="">
   <h3 class="text-center">Github Projects</h3>
