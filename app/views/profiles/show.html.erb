@@ -64,8 +64,8 @@
                 <p class="btn btn-danger">Invite <%= @profile.github_username %> to BUIDL</p>
               <% end %>
             <% else %>
-              <%= link_to(new_user_session_path, class: 'btn btn-primary') do %>
-              Sign in to follow <%= @profile.full_name %>
+              <%= link_to(user_github_omniauth_authorize_path, class: 'btn btn-primary') do %>
+              Sign in with Github to follow <%= @profile.full_name %>
               <% end %>
             <% end %>
 
@@ -86,7 +86,6 @@
 
       <div class="">
         <h3 class="text-center" >Github Projects</h3>
-
         <% @profile.projects.each do |project| %>
           <%= render 'shared/project_card', project: project %>
           <%#= render 'projects/photo-upload-project', project: project, profile: @profile %>
