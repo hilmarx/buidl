@@ -27,7 +27,7 @@
         <%= render "shared/jethro_follow_button" %>
         <!--- Jethro's Follow Button End---->
       </div>
-    </div>
+
 
     <div class="specialone" >
       <h2 class="text-center">
@@ -38,15 +38,26 @@
 
     <div class="biocards-parent-container">
       <%= render 'shared/biocards' %>
-    </div>
-    
+
     <!--- Button to add new projects --->
     <%= render "shared/create_project_modular", project: @project, profile: @profile %>
     <!--- Button to add new projects --->
-    
+
+    </div>
+
+
+
+    </div>
+
+
 
       <div class="project-cards-container">
+
+
         <h3 class="text-center" >Github Projects</h3>
+
+
+
         <% @profile.projects.each do |project| %>
           <%= render 'shared/project_card', project: project, contributions: project.contributions.where(profile_id: @profile.id) %>
           <%#= render 'projects/photo-upload-project', project: project, profile: @profile %>
