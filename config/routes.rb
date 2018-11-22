@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  get 'contributions/:destroy'
   #devise_for :users
   # Github OAutch connection
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
