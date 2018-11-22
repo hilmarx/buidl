@@ -47,7 +47,7 @@
       <div class="">
         <h3 class="text-center" >Github Projects</h3>
         <% @profile.projects.each do |project| %>
-          <%= render 'shared/project_card', project: project %>
+          <%= render 'shared/project_card', project: project, contributions: project.contributions.where(profile_id: @profile.id) %>
           <%#= render 'projects/photo-upload-project', project: project, profile: @profile %>
         <!-- don't delete, this is photo uploader -->
         <% end %>

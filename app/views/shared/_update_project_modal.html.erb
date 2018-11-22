@@ -22,7 +22,8 @@
       <div class="modal-footer">
 
         <!-- Delete this project button -->
-        <button type="button" class="btn btn-danger" data-dismiss="modal">Delete this project!</button>
+        <!-- Delete all contribtuions associated with this project -->
+        <%= link_to "Delete this project", profile_project_contribution_path(@profile.contributions.first, project.id, @profile.id), method: :delete, class: "btn btn-danger" %>
         <!-- Delete this project button -->
 
         <!-- Submit button -->
