@@ -1,74 +1,102 @@
-#ghub {
-  color:black;
-  padding-right: 5px;
-  font-size: 25px;
-  position: relative;
-  right: 0px;
-  left: 20px;
-  top: 40px;
-  width: 40px;
-  border-radius: 50%;
+.biocards-parent-container {
+  // display:flex;
+
+  // width: 800px;
 }
 
-#ghub:hover {
-  color:lightgrey;
-}
+.biocards-container{
+  // width:100%;
+  background-color: blue;
 
-.lang-display {
-  font-size: 12px;
-
-  flex: 1 0 30%;
 
 }
 
-.card {
-  margin-top: 40px;
-  margin-bottom: 40px;
-  background: rgb(79, 140, 164);
-  border-radius: 20px;
-  height: 200px;
-  text-shadow: 0 1px 3px rgba(0,0,0,0.6);
-  background-size: cover !important;
-  background-position: center;
-  color: white;
-  position: relative;
+.bio-left {
+  background-color: blue;
+  display: grid;
+  grid-template-columns: auto auto;
+
 }
-.card-user {
-  position: absolute;
-  right: 10px;
-  top: 10px;
-  width: 40px;
-  border-radius: 50%;
+
+.bio-right {
+    background-color: orange;
+
+
 }
 
 
-.card-category {
-  display: flex;
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  font-size: 15px;
-  text-transform: uppercase;
-}
-.card-description {
-  width: 100%;
-  display:flex;
-  height: 150px;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  position: absolute;
-  bottom: 10px;
-  left: 10px;
-}
-.card-description h2 {
-  font-size: 24px;
-}
-.card-description p {
-  font-size: 14px;
-  opacity: 0.7;
-  font-weight: lighter;
-}
 
-.card-link:hover {
-  opacity: 0.1;
-}
+// #ghub {
+//   color:black;
+//   padding-right: 5px;
+//   font-size: 25px;
+//   position: relative;
+//   right: 0px;
+//   left: 20px;
+//   top: 40px;
+//   width: 40px;
+//   border-radius: 50%;
+// }
+
+// #ghub:hover {
+//   color:lightgrey;
+// }
+
+// .lang-display {
+//   font-size: 12px;
+
+//   flex: 1 0 30%;
+
+// }
+
+// .card {
+//   margin-top: 40px;
+//   margin-bottom: 40px;
+//   background: rgb(79, 140, 164);
+//   border-radius: 20px;
+//   height: 200px;
+//   text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+//   background-size: cover !important;
+//   background-position: center;
+//   color: white;
+//   position: relative;
+// }
+// .card-user {
+//   position: absolute;
+//   right: 10px;
+//   top: 10px;
+//   width: 40px;
+//   border-radius: 50%;
+// }
+
+
+// .card-category {
+//   display: flex;
+//   position: absolute;
+//   top: 10px;
+//   left: 10px;
+//   font-size: 15px;
+//   text-transform: uppercase;
+// }
+// .card-description {
+//   width: 100%;
+//   display:flex;
+//   height: 150px;
+//   flex-wrap: wrap;
+//   justify-content: space-around;
+//   position: absolute;
+//   bottom: 10px;
+//   left: 10px;
+// }
+// .card-description h2 {
+//   font-size: 24px;
+// }
+// .card-description p {
+//   font-size: 14px;
+//   opacity: 0.7;
+//   font-weight: lighter;
+// }
+
+// .card-link:hover {
+//   opacity: 0.1;
+// }
