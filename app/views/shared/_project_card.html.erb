@@ -4,7 +4,9 @@
     <div class="col-xs-12 col-sm-6">
       <div class="card-2" >
           <!-- Input edit button here -->
-            <%= render "shared/update_project_modal", project: project %>
+            <% if profile.user && profile.user == current_user %>
+            <%= render "shared/update_project_modal", project: project, profile: profile %>
+            <% end %>
           <!-- End Input Button -->
         <div class="box-2">
           <div class="title-box">
