@@ -1,6 +1,7 @@
 class AddProject
   def initialize(profile, url, github_type)
     @profile = profile
+    @url = url
     @project_name = url.split('/')[-1]
     @github_username = url.split('/')[-2]
     @key = ENV['GITHUB_TOKEN']

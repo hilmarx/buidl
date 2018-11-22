@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   resources :profiles, only: [:show, :create, :update] do
     resources :profile_technologies, only: [:new, :create, :destroy]
     resources :user_follows, only: [:create, :update]
-    resources :projects, only: [ :update] do
+    resources :projects, only: [ :update, :create] do
       resources :contributions, only: [:destroy]
     end
   end

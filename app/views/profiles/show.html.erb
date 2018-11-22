@@ -33,6 +33,8 @@
       <%= render 'shared/biocards' %>
     </div>
 
+    <%= render "shared/create_project_modular", project: @project, profile: @profile %>
+
       <div class="project-cards-container">
         <h3 class="text-center" >Github Projects</h3>
         <% @profile.projects.each do |project| %>
