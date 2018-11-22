@@ -12,6 +12,7 @@ class ProjectsController < ApplicationController
     url = params[:url]
     github_type = params[:github_type]
     @user.add_project(url, github_type)
+    redirect_to profile_path(@profile)
   end
 
 

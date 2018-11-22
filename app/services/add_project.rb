@@ -5,6 +5,7 @@ class AddProject
     @project_name = url.split('/')[-1]
     @github_username = url.split('/')[-2]
     @key = ENV['GITHUB_TOKEN']
+    # Github tyoe: Either orgs or users
     @github_type = github_type
     @project = []
     controller
