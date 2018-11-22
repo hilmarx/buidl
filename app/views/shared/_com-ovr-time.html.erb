@@ -1,6 +1,6 @@
-<% commits_per_week = @profile.commits_per_week_in_a_year(2018) %>
-<% unless commits_per_week %>
-  <img src="https://media.giphy.com/media/joV1k1sNOT5xC/giphy.gif" alt="">
-<% else %>
+  <% commits_per_week = @profile.commits_per_week_in_a_year(2018) %>
+  <% unless commits_per_week %>
+    <img src="https://media.giphy.com/media/joV1k1sNOT5xC/giphy.gif" alt="">
+  <% else %>
     <canvas id="comovert-chart" class="js-comovert-chart" data-year-array="<%= commits_per_week[:year_array] %>" data-comovertchartlabeldata="<%= commits_per_week.except(:year_array).to_json %>""></canvas>
-<% end %>
+  <% end %>
