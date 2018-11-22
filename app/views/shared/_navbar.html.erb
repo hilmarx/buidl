@@ -1,13 +1,16 @@
 <div class="navbar-wagon">
+  <div class="nav-left">
+     <%= image_tag 'Frame.png', class: "logo-image" %>
 
 
-
-  <!-- Logo -->
-  <%= link_to root_path, class: "navbar_logo logo_font" do %>
-  BUIDL
-  <% end %>
+      <!-- Logo -->
+      <%= link_to root_path, class: "navbar_logo logo_font" do %>
+        Buidl
+      <% end %>
+  </div>
 
   <!-- Right Navigation -->
+
   <div class="navbar-wagon-right hidden-xs hidden-sm">
 
     <% if user_signed_in? %>

@@ -1,6 +1,8 @@
 .banner {
   // background-image: image-url(".png");  <-- Put background image here
-  background-image: linear-gradient(to bottom right, white, #F3F3F3);
+  background: asset-url('banner-background.jpg'), linear-gradient(to bottom right, white, #F3F3F3);
+  background-size: contain;
+  background-repeat: no-repeat;
   height: calc(100vh - 60px);
   padding: 15vh 0 0 0;
   margin: 0;
@@ -31,6 +33,9 @@
   height: 40px;
   padding: 0 4px;
   vertical-align: text-bottom;
+  background: none;
+  border: none;
+  border-bottom: black 2px solid;
 }
 
 #homepage_search_button {
