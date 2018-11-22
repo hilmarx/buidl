@@ -19,6 +19,7 @@ gem 'webpacker'
 gem 'carrierwave', '~> 1.2'
 gem 'cloudinary'
 gem 'omniauth-github'
+gem 'rest-client', '>= 2.0.2'
 
 
 group :development do
