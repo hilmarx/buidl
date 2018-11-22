@@ -1,56 +1,21 @@
-// .profile-img-container {
-
-//   display: flex;
-
-// }
-
 .profile-header-container  {
-  width: 100%;
 
   display: flex;
   flex-direction: column;
   align-items: center;
-  // justify-content: center;
   margin: 50px 0px;
-  overflow: hidden;
 
 }
-
-.profile-img-div {
-
-  flex: 1 0 auto;
-
-}
-
-.name-div {
-
-  flex: 1 0 auto;
-
-
-}
-
-.follow-button-div {
-
-  flex: 1 0 auto;
-
-
-}
-
 
 .profile-photo{
 
-//   justify-content: center;
-
-  height: 200px;
-  width: 200px;
+  height: 205px;
+  width: 205px;
   border-radius: 50%;
   border: 5px white solid;
   background-position: center;
   background-size: cover;
 }
-
-
-
 
 
 // image hover

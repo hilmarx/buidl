@@ -1,6 +1,6 @@
 .banner {
   // background-image: image-url(".png");  <-- Put background image here
-  background: asset-url('banner-background.jpg'), linear-gradient(to bottom right, white, #F3F3F3);
+  // background: asset-url('banner-background.jpg'), linear-gradient(to bottom right, white, #F3F3F3);
   background-size: contain;
   background-repeat: no-repeat;
   height: calc(100vh - 60px);

@@ -1,28 +1,7 @@
 <div class="card-outer">
   <div class="row">
 
-    <div class="col-xs-12 col-md-4">
-      <div class="card-1">
-        <div class="box-1">
-          <% if project.photo.present? %>
-            <div class="card-image" style=" background: url('<%= image_path project.photo %>'); background-size: cover; background-position: center; ">
-          <% else %>
-
-            <!-- THIS CODE IS HERE TO GENERATE A RANDOM IMAGE FOR THE 21/11 PRESENTATION -->
-            <% random_image_array = [] %>
-            <% 22.times do |n| %>
-            <% random_image_array << "random_image_#{n + 1}.jpg" %>
-            <% end %>
-            <!-- FINISH -->
-
-            <div class="card-image" style=" background: url('<%= image_path random_image_array.sample %>'); background-size: cover; background-position: center; ">
-          <% end %>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-xs-12 col-sm-4">
+    <div class="col-xs-12 col-sm-6">
       <div class="card-2" >
         <div class="box-2">
           <div class="title-box">
@@ -43,7 +22,7 @@
       </div>
     </div>
 
-    <div class="col-xs-12 col-sm-4">
+    <div class="col-xs-12 col-sm-6">
       <div class="card-3 ">
         <div class="box-3">
 

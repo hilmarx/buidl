@@ -59,42 +59,42 @@ li {
   }
 }
 
-/* Small Devices, Tablets */
-@media (min-width : 768px) {
-  .box-1 .card-image{
-    // height:300px;
-  }
+// /* Small Devices, Tablets */
+// @media (min-width : 768px) {
+//   .box-1 .card-image{
+//     // height:300px;
+//   }
 
-  .box-2 {
-    // height:300px;
-    .p {
+//   .box-2 {
+//     // height:300px;
+//     .p {
 
-    }
-  }
+//     }
+//   }
 
-  .box-3 {
-    // height:300px;
-  }
-}
+//   .box-3 {
+//     // height:300px;
+//   }
+// }
 
 
 
-/* Medium Devices, Desktops */
-@media (min-width : 992px) {
-  .box-1 .card-image {
-    height:350px;
-  }
+// /* Medium Devices, Desktops */
+// @media (min-width : 992px) {
+//   .box-1 .card-image {
+//     height:350px;
+//   }
 
-  .box-2 {
-    height:350px;
-    .p {
-    }
-  }
+//   .box-2 {
+//     height:350px;
+//     .p {
+//     }
+//   }
 
-  .box-3 {
-    height:350px;
-  }
-}
+//   .box-3 {
+//     height:350px;
+//   }
+// }
 
 
 

@@ -1,54 +1,54 @@
 <div class="wrapper">
-        <div class="profile-container">
+  <div class="profile-container">
 
-                  <div class="profile-header-container">
-                    <div class="profile-img-div">
+    <div class="profile-header-container">
+      <div class="profile-img-div">
 
-                      <% if @profile.photo.present? %>
-                      <!-- photo : user photo -->
+        <% if @profile.photo.present? %>
+        <!-- photo : user photo -->
 
-                        <%= render "shared/profile-photo", profile: @profile  %>
+        <%= render "shared/profile-photo", profile: @profile  %>
 
-                      <%# @image =  @profile.photo %>
-                      <%#= render 'shared/photo_upload'%>
-                      <% else %>
-                        <%= render "shared/github-photo", profile: @profile  %>
-                      <%# @image = @profile.profile_photo %>
-                      <%#= render 'shared/photo_upload'%>
-                      <% end %>
-                    </div>
+        <%# @image =  @profile.photo %>
+        <%#= render 'shared/photo_upload'%>
+        <% else %>
+        <%= render "shared/github-photo", profile: @profile  %>
+        <%# @image = @profile.profile_photo %>
+        <%#= render 'shared/photo_upload'%>
+        <% end %>
+      </div>
 
-                    <div class="name-div">
-                      <h1 class="name"><%= @profile.full_name %></h1>
-                    </div>
+      <div class="name-div">
+        <h1 class="name"><%= @profile.full_name %></h1>
+      </div>
 
-                    <div class="follow-button-div">
-                      <!--- Jethro's Follow Button ---->
-                      <%= render "shared/jethro_follow_button" %>
-                      <!--- Jethro's Follow Button End---->
-                    </div>
-                  </div>
+      <div class="follow-button-div">
+        <!--- Jethro's Follow Button ---->
+        <%= render "shared/jethro_follow_button" %>
+        <!--- Jethro's Follow Button End---->
+      </div>
+    </div>
 
-          <div class="commits-graph-container">
-                  <%= render 'shared/biocards' %>
-          </div>
-
-
+    <div class="commits-graph-container">
+      <%= render 'shared/biocards' %>
+    </div>
 
 
-          <div class="project-cards-container">
-            <h3 class="text-center" >Github Projects</h3>
-            <% @profile.projects.each do |project| %>
-            <%= render 'shared/project_card', project: project %>
-            <%#= render 'projects/photo-upload-project', project: project, profile: @profile %>
-            <!-- don't delete, this is photo uploader -->
-            <% end %>
 
-            <div class="text-center">
-              <p> <%= link_to "Home", root_path %></p>
-            </div>
-          </div>
-        </div>
+
+    <div class="project-cards-container">
+      <h3 class="text-center" >Github Projects</h3>
+      <% @profile.projects.each do |project| %>
+      <%= render 'shared/project_card', project: project %>
+      <%#= render 'projects/photo-upload-project', project: project, profile: @profile %>
+      <!-- don't delete, this is photo uploader -->
+      <% end %>
+
+      <div class="text-center">
+        <p> <%= link_to "Home", root_path %></p>
+      </div>
+    </div>
+  </div>
 </div>
 
 
