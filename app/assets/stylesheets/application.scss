@@ -13,3 +13,17 @@
 @import "layouts/index";
 @import "components/index";
 @import "pages/index";
+
+.specialone {
+  background: white;
+  width: 100%;
+  margin: 50px 0px;
+  padding: 50px 200px;
+  box-shadow: 1px 1px 1px lightgrey;
+  border-radius: 4px;
+  canvas {
+    width:100% !important;
+    height:350px !important;
+    margin-top: 50px;
+  }
+}
