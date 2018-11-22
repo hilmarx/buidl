@@ -3,6 +3,7 @@ ruby '2.4.4'
 
 gem 'bootsnap', require: false
 gem 'devise'
+gem 'pundit'
 gem 'jbuilder', '~> 2.0'
 gem 'pg', '~> 0.21'
 gem 'puma'
@@ -19,7 +20,6 @@ gem 'webpacker'
 gem 'carrierwave', '~> 1.2'
 gem 'cloudinary'
 gem 'omniauth-github'
-
 
 group :development do
   gem 'web-console', '>= 3.3.0'
