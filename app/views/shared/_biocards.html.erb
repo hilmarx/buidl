@@ -1,29 +1,42 @@
 <div class="biocards-container">
   <div class="row">
-    <div class="bio-left col-xs-12 col-sm-6">
-      <div class="grid-item biobox-1">
-         <i id="ghub" class="fab fa-github fa-2x"><%= link_to @profile.github_username, "https://github.com/#{@profile.github_username}", :target => "_blank", :style=> 'color:#FFFFFF;', :class => 'link_to'%></i>
+
+
+      <div class="bio-left col-xs-12 col-sm-6">
+
+        <div class="bio-flex">
+          <div class="bio-flex-item1">
+
+            <div class="biobox-1">
+              <i id="ghub" class="fab fa-github fa-2x"><%= link_to @profile.github_username, "https://github.com/#{@profile.github_username}", :target => "_blank", :style=> 'color:#FFFFFF;', :class => 'link_to'%></i>
+           </div>
+
+
+            <div class=" biobox-4">
+              <div>Top language</div>
+            </div>
+          </div>
+
+        <div class="bio-flex-item2">
+          <div class="biobox-2">
+            <div>Total commits</div>
+          </div>
+
+          <div class=" biobox-3">
+            <div>Total projects</div>
+          </div>
+        </div>
+
+        </div>
       </div>
 
-      <div class="grid-item biobox-2">
-          <div>total commits</div>
-      </div>
-
-      <div class="grid-item biobox-3">
-        <div>total projects</div>
-
-      </div>
-      <div class="grid-item biobox-4">
-      <div>top language</div>
-      </div>
-    </div>
 
     <div class="bio-right col-xs-12 col-sm-6">
       <div class="topl-container">
-        <div class="tolp-title">
+        <div class="tolp-title text-center">
           Top Language
         </div>
-        <div class="topl-graph">
+        <div class="topl-graph text-center">
           <%= render 'shared/top_languages' %>
         </div>
       </div>

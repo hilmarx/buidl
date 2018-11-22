@@ -1,29 +1,86 @@
 .biocards-parent-container {
-  // display:flex;
 
-  // width: 800px;
 }
 
 .biocards-container{
-  // width:100%;
+
+  width:800px;
+
   background-color: blue;
 
 
 }
 
-.bio-left {
-  background-color: blue;
-  display: grid;
-  grid-template-columns: auto auto;
+.bio-flex {
+  min-height: 200px;
+  display:flex;
+  flex-direction: column;
+
+  justify-content: space-between;
+  // align-items: space-between;
 
 }
+
+.bio-flex-item2 {
+  display:flex;
+
+  justify-content: space-between;
+
+
+}
+
+.bio-flex-item1 {
+
+  display:flex;
+  justify-content: space-between;
+
+
+}
+
 
 .bio-right {
-    background-color: orange;
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: orange;
 
 
 }
 
+.biobox-1 {
+
+  flex: 0 1 50%;
+
+  background-color: purple;
+}
+
+
+
+.biobox-2 {
+
+  flex: 0 1 50%;
+
+  background-color: red;
+
+
+}
+.biobox-3 {
+
+  flex: 0 1 50%;
+
+  background-color: green;
+
+
+}
+.biobox-4 {
+
+  flex: 0 1 50%;
+
+  background-color: white;
+
+
+}
 
 
 // #ghub {
