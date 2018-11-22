@@ -1,5 +1,6 @@
 function uploadButton () {
   const fakeButton = document.getElementById('upload-fake-btn') //this is the font awesome
+  if (fakeButton) {
 
   fakeButton.addEventListener("click", (event) => {
     event.preventDefault();
@@ -7,6 +8,7 @@ function uploadButton () {
     const targetedButton = document.getElementById('profile_photo')
     targetedButton.click()
   });
+  }
 }
 
 // function uploadButtonProject () {

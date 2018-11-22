@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_20_071130) do
+ActiveRecord::Schema.define(version: 2018_11_22_034329) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,10 +53,10 @@ ActiveRecord::Schema.define(version: 2018_11_20_071130) do
   create_table "project_follows", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "user_id"
+    t.bigint "profile_id"
     t.bigint "project_id"
+    t.index ["profile_id"], name: "index_project_follows_on_profile_id"
     t.index ["project_id"], name: "index_project_follows_on_project_id"
-    t.index ["user_id"], name: "index_project_follows_on_user_id"
   end
 
   create_table "project_technologies", force: :cascade do |t|
@@ -71,7 +71,7 @@ ActiveRecord::Schema.define(version: 2018_11_20_071130) do
 
   create_table "projects", force: :cascade do |t|
     t.string "name"
-    t.string "description"
+    t.text "description"
     t.string "github_url"
     t.string "url"
     t.string "photo"
@@ -102,6 +102,15 @@ ActiveRecord::Schema.define(version: 2018_11_20_071130) do
     t.integer "leader_id"
     t.integer "follower_id"
     t.boolean "status", default: true, null: false
+  end
+
+  create_table "user_technologies", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "technology_id"
+    t.bigint "profile_id"
+    t.index ["profile_id"], name: "index_user_technologies_on_profile_id"
+    t.index ["technology_id"], name: "index_user_technologies_on_technology_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -136,8 +145,8 @@ ActiveRecord::Schema.define(version: 2018_11_20_071130) do
   add_foreign_key "profile_technologies", "profiles"
   add_foreign_key "profile_technologies", "technologies"
   add_foreign_key "profiles", "users"
+  add_foreign_key "project_follows", "profiles"
   add_foreign_key "project_follows", "projects"
-  add_foreign_key "project_follows", "users"
   add_foreign_key "project_technologies", "projects"
   add_foreign_key "project_technologies", "technologies"
 end
