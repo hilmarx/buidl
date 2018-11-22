@@ -29,10 +29,16 @@
       </div>
     </div>
 
-    <div class="commits-graph-container">
-      <%= render 'shared/biocards' %>
+    <div class="specialone" >
+      <h2 class="text-center">
+        Commits over time
+      </h2>
+      <%= render 'shared/com-ovr-time'%>
     </div>
 
+    <div class="biocards-parent-container">
+      <%= render 'shared/biocards' %>
+    </div>
       <div class="project-cards-container">
         <h3 class="text-center" >Github Projects</h3>
         <% @profile.projects.each do |project| %>

@@ -1,12 +1,12 @@
 .card-outer {
+  max-width: 800px;
   background-color: #FFFFFF;
-  box-shadow: 4px 4px 5px rgba(50,50,50,0.25);
+  box-shadow: 8px 8px 8px 8px 25px rgba(50,50,50,0.10);
   margin: 20px auto;
-  font-size: 14px;
+  // font-size: 14px;
   color: $black;
-  max-width: 991px;
-}
 
+}
 
 .box-2  {
 
@@ -19,12 +19,19 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding-bottom: 20px;
 }
 
 .p-lang {
 
   display: flex;
-  justify-content: space-between;
+  justify-content: start;
+  align-items: center;
+}
+
+.primary-language {
+
+margin-left: 10px;
 }
 // .h3 {
 //   margin: 0px;
