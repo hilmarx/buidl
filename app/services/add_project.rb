@@ -5,6 +5,8 @@ class AddProject
     @github_username = url.split('/')[-2]
     @key = ENV['GITHUB_TOKEN']
     @github_type = github_type
+    @project = []
+    controller
   end
 
 
@@ -28,18 +30,20 @@ class AddProject
 
   def find_project(projects_json)
     projects_json.each do |repo|
-      if repo['name'] == project_name
+      if repo['name'] == @project_name
         selected_repo = repo
-        create_project(selected_repo)
+        project = create_project(selected_repo)
+        @project << project
       else
         # Raise an error
       end
     end
+    @project.first
   end
 
   def create_project(repo)
-    if Project.find(name: repo['name']).present?
-      project = Project.find(name: repo['name'])
+    if Project.find_by(github_id: repo['id'])
+      project = Project.find_by(github_id: repo['id'])
     else
       project = Project.new(
         name: repo['name'],
@@ -86,7 +90,7 @@ class AddProject
     repo = project
     # Loop over all contributions of a single repository
     repo_contributions.each do |contributions|
-      if contributions['author']['login'] == @profile.name
+      if contributions['author']['login'] == @profile.github_username
         # Loop over all contrubutions of a single contributor
         contributions['weeks'].each do |contribution|
           lines_added = contribution['a'].to_i
@@ -98,6 +102,11 @@ class AddProject
         end
       end
     end
+  end
+
+  def create_contributions(lines_added, lines_deleted, commits, repo, datetime)
+    new_contribution = Contribution.new(lines_added: lines_added, lines_deleted: lines_deleted, commits: commits, profile_id: @profile.id, project_id: repo.id, date: datetime)
+    new_contribution.save!
   end
 
 end
