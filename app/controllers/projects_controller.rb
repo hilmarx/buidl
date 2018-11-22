@@ -4,6 +4,17 @@ require 'open-uri'
 class ProjectsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:show]
 
+
+  def create
+    @profile = Profile.find(params[:profile_id])
+    authorize (@profile)
+    @user = User.find(@profile.user_id)
+    url = params[:url]
+    github_type = params[:github_type]
+    @user.add_project(url, github_type)
+    redirect_to profile_path(@profile)
+  end
+
   # def index
   #   @projects = policy_scope(Product)
   # end
@@ -24,6 +35,7 @@ class ProjectsController < ApplicationController
     @project.update(project_params)
     redirect_to profile_path(@profile)
   end
+
 
   private
 

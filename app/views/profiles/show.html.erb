@@ -39,6 +39,12 @@
     <div class="biocards-parent-container">
       <%= render 'shared/biocards' %>
     </div>
+    
+    <!--- Button to add new projects --->
+    <%= render "shared/create_project_modular", project: @project, profile: @profile %>
+    <!--- Button to add new projects --->
+    
+
       <div class="project-cards-container">
         <h3 class="text-center" >Github Projects</h3>
         <% @profile.projects.each do |project| %>
