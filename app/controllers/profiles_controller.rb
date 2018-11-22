@@ -1,10 +1,10 @@
-
 class ProfilesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:create, :show]
 
   def create
     if Profile.find_by(github_username: profile_params[:github_username]).present?
       @profile = Profile.find_by(github_username: profile_params[:github_username])
+      authorize @profile
       if @profile.user == nil
         get_profile_user_id
       end
@@ -12,6 +12,7 @@ class ProfilesController < ApplicationController
     else
       @profile = Profile.new(profile_params)
       get_profile_user_id
+      authorize @profile
       @profile.save!
       redirect_to profile_path(@profile)
     end
@@ -21,6 +22,8 @@ class ProfilesController < ApplicationController
     @user = current_user
     @project = Project.new
     @profile = Profile.find(params[:id])
+    authorize @profile
+    authorize @project
     @user_follows = UserFollow.all
     # @user_follow_test = UserFollow.where()
     if @profile.user == nil
@@ -31,6 +34,8 @@ class ProfilesController < ApplicationController
   def update
     @profile = Profile.find(params[:id])
     @profile.update(profile_params)
+    authorize @profile
+
     #example for user controller @profile.user.profile_photo = @profile.photo
     #example for user controller @profile.user.save
     redirect_to profile_path(@profile)

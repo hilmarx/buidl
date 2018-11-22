@@ -12,6 +12,7 @@
   color: grey;
 }
 
+
 #edit_profile_2 {
   // position: absolute;
   // border-radius: 50%;
@@ -19,4 +20,13 @@
   // right: 0;
   // left: 0;
   // bottom: 0;
+}
+
+.modal-body {
+  .form-control-label {
+    color: black
+  }
+  .form-control {
+    color: black
+  }
 }

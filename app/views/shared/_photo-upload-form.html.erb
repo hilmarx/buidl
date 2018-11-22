@@ -1,11 +1,12 @@
-<%= simple_form_for(@profile) do |f| %>
-  <!-- [...] -->
-  <label class= 'form-control-label string optional' for="profile_photo"></label>
-  <%= f.input :photo, label: false, input_html: {style: 'display: none'}  %>
-  <%= f.input :photo_cache, as: :hidden %>
-  <p>Change photo</p>
+<% if policy(@profile).update? %>
+  <%= simple_form_for(@profile) do |f| %>
+    <!-- [...] -->
+    <label class= 'form-control-label string optional' for="profile_photo"></label>
+    <%= f.input :photo, label: false, input_html: {style: 'display: none'}  %>
+    <%= f.input :photo_cache, as: :hidden %>
+    <p>Change photo</p>
 
-  <a href="#" class='btn' id='upload-fake-btn'><i class="fas fa-edit"></i></a>
-  <%= submit_tag "", :style => "display: none;" %>
+    <a href="#" class='btn' id='upload-fake-btn'><i class="fas fa-edit"></i></a>
+    <%= submit_tag "", :style => "display: none;" %>
+  <% end %>
 <% end %>
-

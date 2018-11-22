@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_20_071130) do
+ActiveRecord::Schema.define(version: 2018_11_22_034329) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -71,7 +71,7 @@ ActiveRecord::Schema.define(version: 2018_11_20_071130) do
 
   create_table "projects", force: :cascade do |t|
     t.string "name"
-    t.string "description"
+    t.text "description"
     t.string "github_url"
     t.string "url"
     t.string "photo"
@@ -102,15 +102,6 @@ ActiveRecord::Schema.define(version: 2018_11_20_071130) do
     t.integer "leader_id"
     t.integer "follower_id"
     t.boolean "status", default: true, null: false
-  end
-
-  create_table "user_technologies", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.bigint "technology_id"
-    t.bigint "profile_id"
-    t.index ["profile_id"], name: "index_user_technologies_on_profile_id"
-    t.index ["technology_id"], name: "index_user_technologies_on_technology_id"
   end
 
   create_table "users", force: :cascade do |t|

@@ -39,17 +39,13 @@
     <div class="biocards-parent-container">
       <%= render 'shared/biocards' %>
     </div>
-
-
-
-
-    <div class="project-cards-container">
-      <h3 class="text-center" >Projects</h3>
-      <% @profile.projects.each do |project| %>
-      <%= render 'shared/project_card', project: project %>
-      <%#= render 'projects/photo-upload-project', project: project, profile: @profile %>
-      <!-- don't delete, this is photo uploader -->
-      <% end %>
+      <div class="project-cards-container">
+        <h3 class="text-center" >Github Projects</h3>
+        <% @profile.projects.each do |project| %>
+          <%= render 'shared/project_card', project: project, contributions: project.contributions.where(profile_id: @profile.id) %>
+          <%#= render 'projects/photo-upload-project', project: project, profile: @profile %>
+        <!-- don't delete, this is photo uploader -->
+        <% end %>
 
       <div class="text-center">
         <p> <%= link_to "Home", root_path %></p>

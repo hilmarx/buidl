@@ -71,7 +71,7 @@ class FetchGithub
     Project.new(
       name: repo['name'],
       private: repo['private'],
-      description: repo['description'],
+      github_description: repo['description'],
       primary_language: repo['language'],
       size_kilobytes: repo['size'],
       github_url: repo['html_url'],
