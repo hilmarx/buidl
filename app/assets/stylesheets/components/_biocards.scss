@@ -1,20 +1,15 @@
 .biocards-parent-container {
 
-}
-
-.biocards-container{
-
   width:800px;
-
-  background-color: blue;
-
+  margin:20px;
 
 }
+
 
 .bio-flex {
-  min-height: 200px;
   display:flex;
   flex-direction: column;
+  height: 275px;
 
   justify-content: space-between;
   // align-items: space-between;
@@ -22,10 +17,9 @@
 }
 
 .bio-flex-item2 {
+
   display:flex;
-
   justify-content: space-between;
-
 
 }
 
@@ -34,53 +28,30 @@
   display:flex;
   justify-content: space-between;
 
-
 }
 
 
 .bio-right {
   display:flex;
+  height:275px;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: orange;
-
-
-}
-
-.biobox-1 {
-
-  flex: 0 1 50%;
-
-  background-color: purple;
-}
-
-
-
-.biobox-2 {
-
-  flex: 0 1 50%;
-
-  background-color: red;
-
-
-}
-.biobox-3 {
-
-  flex: 0 1 50%;
-
-  background-color: green;
-
-
-}
-.biobox-4 {
-
-  flex: 0 1 50%;
-
   background-color: white;
 
 
+
 }
+
+.biobox {
+  background-color: white;
+  flex: 0  48%;
+  height: 130px;
+  width: auto;
+  color: $black;
+
+}
+
 
 
 // #ghub {
