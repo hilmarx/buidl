@@ -1,6 +1,6 @@
 .banner {
   // background-image: image-url(".png");  <-- Put background image here
-  background-image: linear-gradient(to bottom right, white, #A0A0A0);
+  background-image: linear-gradient(to bottom right, white, #F3F3F3);
   height: calc(100vh - 60px);
   padding: 15vh 0 0 0;
   margin: 0;
@@ -8,11 +8,13 @@
 }
 
 #homepage_logo {
+  color: #5E5E5E;
   font-size: 120px;
   margin: 0 0 3vh 0;
 }
 
 #homepage_aphorism {
+  color: #5E5E5E;
   font-size: 25px;
   margin: 2vh 0 6vh 0;
 }
@@ -24,7 +26,7 @@
 
 #profile_github_username {
   width: 300px;
-  border: 1px solid #B8B8B8;
+  // border: 0.25px solid #5E5E5E;
   margin: 0 auto;
   height: 40px;
   padding: 0 4px;
@@ -34,10 +36,11 @@
 #homepage_search_button {
   font-size: 38px;
   vertical-align: baseline;
+  color: #5E77FF;
   background-color: transparent;
   border: none;
 }
 
 #homepage_search_button a {
-  color: #000000;
+  color: #5E77FF;
 }
