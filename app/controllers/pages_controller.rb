@@ -6,6 +6,7 @@ class PagesController < ApplicationController
     # username = params[:first_name]
   end
 
+
   def search
 
   end
