@@ -26,6 +26,6 @@
               <% end %>
             <% else %>
               <%= link_to(user_github_omniauth_authorize_path, class: 'btn btn-primary') do %>
-              Sign in with Github to follow <%= @profile.full_name %>
+              Follow <%= @profile.full_name %>
               <% end %>
             <% end %>

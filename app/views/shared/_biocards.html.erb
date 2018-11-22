@@ -21,7 +21,7 @@
             <div class="biobox biobox-4">
               <div class="biobox-content">
                 <div>Top language:</div>
-                <div><strong><%= @profile.top_languages.first[0].capitalize %></strong></div>
+                <div><strong><%#= unless @profile.top_languages.first[0].capitalize %></strong></div>
             </div>
           </div>
         </div>
@@ -30,7 +30,7 @@
           <div class="biobox biobox-2">
             <div class="biobox-content">
               <div>Total commits:</div>
-              <div><strong><%= @profile.total_contributions[:commits] %></strong></div>
+              <div><strong><%#= @profile.total_contributions[:commits] %></strong></div>
 
             </div>
           </div>
@@ -39,7 +39,7 @@
              <div class="biobox-content">
               <div><%=  %></div>
             <div>Total projects</div>
-            <div><strong><%= @profile.activity.length %></strong></div>
+            <div><strong><%#= @profile.activity.length %></strong></div>
           </div>
           </div>
         </div>
