@@ -1,4 +1,3 @@
-
 class ProfilesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:create, :show]
 
@@ -24,6 +23,7 @@ class ProfilesController < ApplicationController
     @project = Project.new
     @profile = Profile.find(params[:id])
     authorize @profile
+    authorize @project
     @user_follows = UserFollow.all
     # @user_follow_test = UserFollow.where()
     if @profile.user == nil
