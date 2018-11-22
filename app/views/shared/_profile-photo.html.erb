@@ -1,5 +1,10 @@
+
 <div class="profile-img profile-photo" style="background-image: url('<%= cl_image_path profile.photo %>');">
+
+<% if @profile.user && @profile.user == current_user %>
   <div id="profile-img-hover" class="text-center">
       <%= render 'shared/photo-upload-form'%>
   </div>
+  <% end %>
+
 </div>

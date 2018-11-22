@@ -34,6 +34,7 @@ class ProfilesController < ApplicationController
   def update
     @profile = Profile.find(params[:id])
     @profile.update(profile_params)
+    authorize @profile
 
     #example for user controller @profile.user.profile_photo = @profile.photo
     #example for user controller @profile.user.save

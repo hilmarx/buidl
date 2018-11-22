@@ -1,5 +1,4 @@
 <% if policy(@profile).update? %>
-<h1><%= user_signed_in? %></h1>
   <%= simple_form_for(@profile) do |f| %>
     <!-- [...] -->
     <label class= 'form-control-label string optional' for="profile_photo"></label>
