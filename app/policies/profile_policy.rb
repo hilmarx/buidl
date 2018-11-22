@@ -7,6 +7,10 @@ class ProfilePolicy < ApplicationPolicy
     return true
   end
 
+  def update?
+    record.user == user && !user.nil?
+  end
+
   class Scope < Scope
     def resolve
       scope.all
