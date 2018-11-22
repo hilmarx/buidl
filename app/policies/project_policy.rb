@@ -9,8 +9,9 @@ class ProjectPolicy < ApplicationPolicy
     return true
   end
 
-  def destroy?
-    record.user == user && !user.nil?
+  def update?
+    # Only users that contriuted to the project are allowed to update
+    record.contributions.where(profile_id: user.profile.id).first.profile_id == user.profile.id && !user.nil?
   end
 
 
