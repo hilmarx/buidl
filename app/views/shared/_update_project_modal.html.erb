@@ -15,8 +15,10 @@
       </div>
       <div class="modal-body">
         <%= simple_form_for [@profile, project] do |f| %>
-          <%= f.input :name, :label => "Title"%>
-          <%= f.input :description, as: :text, :label => "Description"%>
+          <!--<label class= 'edit-projectx' for="profile_photo">Titel</label>-->
+          <%= f.input :name%>
+         <!-- <label class= 'edit-projectx' for="profile_photo">Description</label>--->
+          <%= f.input :description, as: :text%>
 
       </div>
       <div class="modal-footer">
