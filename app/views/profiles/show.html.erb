@@ -1,78 +1,83 @@
-
 <% content_for :meta_title, "#{@profile.github_username} is on #{DEFAULT_META["meta_product_name"]}" %>
 <% content_for :meta_description, @profile.description %>
 
-  <div class="wrapper">
-    <div class="profile-container">
+<div class="wrapper">
+  <div class="profile-container">
 
-      <div class="profile-header-container">
-        <div class="profile-img-div">
+    <div class="profile-header-container">
+      <div class="profile-img-div">
 
-          <% if @profile.photo.present? %>
-          <!-- photo : user photo -->
+        <% if @profile.photo.present? %>
+        <!-- photo : user photo -->
 
-          <%= render "shared/profile-photo", profile: @profile  %>
+        <%= render "shared/profile-photo", profile: @profile  %>
 
-          <%# @image =  @profile.photo %>
-          <%#= render 'shared/photo_upload'%>
-          <% else %>
-          <%= render "shared/github-photo", profile: @profile  %>
-          <%# @image = @profile.profile_photo %>
-          <%#= render 'shared/photo_upload'%>
-          <% end %>
-        </div>
+        <%# @image =  @profile.photo %>
+        <%#= render 'shared/photo_upload'%>
+        <% else %>
+        <%= render "shared/github-photo", profile: @profile  %>
+        <%# @image = @profile.profile_photo %>
+        <%#= render 'shared/photo_upload'%>
+        <% end %>
+      </div>
 
+
+      <div class="name-and-follow">
         <div class="name-div">
           <h1 class="name"><%= @profile.full_name %></h1>
         </div>
 
         <div class="follow-button-div">
-          <!--- Jethro's Follow Button ---->
           <%= render "shared/jethro_follow_button" %>
-          <!--- Jethro's Follow Button End---->
         </div>
+      </div>
+    </div>
 
       <div class="activity-title">
 
       </div>
 
-    <div class="specialone box-shadow-os" >
+      <div class="specialone box-shadow-os" >
         <h5 class="">
           Commits over time
         </h5>
 
-      <%= render 'shared/com-ovr-time', profile: @profile%>
-    </div>
+        <%= render 'shared/com-ovr-time', profile: @profile%>
+      </div>
 
       <div class="biocards-parent-container">
         <%= render 'shared/biocards' %>
 
-      <!--- Button to add new projects --->
-      <% if @profile.user && @profile.user == current_user %>
-        <%= render "shared/create_project_modular", project: @project, profile: @profile %>
-      <% end %>
-      <!--- Button to add new projects --->
-
       </div>
 
 
 
-      </div>
+    </div>
 
-
-
-        <div class="project-cards-container">
-          <h3 class="projects-header" >Projects</h3>
-
-          <% @profile.projects.each do |project| %>
-            <%= render 'shared/project_card', project: project, contributions: project.contributions.where(profile_id: @profile.id), profile: @profile  %>
-            <%#= render 'projects/photo-upload-project', project: project, profile: @profile %>
-          <!-- don't delete, this is photo uploader -->
+    <div class="projects-add-container">
+      <div class="projects-add">
+        <div class="proj-title">Projects</div>
+        <div class="add-a-project-btn">
+          <% if @profile.user && @profile.user == current_user %>
+          <%= render "shared/create_project_modular", project: @project, profile: @profile %>
           <% end %>
-
-        <div class="text-center">
-          <p> <%= link_to "Home", root_path %></p>
         </div>
       </div>
     </div>
+
+
+    <div class="project-cards-container">
+
+
+      <% @profile.projects.each do |project| %>
+      <%= render 'shared/project_card', project: project, contributions: project.contributions.where(profile_id: @profile.id), profile: @profile  %>
+      <%#= render 'projects/photo-upload-project', project: project, profile: @profile %>
+      <!-- don't delete, this is photo uploader -->
+      <% end %>
+
+      <div class="text-center">
+        <p> <%= link_to "Home", root_path %></p>
+      </div>
+    </div>
   </div>
+</div>
