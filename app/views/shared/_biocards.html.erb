@@ -9,10 +9,12 @@
 
             <div class="biobox biobox-1 box-shadow-os">
               <div class="biobox-content">
-                <div>Github username:</div>
+                <div class="bio-title">Github username:</div>
                 <strong><%= link_to "https://github.com/#{@profile.github_username}" do %>
-                  <i id="ghub" class="fab fa-github fa-2x"></i>
+
                   <%= @profile.github_username %>
+                  <i id="ghub" class="fab fa-github fa-2x biocards-git-icon"></i>
+
                 <% end %></strong>
 
              </div>
@@ -20,7 +22,7 @@
 
             <div class="biobox biobox-4 box-shadow-os">
               <div class="biobox-content">
-                <div>Top language:</div>
+                <div class="bio-title">Top language:</div>
 
                 <% unless @profile.top_languages == [] %>
                 <div><strong><%= @profile.top_languages.first[0].capitalize %></strong></div>
@@ -32,7 +34,7 @@
         <div class="bio-flex-item2">
           <div class="biobox biobox-2  box-shadow-os">
             <div class="biobox-content">
-              <div>Total commits:</div>
+              <div class="bio-title">Total commits:</div>
               <div><strong><%= @profile.total_contributions[:commits] %></strong></div>
 
             </div>
@@ -40,8 +42,7 @@
 
           <div class="biobox biobox-3 box-shadow-os">
              <div class="biobox-content">
-              <div><%=  %></div>
-            <div>Total projects</div>
+            <div class="bio-title">Total projects:</div>
             <div><strong><%= @profile.activity.length %></strong></div>
           </div>
           </div>
