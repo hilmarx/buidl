@@ -8,7 +8,7 @@
   <p id="homepage_aphorism">A place for developers to showcase their work</p>
 
    <div id="homepage_search_form_wrapper">
-    <%= simple_form_for @profile, wrapper: :inline_form, defaults: { label: false } do |f| %>
+    <%= simple_form_for @profile, wrapper: :inline_form, defaults: { label: false, } do |f| %>
 
     <%= f.input_field :github_username, placeholder: "What's your Github username?", autofocus: false, :html=> { id: "homepage_search_bar" } %>
 
