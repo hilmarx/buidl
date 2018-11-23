@@ -9,6 +9,21 @@
       <% end %>
   </div>
 
+  <div class="nav-center">
+   <div id="homepage_search_nav">
+    <%= simple_form_for @profile, defaults: { label: false }, :html=> { id: "nav-search" } do |f| %>
+
+    <%= f.input_field :github_username, placeholder: "Search a GitHub username", autofocus: true %>
+
+      <%= button_tag class: "btn-nav" do %>
+        <i class="fa">Search</i>
+
+      <% end %>
+    <% end %>
+
+   </div>
+  </div>
+
   <!-- Right Navigation -->
 
   <div class="navbar-wagon-right hidden-xs hidden-sm">
