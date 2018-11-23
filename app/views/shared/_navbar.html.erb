@@ -11,9 +11,9 @@
 
   <div class="nav-center">
    <div id="homepage_search_nav">
-    <%= simple_form_for @profile, defaults: { label: false }, :html=> { id: "nav-search" } do |f| %>
+    <%= simple_form_for :search, defaults: { label: false }, :html=> { id: "nav-search" }, url: profile_path(1), method: 'get' do |f| %>
 
-    <%= f.input_field :github_username, placeholder: "Search a GitHub username", autofocus: true %>
+      <%= f.input_field :github_username, placeholder: "Search a GitHub username", autofocus: true %>
 
       <%= button_tag class: "btn-nav" do %>
         <i class="fa">Search</i>
