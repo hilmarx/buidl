@@ -14,7 +14,7 @@ class CommitsPerWeekInYear
     @activity.each do |name, value|
       array = []
       value.each do |date, commits|
-        # next unless date
+        next unless date
         if date.year == @year
           cweek = Date.parse(date.to_s).cweek
           array[cweek] ? array[cweek] += commits : array[cweek] = commits

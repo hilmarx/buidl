@@ -78,8 +78,9 @@ class Profile < ApplicationRecord
 
   def commits_per_week_in_a_year(year)
     begin
+      # self.activity works, year works. Javacript might not work
       CommitsPerWeekInYear.new(self.activity, year).run
-    rescue
+    rescue Exception
       false
     end
   end
