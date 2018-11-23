@@ -100,3 +100,58 @@
   border-left: 1px solid #E6E6E6;
   border-top: 1px solid #E6E6E6;
 }
+
+.fa {
+  display:flex;
+ border-radius: 10px;
+ font-size: 20px;
+ padding-top: 1px;
+ padding-bottom: 1px;
+}
+
+.btn-nav {
+   margin-left: 10px;
+  border:none;
+  border-radius: 10px;
+ font-size: 30px;
+ padding-bottom: 3px;
+ border-bottom: #5E77FF 2px solid;
+  border-top: #5E77FF 2px solid;
+}
+
+.btn-nav:hover {
+  background: lightgrey;
+  border-top: lightgrey;
+  border-bottom: lightgrey;
+  color: white;
+}
+
+.nav-center {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#nav-search {
+  display: flex;
+  align-items:center;
+  justify-content:center;
+
+}
+
+
+#nav-search #profile_github_username{
+  border-radius: 10px;
+  font-size: 14px;
+  width: 200px;
+  border: 0.25px solid #5E5E5E;
+  margin: 0 auto;
+  height: 30px;
+  padding: 0 4px;
+  vertical-align: text-bottom;
+  background: none;
+  border: none;
+  border-bottom: #5E77FF 2px solid;
+  border-top: #5E77FF 2px solid;
+}
+
