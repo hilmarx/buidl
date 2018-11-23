@@ -1,5 +1,5 @@
 meta_product_name: "BUIDL"
 meta_title: "BUIDL - A place for developers to showcase their work"
 meta_description: "Delightfully display all your Github repos in just one click"
-meta_image: "Frame.png"                       # should exist in `app/assets/images/`
+meta_image: "glasses.jpg"                       # should exist in `app/assets/images/`
 twitter_account: "@realDonaldTrump"
