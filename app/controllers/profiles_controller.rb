@@ -1,6 +1,7 @@
 class ProfilesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:create, :show]
 
+
   def create
     if Profile.find_by(github_username: profile_params[:github_username]).present?
       @profile = Profile.find_by(github_username: profile_params[:github_username])

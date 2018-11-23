@@ -1,41 +1,69 @@
-<div class="specialone" >
-  <h2 class="text-center">
-    Commits over time
-  </h2>
-  <%= render 'shared/com-ovr-time'%>
-</div>
-<div class="container">
-  <br>
-
+<div class="biocards-container">
   <div class="row">
 
 
-    <div class="col-xs-12 col-sm-6">
+      <div class="bio-left col-xs-12 col-sm-6">
 
-      <div class="card">
+        <div class="bio-flex">
+          <div class="bio-flex-item1">
 
-        <div class="card-category">Stats</div>
+            <div class="biobox biobox-1">
+              <div class="biobox-content">
+                <div>Github username:</div>
+                <strong><%= link_to "https://github.com/#{@profile.github_username}" do %>
+                  <i id="ghub" class="fab fa-github fa-2x"></i>
+                  <%= @profile.github_username %>
+                <% end %></strong>
 
-        <div class="card-description"></div>
-        <i id="ghub" class="fab fa-github fa-2x"><%= link_to @profile.github_username, "https://github.com/#{@profile.github_username}", :target => "_blank", :style=> 'color:#FFFFFF;', :class => 'link_to'%></i>
+             </div>
+           </div>
 
+            <div class="biobox biobox-4">
+              <div class="biobox-content">
+                <div>Top language:</div>
+
+                <% unless @profile.top_languages == [] %>
+                <div><strong><%= @profile.top_languages.first[0].capitalize %></strong></div>
+                <% end %>
+            </div>
+          </div>
+        </div>
+
+        <div class="bio-flex-item2">
+          <div class="biobox biobox-2">
+            <div class="biobox-content">
+              <div>Total commits:</div>
+              <div><strong><%= @profile.total_contributions[:commits] %></strong></div>
+
+            </div>
+          </div>
+
+          <div class="biobox biobox-3">
+             <div class="biobox-content">
+              <div><%=  %></div>
+            <div>Total projects</div>
+            <div><strong><%#= @profile.activity.length %></strong></div>
+          </div>
+          </div>
+        </div>
+
+        </div>
       </div>
 
-    </div>
 
-
-
-
-
-    <div class="col-xs-12 col-sm-6">
-      <div class="card">
-        <div class="card-category">Top Language</div>
-        <div class="card-description">
+    <div class="bio-right col-xs-12 col-sm-6">
+      <div class="topl-container">
+<!--         <div class="tolp-title text-center">
+          Top Language
+        </div> -->
+        <div class="topl-graph text-center">
           <%= render 'shared/top_languages' %>
         </div>
-        <a class="card-link" href="#" ></a>
       </div>
     </div>
   </div>
-
 </div>
+
+
+
+

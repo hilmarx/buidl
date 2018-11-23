@@ -1,17 +1,30 @@
 .card-outer {
+  max-width: 800px;
   background-color: #FFFFFF;
-  box-shadow: 4px 4px 5px rgba(50,50,50,0.25);
+  box-shadow: 8px 8px 8px 8px 25px rgba(50,50,50,0.10);
   margin: 20px auto;
-  font-size: 14px;
+  // font-size: 14px;
   color: $black;
-  max-width: 991px;
+
 }
+
 
 
 .box-2  {
 
   display: flex;
   flex-direction: column;
+  justify-content: space-around;
+  padding: 20px 40px;
+
+}
+
+.title-box {
+
+  display:flex;
+  flex-direction: row;
+  justify-content: space-between;
+  // align-items: ceter;
 
 }
 
@@ -19,12 +32,43 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  padding: 20px 40px;
 }
 
 .p-lang {
 
   display: flex;
-  justify-content: space-between;
+  justify-content: start;
+  align-items: center;
+}
+
+.edit-btn {
+  color: #5E77FF;
+  background-color: transparent;
+  border-style: none;
+  height: 100px;
+  margin: auto 0px;
+  bottom: 0px;
+  opacity: 0.65;
+
+}
+
+.edit-btn:hover {
+
+  opacity: 1;
+
+}
+
+// .title-box {
+
+// display: flex;
+
+// }
+
+.primary-language {
+
+margin-left: 10px;
 }
 // .h3 {
 //   margin: 0px;
