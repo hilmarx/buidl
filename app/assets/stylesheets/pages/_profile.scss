@@ -8,6 +8,47 @@
 
 }
 
+.projects-add-container {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.projects-add {
+  width: 800px;
+  justify-content: space-between;
+  display: flex;
+  align-items: center;
+  padding: 0px 0px;
+}
+
+.proj-title {
+
+  font-size: 31px;
+}
+
+.btn {
+
+  color: #5E77FF;
+  // font-size: 16px;
+  border-color: #5E77FF;
+  background-color: transparent;
+
+
+}
+
+.btn:hover {
+
+  color: #475AC7;
+  border-color: #475AC7;
+  background-color: transparent;
+
+
+}
+
 .box-shadow-os {
 
 box-shadow: 10px 10px 41px 7px rgba(77,77,77,0.13);
@@ -15,9 +56,16 @@ box-shadow: 10px 10px 41px 7px rgba(77,77,77,0.13);
 }
 
 .projects-header {
-
+  margin: 0px auto;
   max-width: 800px;
   margin: 40px auto;
+}
+
+.name-follow-container {
+
+  display: flex;
+  align-items: center;
+
 }
 
 .specialone {
