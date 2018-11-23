@@ -29,7 +29,7 @@
             </div>
           </div>
 
-          <div class="edit-btn">
+          <div class="edit-btn-wrapper">
             <!-- Input edit button here -->
             <% if profile.user && profile.user == current_user %>
             <%= render "shared/update_project_modal", project: project, profile: profile %>

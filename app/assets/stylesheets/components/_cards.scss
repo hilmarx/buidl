@@ -43,7 +43,7 @@
   align-items: center;
 }
 
-.edit-btn {
+.edit-btn > i {
   color: #5E77FF;
   background-color: transparent;
   border-style: none;
@@ -51,6 +51,11 @@
   margin: auto 0px;
   bottom: 0px;
   opacity: 0.65;
+
+  &:hover {
+    cursor: pointer;
+    color: rgb(60, 76, 163);
+  }
 
 }
 
