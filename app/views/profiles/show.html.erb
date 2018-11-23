@@ -1,37 +1,4 @@
-<<<<<<< HEAD
-<div class="wrapper">
-  <div class="profile-container">
 
-    <div class="profile-header-container">
-      <div class="profile-img-div">
-
-        <% if @profile.photo.present? %>
-        <!-- photo : user photo -->
-
-        <%= render "shared/profile-photo", profile: @profile  %>
-
-        <%# @image =  @profile.photo %>
-        <%#= render 'shared/photo_upload'%>
-        <% else %>
-        <%= render "shared/github-photo", profile: @profile  %>
-        <%# @image = @profile.profile_photo %>
-        <%#= render 'shared/photo_upload'%>
-        <% end %>
-      </div>
-      <div class="name-and-follow">
-
-      <div class="name-div">
-        <h1 class="name"><%= @profile.full_name %></h1>
-      </div>
-
-      <div class="follow-button-div">
-        <!--- Jethro's Follow Button ---->
-        <%= render "shared/jethro_follow_button" %>
-        <!--- Jethro's Follow Button End---->
-      </div>
-      </div>
-
-=======
 <% content_for :meta_title, "#{@profile.github_username} is on #{DEFAULT_META["meta_product_name"]}" %>
 <% content_for :meta_description, @profile.description %>
 
@@ -64,18 +31,17 @@
           <%= render "shared/jethro_follow_button" %>
           <!--- Jethro's Follow Button End---->
         </div>
-      
->>>>>>> b45bf5cd34039748b646e6f4325f7a1430870adb
+
       <div class="activity-title">
 
       </div>
-      
+
     <div class="specialone box-shadow-os" >
         <h5 class="">
           Commits over time
         </h5>
 
-      <%= render 'shared/com-ovr-time'%>
+      <%= render 'shared/com-ovr-time', profile: @profile%>
     </div>
 
       <div class="biocards-parent-container">
