@@ -30,6 +30,11 @@ class ProfilesController < ApplicationController
     if @profile.user == nil
       get_profile_user_id
     end
+    # If the user has 0 projects or something went wrong w/ the API, redirect to root
+    unless @profile.projects.any?
+      redirect_to root_path
+      flash[:alert] = "Something went wrong, please try again"
+    end
   end
 
   def update

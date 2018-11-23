@@ -74,7 +74,8 @@ class FetchGithub
   end
 
   def fetch_projects(github_repos)
-    github_repos.each do |repo|
+    # Iterate over first 25 repos of a github account
+    github_repos.first(25).each do |repo|
       # Create Project Instance
       project = set_project(repo)
       project.save!
