@@ -97,6 +97,7 @@ class Profile < ApplicationRecord
     # Total number of lines deleted
     total_lines_deleted = 0
     self.contributions.each do |contribution|
+      next unless contribution.commits
       total_commits += contribution.commits
       total_lines_added += contribution.lines_added
       total_lines_deleted += contribution.lines_deleted
@@ -112,8 +113,12 @@ class Profile < ApplicationRecord
   private
 
   def fetch_github
-    FetchGithub.new(self)
-    self.save
+    begin
+      FetchGithub.new(self)
+      self.save
+    rescue
+      false
+    end
   end
 
 end
