@@ -21,6 +21,7 @@
             <div class="biobox biobox-4">
               <div class="biobox-content">
                 <div>Top language:</div>
+
                 <% unless @profile.top_languages == [] %>
                 <div><strong><%= @profile.top_languages.first[0].capitalize %></strong></div>
                 <% end %>
@@ -41,7 +42,7 @@
              <div class="biobox-content">
               <div><%=  %></div>
             <div>Total projects</div>
-            <div><strong><%= @profile.activity.length %></strong></div>
+            <div><strong><%#= @profile.activity.length %></strong></div>
           </div>
           </div>
         </div>
@@ -52,9 +53,9 @@
 
     <div class="bio-right col-xs-12 col-sm-6">
       <div class="topl-container">
-        <div class="tolp-title text-center">
+<!--         <div class="tolp-title text-center">
           Top Language
-        </div>
+        </div> -->
         <div class="topl-graph text-center">
           <%= render 'shared/top_languages' %>
         </div>
