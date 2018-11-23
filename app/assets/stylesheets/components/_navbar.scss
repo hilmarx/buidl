@@ -109,3 +109,49 @@
   border-left: 1px solid #E6E6E6;
   border-top: 1px solid #E6E6E6;
 }
+
+.fab {
+
+    margin-left: 10px;
+    border:none;
+    border-radius: 10px;
+    font-size: 30px;
+    padding-bottom: 3px;
+
+}
+
+.fab:hover {
+  border-left: lightgrey;
+  border-right: lightgrey;
+  color: black;
+}
+
+.nav-center {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+#nav-search {
+  display: flex;
+  align-items:center;
+  justify-content:center;
+
+}
+
+#nav-search #search_github_username{
+  padding-left: 10px;
+  font-weight: lighter;
+
+  font-size: 14px;
+  width: 200px;
+  border: 0.25px solid #5E5E5E;
+  margin: 0 auto;
+  height: 30px;
+
+  vertical-align: text-bottom;
+  background: none;
+  border: none;
+  border-bottom: grey .5px solid;
+}
