@@ -1,12 +1,28 @@
 .banner {
-  // background-image: image-url(".png");  <-- Put background image here
+  // background-image: image-url(".png");
   // background: asset-url('banner-background.jpg'), linear-gradient(to bottom right, white, #F3F3F3);
   background-size: contain;
   background-repeat: no-repeat;
-  height: calc(100vh - 60px);
+  height: calc(100vh - 70px);
   padding: 15vh 0 0 0;
   margin: 0;
   text-align: center;
+}
+
+.home-logo-title {
+
+  display: flex;
+  justify-content:center;
+  align-items: center;
+
+}
+
+.banner-logo {
+
+width: 200px;
+height: 200px;
+margin: 60px;
+
 }
 
 #homepage_logo {

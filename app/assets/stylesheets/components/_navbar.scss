@@ -13,8 +13,9 @@
 .nav-left {
 
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: row;
+  // justify-content: space-between;
+  // align-items: center;
 }
 
 .logo-image {
@@ -29,12 +30,20 @@
 }
 
 .navbar_logo {
+
+  display: flex;
+  align-items: center;
   font-size: 30px;
   color: #5E5E5E;;
 }
 
+.text-logo {
+
+  margin-left: 10px;
+}
+
 .navbar_logo:hover {
-  color: #FFFFFF;
+  color: #5E5E5E;
   text-decoration: none;
 }
 
