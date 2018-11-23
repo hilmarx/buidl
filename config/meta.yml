@@ -1,0 +1,5 @@
+meta_product_name: "BUIDL"
+meta_title: "BUIDL - A place for developers to showcase their work"
+meta_description: "Relevant description"
+meta_image: "Frame.png"                       # should exist in `app/assets/images/`
+twitter_account: "@realDonaldTrump"
