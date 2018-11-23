@@ -14,13 +14,20 @@ class CommitsPerWeekInYear
     @activity.each do |name, value|
       array = []
       value.each do |date, commits|
+        # If there is no date, dont do it
         next unless date
+        # Check if year of commit was in 2018, if not, skip
         if date.year == @year
           cweek = Date.parse(date.to_s).cweek
           array[cweek] ? array[cweek] += commits : array[cweek] = commits
         end
       end
-      @commits_per_week[name] = array
+      # If this is 0, it basically means no commits have been made for the chose repositories in 2018
+      if array == []
+        @commits_per_week[name] = [0]
+      else
+        @commits_per_week[name] = array
+      end
     end
   end
 
@@ -50,9 +57,13 @@ class CommitsPerWeekInYear
   end
 
   def run
-    set_initial_commits_per_week
-    fit_commits_to_year
-    @commits_per_week
+    begin
+      set_initial_commits_per_week
+      fit_commits_to_year
+      @commits_per_week
+    rescue
+      {"no commits in 2018"=>[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], :year_array=>[32, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47]}
+    end
   end
 end
 
