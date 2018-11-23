@@ -1,6 +1,5 @@
 require 'date'
 class FetchGithub
-  attr_accessor :hash
   def initialize(profile)
     @profile = profile
     @key = ENV['GITHUB_TOKEN']
@@ -24,18 +23,11 @@ class FetchGithub
 
   def store_contribution_data(repo_contributions, repo)
     repo = repo
-    #binding.pry
     # Loop over all contributions of a single repository
     repo_contributions.each do |contributions|
-      #binding.pry
-
       if contributions['author']['login'] == @github_username
-        #binding.pry
-
         # Loop over all contrubutions of a single contributor
         contributions['weeks'].each do |contribution|
-          #binding.pry
-
           lines_added = contribution['a'].to_i
           lines_deleted = contribution['d'].to_i
           commits = contribution['c'].to_i

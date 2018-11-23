@@ -30,8 +30,10 @@
           </div>
 
           <div class="edit-btn">
-             <!-- Input edit button here -->
-              <%= render "shared/update_project_modal", project: project %>
+            <!-- Input edit button here -->
+            <% if profile.user && profile.user == current_user %>
+            <%= render "shared/update_project_modal", project: project, profile: profile %>
+            <% end %>
             <!-- End Input Button -->
           </div>
 

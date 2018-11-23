@@ -21,7 +21,10 @@
             <div class="biobox biobox-4">
               <div class="biobox-content">
                 <div>Top language:</div>
-                <div><strong><%#= unless @profile.top_languages.first[0].capitalize %></strong></div>
+
+                <% unless @profile.top_languages == [] %>
+                <div><strong><%= @profile.top_languages.first[0].capitalize %></strong></div>
+                <% end %>
             </div>
           </div>
         </div>

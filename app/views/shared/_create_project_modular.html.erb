@@ -1,0 +1,63 @@
+<!-- Create Project from User input -->
+
+<!-- Button trigger modal -->
+<div class="project-edit-icon">
+  <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#project-form-<%= @project.id %>">
+  Import an external Github project</button>
+  <!-- Modal -->
+  <div class="modal fade" id="project-form-<%= project.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="myModalLabel">Import a Project you contriuted to</h4>
+        </div>
+
+        <form action="<%= profile_projects_path(profile) %>" method="POST">
+          <div class="modal-body">
+
+            <div class="form-group">
+
+              <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+
+              <label class="form-control-label string optional" for="url">Input the repositories URL</label>
+              <input class="form-control" name="url" type="text" placeholder="Example: https://github.com/Skyrmo/rails-mister-cocktail"></input>
+            </div>
+
+            <div class="form-group">
+              <label class="form-control-label string optional" for="url">Who is the owner of the repository?</label>
+
+              <div class="form-check">
+
+                <input class="form-check-input" id="exampleRadios1" name="github_type" type="radio" value="users" checked> </input>
+                <label class="form-control-label string optional" for="users">Private user (e.g. hilmarx)</label>
+
+              </div>
+
+              <div class="form-check">
+
+                <input class="form-check-input" id="exampleRadios1" name="github_type" type="radio" value="orgs"> </input>
+                <label class="form-control-label string optional" for="users">Organization (e.g. Microsoft)</label>
+
+              </div>
+
+            </div>
+          </div>
+
+
+          <div class="modal-footer">
+
+            <button type="submit" class="btn btn-primary">Submit
+            </button>
+
+          </div>
+
+        </form>
+
+
+
+      </div>
+    </div>
+  </div>
+</div>
