@@ -54,11 +54,7 @@
 
 
       <div class="project-cards-container">
-
-
-        <h3 class="text-center" >Github Projects</h3>
-
-
+        <h3 class="projects-header" >Projects</h3>
 
         <% @profile.projects.each do |project| %>
           <%= render 'shared/project_card', project: project, contributions: project.contributions.where(profile_id: @profile.id), profile: @profile  %>
