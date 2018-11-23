@@ -6,13 +6,21 @@ class ProjectsController < ApplicationController
 
 
   def create
+    # Find profile
     @profile = Profile.find(params[:profile_id])
     authorize (@profile)
     @user = User.find(@profile.user_id)
+    # Set url of the repo
     url = params[:url]
+    # users or orgs
     github_type = params[:github_type]
-    @user.add_project(url, github_type)
-    redirect_to profile_path(@profile)
+    # Create new project and contribution
+    if @user.add_project(url, github_type)
+      redirect_to profile_path(@profile)
+    else
+      redirect_to profile_path(@profile)
+      flash[:alert] = "API problems, please try agin"
+    end
   end
 
   # def index

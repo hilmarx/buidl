@@ -13,6 +13,7 @@ class AddProject
 
 
   def controller
+    begin
     # Fetch all projects of the given user
     all_projects_url = "https://api.github.com/#{@github_type}/#{@github_username}/repos?access_token=#{@key}"
     projects_json = fetch_and_parse(all_projects_url)
@@ -23,6 +24,9 @@ class AddProject
     set_project_techs(project_techs, project)
     # Fetch commits of the selected project
     fetch_repo_commits(project)
+    rescue
+      false
+    end
   end
 
   def fetch_and_parse(url)
