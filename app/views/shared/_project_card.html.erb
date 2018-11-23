@@ -6,12 +6,13 @@
 
         <div class="box-2">
 
-
           <div class="title-box">
-
             <div class="h3">
               <%= project.kebab_convert(project.name) %>
             </div>
+          </div>
+
+          <div class="desc-box">
             <div class="text-field">
               <% if project.description.nil? %>
                 <%= project.github_description %>
@@ -20,6 +21,7 @@
               <% end %>
             </div>
           </div>
+
           <div class="p-lang">
             <div class="h5">Primary language:</div>
             <div class="h5 primary-language">
@@ -27,11 +29,13 @@
             </div>
           </div>
 
-                   <div class="edit-btn">
-           <!-- Input edit button here -->
-            <%= render "shared/update_project_modal", project: project %>
-          <!-- End Input Button -->
+          <div class="edit-btn">
+             <!-- Input edit button here -->
+              <%= render "shared/update_project_modal", project: project %>
+            <!-- End Input Button -->
           </div>
+
+
 
         </div>
       </div>

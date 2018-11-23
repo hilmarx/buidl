@@ -14,34 +14,46 @@ const createTopLChart = (argChartData, argChartLabels) => {
               label: '# of Votes',
               data: chartData,
               backgroundColor: [
-                  'rgba(255, 99, 132, 1)',
-                  'rgba(54, 162, 235, 1)',
-                  'rgba(255, 206, 86, 1)',
-                  'rgba(75, 192, 192, 1)',
-                  'rgba(153, 102, 255, 1)',
-                  'rgba(255, 159, 64, 1)'
+                '#3C4CA3',
+                '#6C83FF',
+                '#B5C1FF',
+                '#34418C',
+                '#5E77FF',
+                '#A7B4FF',
+                '#2B3774',
+                '#566DE8',
+                '#98A8FF',
+                '#232C5D',
+                '#4D62D1',
+                '#899CFF',
+                '#4557BA',
+                '#7B8FFF',
+                '#C4CDFF'
               ],
               borderColor: [
-                  'rgba(255,99,132,1)',
-                  'rgba(54, 162, 235, 1)',
-                  'rgba(255, 206, 86, 1)',
-                  'rgba(75, 192, 192, 1)',
-                  'rgba(153, 102, 255, 1)',
-                  'rgba(255, 159, 64, 1)'
+                  'rgba(255,255,255,0.8)',
+                  'rgba(255,255,255,0.8)',
+                  'rgba(255,255,255,0.8)',
+                  'rgba(255,255,255,0.8)',
+                  'rgba(255,255,255,0.8)',
+                  'rgba(255,255,255,0.8)'
               ],
-              borderWidth: 1
+              borderWidth: 2
           }]
       },
-      options: {
-       legend: {
-          display: false
-       },
-  }
-      // options: {
-      //  responsive: true
-      //  },
-  });
+    options: {
+        legend: {
 
+            display: true,
+            position: "bottom",
+            labels: {
+                boxWidth: 10,
+                fontSize: 10,
+                padding: 5,
+            }
+        }
+    }
+  });
 }
 
 
