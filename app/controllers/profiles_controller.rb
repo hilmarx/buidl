@@ -32,9 +32,11 @@ class ProfilesController < ApplicationController
     end
     # If the user has 0 projects or something went wrong w/ the API, redirect to root
     if @profile.github_url == nil
+      @profile.destroy
       redirect_to root_path
       flash[:alert] = "This username doesn't exist on Github, please try again"
     elsif @profile.projects.any? == false
+      @profile.destroy
       redirect_to root_path
       flash[:alert] = "Something went wrong, please try again"
     end
